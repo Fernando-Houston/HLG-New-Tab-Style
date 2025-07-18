@@ -3692,6 +3692,12 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             color: white;
             transition: all 0.3s;
+            position: relative;
+        }
+        
+        #scheduleModal .calendar-date.today {
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            font-weight: 600;
         }
         
         #scheduleModal .calendar-date:hover:not(:disabled) {
@@ -3702,6 +3708,12 @@
         #scheduleModal .calendar-date.selected {
             background-color: rgba(22, 163, 74, 0.8);
             border-color: rgba(22, 163, 74, 1);
+            box-shadow: 0 0 0 2px rgba(22, 163, 74, 0.3);
+        }
+        
+        #scheduleModal .calendar-date.today.selected {
+            background-color: rgba(22, 163, 74, 0.9);
+            font-weight: 700;
         }
         
         #scheduleModal .calendar-date:disabled {
@@ -3959,6 +3971,16 @@
                 
                 if (!isPast) {
                     dayEl.onclick = () => selectDate(dateStr, dayEl);
+                    
+                    // Auto-select today's date for better UX
+                    if (isToday) {
+                        dayEl.classList.add('selected');
+                        selectedDate = dateStr;
+                        document.getElementById('selectedDate').value = dateStr;
+                        
+                        // Generate time slots for today immediately
+                        setTimeout(() => generateTimeSlots(dateStr), 100);
+                    }
                 }
                 
                 calendarEl.appendChild(dayEl);
