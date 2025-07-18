@@ -215,15 +215,14 @@
         .container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
     </style>
     
-    <!-- Fonts with preload -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+    <!-- Fonts - direct load to avoid preload warning -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Font Awesome with async loading -->
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"></noscript>
     
-    <!-- Tailwind CSS -->
+    <!-- Tailwind CSS - CDN for development/demo, replace with build process for production -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -3559,15 +3558,32 @@
     
     <!-- Performance monitoring -->
     <script>
-        // Simple performance monitoring
+        // Simple performance monitoring with error handling
         window.addEventListener('load', function() {
-            if ('performance' in window) {
-                setTimeout(function() {
-                    const perfData = performance.getEntriesByType('navigation')[0];
-                    console.log('Page load time:', perfData.loadEventEnd - perfData.loadEventStart + 'ms');
-                    console.log('DOM content loaded:', perfData.domContentLoadedEventEnd - perfData.domContentLoadedEventStart + 'ms');
-                }, 0);
+            try {
+                if ('performance' in window) {
+                    setTimeout(function() {
+                        try {
+                            const perfData = performance.getEntriesByType('navigation')[0];
+                            if (perfData) {
+                                console.log('Page load time:', perfData.loadEventEnd - perfData.loadEventStart + 'ms');
+                                console.log('DOM content loaded:', perfData.domContentLoadedEventEnd - perfData.domContentLoadedEventStart + 'ms');
+                            }
+                        } catch (e) {
+                            console.warn('Performance monitoring error:', e);
+                        }
+                    }, 0);
+                }
+            } catch (e) {
+                console.warn('Load event error:', e);
             }
+        });
+        
+        // Global error handler to prevent uncaught errors
+        window.addEventListener('error', function(e) {
+            console.warn('Global error caught:', e.error?.message || e.message);
+            // Prevent the error from breaking the page
+            return true;
         });
     </script>
 </body>
