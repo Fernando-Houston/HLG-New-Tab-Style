@@ -697,6 +697,37 @@ textarea:focus-visible {
     }
 }
 
+/* Mobile Carousels */
+.property-carousel,
+.developer-carousel,
+.process-carousel,
+.invest-benefits-carousel,
+.invest-process-carousel,
+.invest-options-carousel {
+    position: relative;
+    overflow: hidden;
+}
+
+.property-carousel-dot,
+.developer-carousel-dot,
+.process-carousel-dot,
+.invest-benefits-dot,
+.invest-process-dot,
+.invest-options-dot {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.property-carousel-dot.active,
+.developer-carousel-dot.active,
+.process-carousel-dot.active,
+.invest-benefits-dot.active,
+.invest-process-dot.active,
+.invest-options-dot.active {
+    background-color: #16a34a;
+    width: 24px;
+}
+
 /* High contrast mode */
 @media (prefers-contrast: high) {
     .tab-button.active {

@@ -289,6 +289,60 @@
             -ms-user-select: none;
             user-select: none;
         }
+        
+        /* Process Carousel Styles */
+        .process-carousel {
+            cursor: grab;
+            touch-action: pan-y;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .process-carousel * {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        
+        .process-carousel-dot {
+            cursor: pointer;
+        }
+        
+        .process-carousel-dot.active {
+            background-color: #014a48;
+            width: 24px;
+        }
+        
+        /* Investor Carousels Styles */
+        .invest-benefits-carousel,
+        .invest-process-carousel,
+        .invest-options-carousel {
+            cursor: grab;
+            touch-action: pan-y;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .invest-benefits-carousel *,
+        .invest-process-carousel *,
+        .invest-options-carousel * {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        
+        .invest-benefits-dot,
+        .invest-process-dot,
+        .invest-options-dot {
+            cursor: pointer;
+        }
+        
+        .invest-benefits-dot.active,
+        .invest-process-dot.active,
+        .invest-options-dot.active {
+            background-color: #014a48;
+            width: 24px;
+        }
     </style>
     
     <!-- Fonts - direct load to avoid preload warning -->
@@ -889,7 +943,8 @@
                         <!-- Timeline Line -->
                         <div class="hidden md:block absolute top-24 left-0 right-0 h-1 bg-houston-accent"></div>
                         
-                        <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
+                        <!-- Desktop Grid (hidden on mobile) -->
+                        <div class="hidden md:grid md:grid-cols-5 gap-8">
                             <div class="relative text-center">
                                 <div class="bg-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 border-4 border-houston-accent relative z-10">
                                     <span class="text-houston-green font-bold text-2xl">1</span>
@@ -933,6 +988,82 @@
                                 <h3 class="font-bold text-houston-green mb-2">Get Paid</h3>
                                 <p class="text-sm text-houston-gray mb-2">Receive cash via wire or cashier's check</p>
                                 <div class="text-houston-accent font-semibold">Closing day</div>
+                            </div>
+                        </div>
+
+                        <!-- Mobile Carousel (visible only on mobile) -->
+                        <div class="md:hidden relative">
+                            <div class="process-carousel relative overflow-hidden">
+                                <div class="flex transition-transform duration-300 ease-out" id="processCarousel">
+                                    <!-- Step 1 -->
+                                    <div class="w-full flex-shrink-0 px-4">
+                                        <div class="bg-white rounded-xl p-8 shadow-lg text-center">
+                                            <div class="bg-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 border-4 border-houston-accent">
+                                                <span class="text-houston-green font-bold text-2xl">1</span>
+                                            </div>
+                                            <h3 class="font-bold text-houston-green mb-2 text-xl">Contact Us</h3>
+                                            <p class="text-houston-gray mb-4">Call or fill out our form with basic property details</p>
+                                            <div class="text-houston-accent font-semibold text-lg">2 minutes</div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Step 2 -->
+                                    <div class="w-full flex-shrink-0 px-4">
+                                        <div class="bg-white rounded-xl p-8 shadow-lg text-center">
+                                            <div class="bg-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 border-4 border-houston-accent">
+                                                <span class="text-houston-green font-bold text-2xl">2</span>
+                                            </div>
+                                            <h3 class="font-bold text-houston-green mb-2 text-xl">Property Review</h3>
+                                            <p class="text-houston-gray mb-4">We analyze your property and market data</p>
+                                            <div class="text-houston-accent font-semibold text-lg">24 hours</div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Step 3 -->
+                                    <div class="w-full flex-shrink-0 px-4">
+                                        <div class="bg-white rounded-xl p-8 shadow-lg text-center">
+                                            <div class="bg-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 border-4 border-houston-accent">
+                                                <span class="text-houston-green font-bold text-2xl">3</span>
+                                            </div>
+                                            <h3 class="font-bold text-houston-green mb-2 text-xl">Cash Offer</h3>
+                                            <p class="text-houston-gray mb-4">Receive a fair, no-obligation cash offer</p>
+                                            <div class="text-houston-accent font-semibold text-lg">48 hours</div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Step 4 -->
+                                    <div class="w-full flex-shrink-0 px-4">
+                                        <div class="bg-white rounded-xl p-8 shadow-lg text-center">
+                                            <div class="bg-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 border-4 border-houston-accent">
+                                                <span class="text-houston-green font-bold text-2xl">4</span>
+                                            </div>
+                                            <h3 class="font-bold text-houston-green mb-2 text-xl">Accept & Schedule</h3>
+                                            <p class="text-houston-gray mb-4">Choose your closing date - as fast as 7 days</p>
+                                            <div class="text-houston-accent font-semibold text-lg">Your timeline</div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Step 5 -->
+                                    <div class="w-full flex-shrink-0 px-4">
+                                        <div class="bg-white rounded-xl p-8 shadow-lg text-center">
+                                            <div class="bg-white rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6 border-4 border-houston-accent">
+                                                <span class="text-houston-green font-bold text-2xl">5</span>
+                                            </div>
+                                            <h3 class="font-bold text-houston-green mb-2 text-xl">Get Paid</h3>
+                                            <p class="text-houston-gray mb-4">Receive cash via wire or cashier's check</p>
+                                            <div class="text-houston-accent font-semibold text-lg">Closing day</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Navigation Dots -->
+                            <div class="flex justify-center gap-2 mt-6">
+                                <button class="process-carousel-dot w-2 h-2 bg-gray-300 rounded-full transition-all active" data-slide="0"></button>
+                                <button class="process-carousel-dot w-2 h-2 bg-gray-300 rounded-full transition-all" data-slide="1"></button>
+                                <button class="process-carousel-dot w-2 h-2 bg-gray-300 rounded-full transition-all" data-slide="2"></button>
+                                <button class="process-carousel-dot w-2 h-2 bg-gray-300 rounded-full transition-all" data-slide="3"></button>
+                                <button class="process-carousel-dot w-2 h-2 bg-gray-300 rounded-full transition-all" data-slide="4"></button>
                             </div>
                         </div>
                     </div>
@@ -1674,7 +1805,8 @@
                         </p>
                     </div>
                     
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Desktop Grid (hidden on mobile) -->
+                    <div class="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                         <!-- Benefit 1 -->
                         <div class="text-center">
                             <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -1711,13 +1843,73 @@
                             <p class="text-houston-gray">Opportunities from $100K to $10M+ investment levels</p>
                         </div>
                     </div>
+
+                    <!-- Mobile Carousel (visible only on mobile) -->
+                    <div class="md:hidden relative mt-8">
+                        <div class="invest-benefits-carousel relative overflow-hidden">
+                            <div class="flex transition-transform duration-300 ease-out" id="investBenefitsCarousel">
+                                <!-- Benefit 1 -->
+                                <div class="w-full flex-shrink-0 px-4">
+                                    <div class="bg-white rounded-xl p-8 shadow-lg text-center">
+                                        <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                            <i class="fas fa-chart-line text-3xl text-houston-accent"></i>
+                                        </div>
+                                        <h3 class="text-xl font-bold text-houston-green mb-2">18%+ Average Returns</h3>
+                                        <p class="text-houston-gray">Historical average IRR across our development projects</p>
+                                    </div>
+                                </div>
+
+                                <!-- Benefit 2 -->
+                                <div class="w-full flex-shrink-0 px-4">
+                                    <div class="bg-white rounded-xl p-8 shadow-lg text-center">
+                                        <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                            <i class="fas fa-shield-alt text-3xl text-houston-accent"></i>
+                                        </div>
+                                        <h3 class="text-xl font-bold text-houston-green mb-2">Risk Mitigation</h3>
+                                        <p class="text-houston-gray">Pre-vetted opportunities with thorough due diligence</p>
+                                    </div>
+                                </div>
+
+                                <!-- Benefit 3 -->
+                                <div class="w-full flex-shrink-0 px-4">
+                                    <div class="bg-white rounded-xl p-8 shadow-lg text-center">
+                                        <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                            <i class="fas fa-users text-3xl text-houston-accent"></i>
+                                        </div>
+                                        <h3 class="text-xl font-bold text-houston-green mb-2">Expert Partners</h3>
+                                        <p class="text-houston-gray">Work with experienced developers and operators</p>
+                                    </div>
+                                </div>
+
+                                <!-- Benefit 4 -->
+                                <div class="w-full flex-shrink-0 px-4">
+                                    <div class="bg-white rounded-xl p-8 shadow-lg text-center">
+                                        <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                            <i class="fas fa-dollar-sign text-3xl text-houston-accent"></i>
+                                        </div>
+                                        <h3 class="text-xl font-bold text-houston-green mb-2">Flexible Investment</h3>
+                                        <p class="text-houston-gray">Opportunities from $100K to $10M+ investment levels</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Navigation Dots -->
+                        <div class="flex justify-center gap-2 mt-6">
+                            <button class="invest-benefits-dot w-2 h-2 bg-gray-300 rounded-full transition-all active" data-slide="0"></button>
+                            <button class="invest-benefits-dot w-2 h-2 bg-gray-300 rounded-full transition-all" data-slide="1"></button>
+                            <button class="invest-benefits-dot w-2 h-2 bg-gray-300 rounded-full transition-all" data-slide="2"></button>
+                            <button class="invest-benefits-dot w-2 h-2 bg-gray-300 rounded-full transition-all" data-slide="3"></button>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Investment Process -->
                 <div class="bg-gray-50 rounded-2xl p-12 mb-16">
                     <h2 class="text-3xl font-bold text-center text-houston-green mb-12">Our Investment Process</h2>
                     
-                    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <!-- Desktop Grid (hidden on mobile) -->
+                    <div class="hidden md:grid md:grid-cols-4 gap-8">
                         <!-- Step 1 -->
                         <div class="text-center">
                             <div class="w-16 h-16 bg-houston-accent rounded-full flex items-center justify-center mx-auto mb-4 text-white text-2xl font-bold">
@@ -1752,6 +1944,65 @@
                             </div>
                             <h3 class="font-bold text-houston-green mb-2">Active Management</h3>
                             <p class="text-sm text-houston-gray">Regular updates and distributions throughout the project lifecycle</p>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Carousel (visible only on mobile) -->
+                    <div class="md:hidden relative mt-8">
+                        <div class="invest-process-carousel relative overflow-hidden">
+                            <div class="flex transition-transform duration-300 ease-out" id="investProcessCarousel">
+                                <!-- Step 1 -->
+                                <div class="w-full flex-shrink-0 px-4">
+                                    <div class="bg-white rounded-xl p-8 shadow-lg text-center">
+                                        <div class="w-16 h-16 bg-houston-accent rounded-full flex items-center justify-center mx-auto mb-4 text-white text-2xl font-bold">
+                                            1
+                                        </div>
+                                        <h3 class="font-bold text-houston-green mb-2 text-xl">Initial Consultation</h3>
+                                        <p class="text-houston-gray">Discuss your investment goals and review current opportunities</p>
+                                    </div>
+                                </div>
+
+                                <!-- Step 2 -->
+                                <div class="w-full flex-shrink-0 px-4">
+                                    <div class="bg-white rounded-xl p-8 shadow-lg text-center">
+                                        <div class="w-16 h-16 bg-houston-accent rounded-full flex items-center justify-center mx-auto mb-4 text-white text-2xl font-bold">
+                                            2
+                                        </div>
+                                        <h3 class="font-bold text-houston-green mb-2 text-xl">Due Diligence</h3>
+                                        <p class="text-houston-gray">Review detailed project information, financials, and projections</p>
+                                    </div>
+                                </div>
+
+                                <!-- Step 3 -->
+                                <div class="w-full flex-shrink-0 px-4">
+                                    <div class="bg-white rounded-xl p-8 shadow-lg text-center">
+                                        <div class="w-16 h-16 bg-houston-accent rounded-full flex items-center justify-center mx-auto mb-4 text-white text-2xl font-bold">
+                                            3
+                                        </div>
+                                        <h3 class="font-bold text-houston-green mb-2 text-xl">Investment Structure</h3>
+                                        <p class="text-houston-gray">Finalize investment terms, structure, and legal documentation</p>
+                                    </div>
+                                </div>
+
+                                <!-- Step 4 -->
+                                <div class="w-full flex-shrink-0 px-4">
+                                    <div class="bg-white rounded-xl p-8 shadow-lg text-center">
+                                        <div class="w-16 h-16 bg-houston-accent rounded-full flex items-center justify-center mx-auto mb-4 text-white text-2xl font-bold">
+                                            4
+                                        </div>
+                                        <h3 class="font-bold text-houston-green mb-2 text-xl">Active Management</h3>
+                                        <p class="text-houston-gray">Regular updates and distributions throughout the project lifecycle</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Navigation Dots -->
+                        <div class="flex justify-center gap-2 mt-6">
+                            <button class="invest-process-dot w-2 h-2 bg-gray-300 rounded-full transition-all active" data-slide="0"></button>
+                            <button class="invest-process-dot w-2 h-2 bg-gray-300 rounded-full transition-all" data-slide="1"></button>
+                            <button class="invest-process-dot w-2 h-2 bg-gray-300 rounded-full transition-all" data-slide="2"></button>
+                            <button class="invest-process-dot w-2 h-2 bg-gray-300 rounded-full transition-all" data-slide="3"></button>
                         </div>
                     </div>
                 </div>
@@ -1799,7 +2050,8 @@
                         </p>
                     </div>
                     
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Desktop Grid (hidden on mobile) -->
+                    <div class="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                         <!-- Joint Ventures -->
                         <div class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all group">
                             <div class="w-16 h-16 bg-houston-accent/10 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
@@ -1862,6 +2114,93 @@
                                 <li>• First lien position</li>
                                 <li>• Shorter terms</li>
                             </ul>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Carousel (visible only on mobile) -->
+                    <div class="md:hidden relative mt-8">
+                        <div class="invest-options-carousel relative overflow-hidden">
+                            <div class="flex transition-transform duration-300 ease-out" id="investOptionsCarousel">
+                                <!-- Joint Ventures -->
+                                <div class="w-full flex-shrink-0 px-4">
+                                    <div class="bg-white rounded-xl p-8 shadow-lg">
+                                        <div class="w-16 h-16 bg-houston-accent/10 rounded-xl flex items-center justify-center mb-6">
+                                            <i class="fas fa-handshake text-3xl text-houston-accent"></i>
+                                        </div>
+                                        <h3 class="text-xl font-bold text-houston-green mb-3">Joint Ventures</h3>
+                                        <p class="text-houston-gray mb-4">
+                                            Partner directly in development projects with profit sharing
+                                        </p>
+                                        <ul class="text-sm text-houston-gray space-y-1">
+                                            <li>• 50/50 to 90/10 splits</li>
+                                            <li>• Active involvement options</li>
+                                            <li>• Higher return potential</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <!-- Preferred Equity -->
+                                <div class="w-full flex-shrink-0 px-4">
+                                    <div class="bg-white rounded-xl p-8 shadow-lg">
+                                        <div class="w-16 h-16 bg-houston-accent/10 rounded-xl flex items-center justify-center mb-6">
+                                            <i class="fas fa-percentage text-3xl text-houston-accent"></i>
+                                        </div>
+                                        <h3 class="text-xl font-bold text-houston-green mb-3">Preferred Equity</h3>
+                                        <p class="text-houston-gray mb-4">
+                                            Fixed preferred returns with upside participation
+                                        </p>
+                                        <ul class="text-sm text-houston-gray space-y-1">
+                                            <li>• 8-12% preferred return</li>
+                                            <li>• Upside participation</li>
+                                            <li>• Priority distributions</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <!-- Syndications -->
+                                <div class="w-full flex-shrink-0 px-4">
+                                    <div class="bg-white rounded-xl p-8 shadow-lg">
+                                        <div class="w-16 h-16 bg-houston-accent/10 rounded-xl flex items-center justify-center mb-6">
+                                            <i class="fas fa-users text-3xl text-houston-accent"></i>
+                                        </div>
+                                        <h3 class="text-xl font-bold text-houston-green mb-3">Syndications</h3>
+                                        <p class="text-houston-gray mb-4">
+                                            Pool capital with other investors for larger projects
+                                        </p>
+                                        <ul class="text-sm text-houston-gray space-y-1">
+                                            <li>• Passive investment</li>
+                                            <li>• Diversified portfolio</li>
+                                            <li>• Professional management</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <!-- Debt Investments -->
+                                <div class="w-full flex-shrink-0 px-4">
+                                    <div class="bg-white rounded-xl p-8 shadow-lg">
+                                        <div class="w-16 h-16 bg-houston-accent/10 rounded-xl flex items-center justify-center mb-6">
+                                            <i class="fas fa-university text-3xl text-houston-accent"></i>
+                                        </div>
+                                        <h3 class="text-xl font-bold text-houston-green mb-3">Debt Investments</h3>
+                                        <p class="text-houston-gray mb-4">
+                                            Secured lending opportunities with fixed returns
+                                        </p>
+                                        <ul class="text-sm text-houston-gray space-y-1">
+                                            <li>• 10-15% annual returns</li>
+                                            <li>• First lien position</li>
+                                            <li>• Shorter terms</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Navigation Dots -->
+                        <div class="flex justify-center gap-2 mt-6">
+                            <button class="invest-options-dot w-2 h-2 bg-gray-300 rounded-full transition-all active" data-slide="0"></button>
+                            <button class="invest-options-dot w-2 h-2 bg-gray-300 rounded-full transition-all" data-slide="1"></button>
+                            <button class="invest-options-dot w-2 h-2 bg-gray-300 rounded-full transition-all" data-slide="2"></button>
+                            <button class="invest-options-dot w-2 h-2 bg-gray-300 rounded-full transition-all" data-slide="3"></button>
                         </div>
                     </div>
                 </div>
@@ -4565,6 +4904,166 @@
                 clearTimeout(developersResizeTimeout);
                 developersResizeTimeout = setTimeout(function() {
                     updateDevelopersCarousel(developersCurrentSlide, false);
+                }, 250);
+            });
+        });
+    </script>
+
+    <!-- Process Carousel JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const processCarousel = document.getElementById('processCarousel');
+            const processDots = document.querySelectorAll('.process-carousel-dot');
+            let processCurrentSlide = 0;
+            let processStartX = null;
+            let processScrollStart = null;
+            let processIsScrolling = false;
+            
+            if (!processCarousel || processDots.length === 0) return;
+            
+            const processTotalSlides = processCarousel.children.length;
+            const processSlideWidth = processCarousel.children[0].offsetWidth;
+            
+            // Update carousel position
+            function updateProcessCarousel(index, animate = true) {
+                if (index < 0) index = 0;
+                if (index >= processTotalSlides) index = processTotalSlides - 1;
+                
+                processCurrentSlide = index;
+                const offset = -index * 100;
+                
+                if (animate) {
+                    processCarousel.style.transition = 'transform 0.3s ease-out';
+                } else {
+                    processCarousel.style.transition = 'none';
+                }
+                
+                processCarousel.style.transform = `translateX(${offset}%)`;
+                
+                // Update dots
+                processDots.forEach((dot, i) => {
+                    if (i === index) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            }
+            
+            // Touch events
+            processCarousel.addEventListener('touchstart', function(e) {
+                processStartX = e.touches[0].clientX;
+                processScrollStart = processCurrentSlide;
+                processIsScrolling = true;
+                processCarousel.style.transition = 'none';
+            }, { passive: true });
+            
+            processCarousel.addEventListener('touchmove', function(e) {
+                if (!processIsScrolling) return;
+                
+                const currentX = e.touches[0].clientX;
+                const diff = processStartX - currentX;
+                const slidePercent = (diff / processSlideWidth) * 100;
+                const offset = -(processScrollStart * 100 + slidePercent);
+                
+                processCarousel.style.transform = `translateX(${offset}%)`;
+            }, { passive: true });
+            
+            processCarousel.addEventListener('touchend', function(e) {
+                if (!processIsScrolling) return;
+                
+                const endX = e.changedTouches[0].clientX;
+                const diff = processStartX - endX;
+                const threshold = processSlideWidth * 0.2; // 20% of slide width
+                
+                if (Math.abs(diff) > threshold) {
+                    if (diff > 0 && processCurrentSlide < processTotalSlides - 1) {
+                        // Swipe left - next slide
+                        updateProcessCarousel(processCurrentSlide + 1);
+                    } else if (diff < 0 && processCurrentSlide > 0) {
+                        // Swipe right - previous slide
+                        updateProcessCarousel(processCurrentSlide - 1);
+                    } else {
+                        // Snap back to current slide
+                        updateProcessCarousel(processCurrentSlide);
+                    }
+                } else {
+                    // Snap back to current slide
+                    updateProcessCarousel(processCurrentSlide);
+                }
+                
+                processIsScrolling = false;
+            });
+            
+            // Mouse events for desktop testing
+            let processMouseDown = false;
+            let processMouseStartX = null;
+            
+            processCarousel.addEventListener('mousedown', function(e) {
+                processMouseDown = true;
+                processMouseStartX = e.clientX;
+                processScrollStart = processCurrentSlide;
+                processCarousel.style.transition = 'none';
+                processCarousel.style.cursor = 'grabbing';
+                e.preventDefault();
+            });
+            
+            processCarousel.addEventListener('mousemove', function(e) {
+                if (!processMouseDown) return;
+                
+                const diff = processMouseStartX - e.clientX;
+                const slidePercent = (diff / processSlideWidth) * 100;
+                const offset = -(processScrollStart * 100 + slidePercent);
+                
+                processCarousel.style.transform = `translateX(${offset}%)`;
+            });
+            
+            processCarousel.addEventListener('mouseup', function(e) {
+                if (!processMouseDown) return;
+                
+                const diff = processMouseStartX - e.clientX;
+                const threshold = processSlideWidth * 0.2;
+                
+                if (Math.abs(diff) > threshold) {
+                    if (diff > 0 && processCurrentSlide < processTotalSlides - 1) {
+                        updateProcessCarousel(processCurrentSlide + 1);
+                    } else if (diff < 0 && processCurrentSlide > 0) {
+                        updateProcessCarousel(processCurrentSlide - 1);
+                    } else {
+                        updateProcessCarousel(processCurrentSlide);
+                    }
+                } else {
+                    updateProcessCarousel(processCurrentSlide);
+                }
+                
+                processMouseDown = false;
+                processCarousel.style.cursor = 'grab';
+            });
+            
+            processCarousel.addEventListener('mouseleave', function() {
+                if (processMouseDown) {
+                    updateProcessCarousel(processCurrentSlide);
+                    processMouseDown = false;
+                    processCarousel.style.cursor = 'grab';
+                }
+            });
+            
+            // Dot navigation
+            processDots.forEach((dot, index) => {
+                dot.addEventListener('click', function() {
+                    updateProcessCarousel(index);
+                });
+            });
+            
+            // Initialize carousel position
+            updateProcessCarousel(0, false);
+            
+            // Handle window resize
+            let processResizeTimeout;
+            window.addEventListener('resize', function() {
+                clearTimeout(processResizeTimeout);
+                processResizeTimeout = setTimeout(function() {
+                    updateProcessCarousel(processCurrentSlide, false);
                 }, 250);
             });
         });

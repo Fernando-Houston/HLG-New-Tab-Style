@@ -3135,3 +3135,108 @@ function optimizeDOMOperations() {
         return elementCache.get(selector);
     };
 }
+
+// Mobile Carousel Functionality
+function initializeCarousel(carouselId, dotsClass) {
+    const carousel = document.getElementById(carouselId);
+    if (!carousel) return;
+    
+    let currentSlide = 0;
+    const slides = carousel.children.length;
+    const dots = document.querySelectorAll(`.${dotsClass}`);
+    
+    // Touch handling
+    let startX = 0;
+    let currentX = 0;
+    let isDragging = false;
+    
+    function updateCarousel() {
+        carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentSlide);
+        });
+    }
+    
+    function goToSlide(slide) {
+        currentSlide = Math.max(0, Math.min(slides - 1, slide));
+        updateCarousel();
+    }
+    
+    // Touch events
+    carousel.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+        isDragging = true;
+    });
+    
+    carousel.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        currentX = e.touches[0].clientX;
+    });
+    
+    carousel.addEventListener('touchend', () => {
+        if (!isDragging) return;
+        isDragging = false;
+        
+        const diff = startX - currentX;
+        if (Math.abs(diff) > 50) {
+            if (diff > 0) {
+                goToSlide(currentSlide + 1);
+            } else {
+                goToSlide(currentSlide - 1);
+            }
+        }
+    });
+    
+    // Mouse events for desktop testing
+    carousel.addEventListener('mousedown', (e) => {
+        startX = e.clientX;
+        isDragging = true;
+        e.preventDefault();
+    });
+    
+    carousel.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        currentX = e.clientX;
+    });
+    
+    carousel.addEventListener('mouseup', () => {
+        if (!isDragging) return;
+        isDragging = false;
+        
+        const diff = startX - currentX;
+        if (Math.abs(diff) > 50) {
+            if (diff > 0) {
+                goToSlide(currentSlide + 1);
+            } else {
+                goToSlide(currentSlide - 1);
+            }
+        }
+    });
+    
+    // Dot navigation
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            goToSlide(index);
+        });
+    });
+    
+    // Initialize
+    updateCarousel();
+}
+
+// Initialize all carousels when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+    // Property types carousel
+    initializeCarousel('propertyCarousel', 'property-carousel-dot');
+    
+    // Developer services carousel
+    initializeCarousel('developerCarousel', 'developer-carousel-dot');
+    
+    // 5-Step Process carousel
+    initializeCarousel('processCarousel', 'process-carousel-dot');
+    
+    // Investor carousels
+    initializeCarousel('investBenefitsCarousel', 'invest-benefits-dot');
+    initializeCarousel('investProcessCarousel', 'invest-process-dot');
+    initializeCarousel('investOptionsCarousel', 'invest-options-dot');
+});
