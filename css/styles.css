@@ -834,3 +834,29 @@ textarea:focus-visible {
 .notification.info {
     background: #0ea5e9;
 }
+
+/* Navigation fixes to prevent bugs */
+nav {
+    position: fixed !important;
+    top: 0 !important;
+    z-index: 9999 !important;
+    width: 100% !important;
+}
+
+#mobile-menu {
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 9998 !important;
+}
+
+/* Ensure content doesn't hide behind fixed nav */
+body {
+    padding-top: 64px; /* Height of navbar */
+}
+
+/* Smooth scroll offset for anchors */
+html {
+    scroll-padding-top: 80px; /* Navbar height + some padding */
+}
