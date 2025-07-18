@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+
+# Important pages for crawling
+Allow: /developers
+Allow: /investors  
+Allow: /sellers
+Allow: /locations/
+Allow: /services/
+
+# Sitemap location
+Sitemap: https://houstonlandguy.com/sitemap.xml
+
+# Block access to admin/internal areas (if they exist)
+Disallow: /admin/
+Disallow: /private/
+Disallow: /.git/
+Disallow: /node_modules/
