@@ -598,7 +598,7 @@ function showChapter42ExportMenu() {
 }
 
 // Export functions
-function exportChapter42PDF() {
+window.exportChapter42PDF = function() {
     const reportHTML = generateChapter42HTMLReport();
     const printWindow = window.open('', '_blank');
     printWindow.document.write(reportHTML);
@@ -608,7 +608,7 @@ function exportChapter42PDF() {
     showNotification('PDF export ready. Use print dialog to save as PDF.', 'success');
 }
 
-function exportChapter42CSV() {
+window.exportChapter42CSV = function() {
     const stats = chapter42CurrentPlan.statistics;
     const compliance = chapter42CurrentPlan.compliance;
     
@@ -638,7 +638,7 @@ function exportChapter42CSV() {
     showNotification('CSV export completed!', 'success');
 }
 
-function exportChapter42SVG() {
+window.exportChapter42SVG = function() {
     const svg = document.getElementById('chapter42-site-plan');
     const svgData = new XMLSerializer().serializeToString(svg);
     const blob = new Blob([svgData], { type: 'image/svg+xml' });

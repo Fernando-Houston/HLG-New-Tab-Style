@@ -24,7 +24,7 @@ function handleVideoError() {
     }
 }
 
-function playVideoFallback() {
+window.playVideoFallback = function() {
     const iframe = document.getElementById('video-player');
     const fallback = document.getElementById('video-fallback');
     
@@ -136,13 +136,13 @@ function initTabNavigation() {
             
             // Remove active class from all buttons
             tabButtons.forEach(btn => {
-                btn.classList.remove('active', 'border-houston-accent', 'text-houston-green');
-                btn.classList.add('border-transparent', 'text-houston-gray');
+                btn.classList.remove('active', 'border-green-600', 'text-green-600');
+                btn.classList.add('border-transparent', 'text-gray-500');
             });
             
             // Add active class to clicked button
-            this.classList.add('active', 'border-houston-accent', 'text-houston-green');
-            this.classList.remove('border-transparent', 'text-houston-gray');
+            this.classList.add('active', 'border-green-600', 'text-green-600');
+            this.classList.remove('border-transparent', 'text-gray-500');
             
             // Hide all tab contents
             tabContents.forEach(content => {
@@ -908,8 +908,8 @@ function resetROICalculator() {
     }
 }
 
-// Tool management
-function openTool(toolName) {
+// Tool management - make globally accessible
+window.openTool = function(toolName) {
     // Hide all tools first
     const allTools = document.querySelectorAll('[id$="-tool"]');
     allTools.forEach(tool => {
@@ -932,7 +932,7 @@ function closeTool(toolName) {
 }
 
 // Close modal
-function closeModal(element) {
+window.closeModal = function(element) {
     const modal = element.closest('.fixed');
     if (modal) {
         modal.classList.remove('show');
