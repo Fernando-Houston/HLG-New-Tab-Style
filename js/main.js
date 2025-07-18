@@ -5,14 +5,14 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeApp();
 });
 
-// Video handling functions
-function handleVideoLoad() {
+// Video handling functions - make globally accessible
+window.handleVideoLoad = function() {
     console.log('Video loaded successfully');
     const fallback = document.getElementById('video-fallback');
     if (fallback) {
         fallback.classList.add('hidden');
     }
-}
+};
 
 function handleVideoError() {
     console.log('Video failed to load, showing fallback');
@@ -1047,8 +1047,7 @@ const CHAPTER42_CONSTANTS = {
     OPEN_SPACE_DIMENSIONS: [20, 12]
 };
 
-// Chapter 42 state
-let chapter42CurrentPlan = null;
+// Chapter 42 state - defined in chapter42.js
 
 // Notifications
 function initNotifications() {
