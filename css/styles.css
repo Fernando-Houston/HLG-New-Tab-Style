@@ -714,7 +714,7 @@ textarea:focus-visible {
 .invest-benefits-dot,
 .invest-process-dot,
 .invest-options-dot {
-    transition: all 0.3s ease;
+    transition: all 0.15s ease;
     cursor: pointer;
 }
 

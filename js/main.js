@@ -3151,6 +3151,7 @@ function initializeCarousel(carouselId, dotsClass) {
     let isDragging = false;
     
     function updateCarousel() {
+        carousel.style.transition = 'transform 150ms ease-out';
         carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
         dots.forEach((dot, index) => {
             dot.classList.toggle('active', index === currentSlide);
@@ -3227,10 +3228,10 @@ function initializeCarousel(carouselId, dotsClass) {
 // Initialize all carousels when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
     // Property types carousel
-    initializeCarousel('propertyCarousel', 'property-carousel-dot');
+    initializeCarousel('propertyCarousel', 'carousel-dot');
     
     // Developer services carousel
-    initializeCarousel('developerCarousel', 'developer-carousel-dot');
+    initializeCarousel('developersCarousel', 'developers-carousel-dot');
     
     // 5-Step Process carousel
     initializeCarousel('processCarousel', 'process-carousel-dot');
