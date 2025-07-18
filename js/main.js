@@ -462,7 +462,7 @@ function createPropertyValuationModal(data, estimatedValue) {
                     <button onclick="closeModal(this)" class="flex-1 border border-houston-green text-houston-green px-6 py-3 rounded-lg font-medium hover:bg-houston-green hover:text-white transition-colors">
                         Close
                     </button>
-                    <a href="tel:713-555-LAND" class="flex-1 bg-houston-green text-white px-6 py-3 rounded-lg font-medium text-center hover:bg-houston-primary transition-colors">
+                    <a href="tel:713-828-3701" class="flex-1 bg-houston-green text-white px-6 py-3 rounded-lg font-medium text-center hover:bg-houston-primary transition-colors">
                         Call Now
                     </a>
                 </div>
