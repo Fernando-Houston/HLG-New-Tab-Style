@@ -3182,8 +3182,16 @@ function initializeCarousel(carouselId, dotsClass) {
         if (Math.abs(diff) > 50) {
             if (diff > 0) {
                 goToSlide(currentSlide + 1);
+                // Track carousel swipe
+                if (typeof trackCarouselSwipe === 'function') {
+                    trackCarouselSwipe(carouselId, 'next');
+                }
             } else {
                 goToSlide(currentSlide - 1);
+                // Track carousel swipe
+                if (typeof trackCarouselSwipe === 'function') {
+                    trackCarouselSwipe(carouselId, 'previous');
+                }
             }
         }
     });
@@ -3218,6 +3226,10 @@ function initializeCarousel(carouselId, dotsClass) {
     dots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
             goToSlide(index);
+            // Track dot navigation
+            if (typeof trackCarouselSwipe === 'function') {
+                trackCarouselSwipe(carouselId, 'dot_' + index);
+            }
         });
     });
     

@@ -18,6 +18,7 @@
     <meta name="theme-color" content="#15803d">
     <meta name="msapplication-TileColor" content="#15803d">
     <link rel="canonical" href="https://houstonlandguy.com">
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
     
     <!-- Resource Hints for Performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -378,6 +379,268 @@
     <link rel="apple-touch-icon" href="images/fav.18.svg">
     
     <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Event Schema for Consultation Scheduling -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Event",
+        "name": "Houston Land Development Consultation",
+        "description": "Free consultation for Houston land sellers, developers, and investors. Discuss your property goals with our experts.",
+        "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "location": {
+            "@type": "Place",
+            "name": "Houston Land Guy Office",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "3302 Canal St",
+                "addressLocality": "Houston",
+                "addressRegion": "TX",
+                "postalCode": "77003",
+                "addressCountry": "US"
+            }
+        },
+        "organizer": {
+            "@type": "Organization",
+            "name": "Houston Land Guy",
+            "url": "https://houstonlandguy.com"
+        },
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock",
+            "url": "https://houstonlandguy.com/#contact"
+        },
+        "performer": {
+            "@type": "Organization",
+            "name": "Houston Land Guy Development Team"
+        }
+    }
+    </script>
+
+    <!-- Service Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "serviceType": "Real Estate Services",
+        "provider": {
+            "@type": "Organization",
+            "name": "Houston Land Guy"
+        },
+        "areaServed": {
+            "@type": "City",
+            "name": "Houston",
+            "containedInPlace": {
+                "@type": "State",
+                "name": "Texas"
+            }
+        },
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Houston Land Services",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Land Acquisition",
+                        "description": "Cash purchases of vacant land, commercial properties, and development sites"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Development Site Sourcing",
+                        "description": "Off-market opportunities and exclusive pocket listings for developers"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Investment Opportunities",
+                        "description": "Pre-vetted development projects for accredited investors"
+                    }
+                }
+            ]
+        }
+    }
+    </script>
+
+    <!-- BreadcrumbList Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://houstonlandguy.com"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Sellers",
+                "item": "https://houstonlandguy.com/#sellers"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Developers",
+                "item": "https://houstonlandguy.com/#developers"
+            },
+            {
+                "@type": "ListItem",
+                "position": 4,
+                "name": "Investors",
+                "item": "https://houstonlandguy.com/#investors"
+            }
+        ]
+    }
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VPJG0MCVMJ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-VPJG0MCVMJ');
+      
+      // Custom event tracking functions
+      function trackEvent(eventName, parameters = {}) {
+          gtag('event', eventName, parameters);
+      }
+      
+      // Phone click tracking
+      function trackPhoneClick(location) {
+          trackEvent('phone_click', {
+              'event_category': 'engagement',
+              'event_label': location,
+              'value': 1
+          });
+      }
+      
+      // Email click tracking
+      function trackEmailClick(location) {
+          trackEvent('email_click', {
+              'event_category': 'engagement',
+              'event_label': location,
+              'value': 1
+          });
+      }
+      
+      // Form submission tracking
+      function trackFormSubmission(formType) {
+          trackEvent('generate_lead', {
+              'event_category': 'conversion',
+              'event_label': formType,
+              'value': 10
+          });
+      }
+      
+      // Tool usage tracking
+      function trackToolUse(toolName) {
+          trackEvent(toolName + '_use', {
+              'event_category': 'tools',
+              'event_label': toolName,
+              'value': 1
+          });
+      }
+      
+      // Investment opportunity tracking
+      function trackInvestmentView(propertyName) {
+          trackEvent('view_investment_opportunity', {
+              'event_category': 'investment',
+              'event_label': propertyName,
+              'value': 5
+          });
+      }
+      
+      // Schedule consultation tracking
+      function trackScheduleConsultation(source) {
+          trackEvent('schedule_consultation', {
+              'event_category': 'conversion',
+              'event_label': source,
+              'value': 20
+          });
+      }
+      
+      // Tab navigation tracking
+      function trackTabSwitch(tabName) {
+          trackEvent('tab_switch', {
+              'event_category': 'navigation',
+              'event_label': tabName,
+              'value': 1
+          });
+      }
+      
+      // Carousel interaction tracking
+      function trackCarouselInteraction(carouselName) {
+          trackEvent('carousel_interaction', {
+              'event_category': 'engagement',
+              'event_label': carouselName,
+              'value': 1
+          });
+      }
+      
+      // Property inquiry tracking
+      function trackPropertyInquiry(propertyType) {
+          trackEvent('property_inquiry', {
+              'event_category': 'engagement',
+              'event_label': propertyType,
+              'value': 3
+          });
+      }
+      
+      // Download tracking
+      function trackDownload(fileName) {
+          trackEvent('download_timeline', {
+              'event_category': 'downloads',
+              'event_label': fileName,
+              'value': 5
+          });
+      }
+    </script>
+    
+    <script>
+    // Tab navigation with tracking
+    function showTab(tabName) {
+        // Track tab switch
+        if (typeof trackTabSwitch === 'function') {
+            trackTabSwitch(tabName);
+        }
+        
+        // Hide all tab contents
+        document.querySelectorAll('.tab-content').forEach(tab => {
+            tab.classList.add('hidden');
+        });
+        
+        // Show selected tab
+        const selectedTab = document.getElementById(tabName);
+        if (selectedTab) {
+            selectedTab.classList.remove('hidden');
+        }
+        
+        // Update navigation active state
+        document.querySelectorAll('.nav-link').forEach(link => {
+            if (link.getAttribute('href') === '#' + tabName) {
+                link.classList.add('text-houston-primary');
+                link.classList.remove('text-houston-gray');
+            } else {
+                link.classList.remove('text-houston-primary');
+                link.classList.add('text-houston-gray');
+            }
+        });
+    }
+    </script>
 </head>
 <body class="font-inter bg-white">
     <!-- Navigation -->
@@ -385,22 +648,22 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
-                    <a href="#home" class="flex-shrink-0 flex items-center">
+                    <a href="#home" onclick="showTab('home'); trackEvent('navigation_click', {event_category: 'navigation', event_label: 'logo'});" class="flex-shrink-0 flex items-center">
                         <img src="images/big-logo-2.png" alt="HoustonLandGuy" class="h-14 w-auto cursor-pointer hover:opacity-90 transition-opacity">
                     </a>
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-4">
-                        <a href="#home" class="nav-link text-houston-primary hover:text-houston-accent px-3 py-2 text-sm font-medium">Home</a>
-                        <a href="#sellers" class="nav-link text-houston-gray hover:text-houston-accent px-3 py-2 text-sm font-medium">Sellers</a>
-                        <a href="#developers" class="nav-link text-houston-gray hover:text-houston-accent px-3 py-2 text-sm font-medium">Developers</a>
-                        <a href="#investors" class="nav-link text-houston-gray hover:text-houston-accent px-3 py-2 text-sm font-medium">Investors</a>
-                        <a href="#tools" class="nav-link text-houston-gray hover:text-houston-accent px-3 py-2 text-sm font-medium">Tools</a>
-                        <a href="#contact" class="nav-link text-houston-gray hover:text-houston-accent px-3 py-2 text-sm font-medium">Contact</a>
+                        <a href="#home" onclick="showTab('home')" class="nav-link text-houston-primary hover:text-houston-accent px-3 py-2 text-sm font-medium">Home</a>
+                        <a href="#sellers" onclick="showTab('sellers')" class="nav-link text-houston-gray hover:text-houston-accent px-3 py-2 text-sm font-medium">Sellers</a>
+                        <a href="#developers" onclick="showTab('developers')" class="nav-link text-houston-gray hover:text-houston-accent px-3 py-2 text-sm font-medium">Developers</a>
+                        <a href="#investors" onclick="showTab('investors')" class="nav-link text-houston-gray hover:text-houston-accent px-3 py-2 text-sm font-medium">Investors</a>
+                        <a href="#tools" onclick="showTab('tools')" class="nav-link text-houston-gray hover:text-houston-accent px-3 py-2 text-sm font-medium">Tools</a>
+                        <a href="#contact" onclick="showTab('contact')" class="nav-link text-houston-gray hover:text-houston-accent px-3 py-2 text-sm font-medium">Contact</a>
                     </div>
                 </div>
                 <div class="hidden md:block">
-                    <a href="tel:713-828-3701" class="bg-houston-green hover:bg-houston-primary text-white px-6 py-2 rounded-lg text-sm font-medium transition-colors">
+                    <a href="tel:713-828-3701" onclick="trackPhoneClick('header')" class="bg-houston-green hover:bg-houston-primary text-white px-6 py-2 rounded-lg text-sm font-medium transition-colors">
                         <i class="fas fa-phone mr-2"></i>(713) 828-3701
                     </a>
                 </div>
@@ -421,7 +684,7 @@
                 <a href="#investors" class="mobile-nav-link block px-3 py-2 text-base font-medium text-houston-gray">Investors</a>
                 <a href="#tools" class="mobile-nav-link block px-3 py-2 text-base font-medium text-houston-gray">Tools</a>
                 <a href="#contact" class="mobile-nav-link block px-3 py-2 text-base font-medium text-houston-gray">Contact</a>
-                <a href="tel:713-828-3701" class="block px-3 py-2 text-base font-medium text-houston-green">
+                <a href="tel:713-828-3701" onclick="trackPhoneClick('mobile_menu');" class="block px-3 py-2 text-base font-medium text-houston-green">
                     <i class="fas fa-phone mr-2"></i>(713) 828-3701
                 </a>
             </div>
@@ -532,7 +795,7 @@
                         <p class="text-xs text-gray-300 mt-2">No signup required • 100% free</p>
                     </div>
                     <div class="text-center">
-                        <button onclick="openScheduleModal()" class="border-2 border-white text-white hover:bg-white hover:text-houston-green px-8 py-3 rounded-lg text-lg font-semibold transition-all inline-flex items-center gap-2">
+                        <button onclick="openScheduleModal(); trackScheduleConsultation('hero');" class="border-2 border-white text-white hover:bg-white hover:text-houston-green px-8 py-3 rounded-lg text-lg font-semibold transition-all inline-flex items-center gap-2">
                             <i class="fas fa-calendar-check"></i>
                             Schedule Consultation
                         </button>
@@ -1242,7 +1505,7 @@
                                 <i class="fas fa-chevron-down text-houston-accent transition-transform"></i>
                             </button>
                             <div class="hidden px-6 pb-4 text-houston-gray">
-                                We buy all types of land and properties in the Houston area: vacant land, commercial properties, development sites, distressed properties, estate sales, and problem properties. No property is too complicated for us.
+                                We buy all types of land and properties in the Houston area: vacant land, commercial properties, <a href="#developers" class="text-houston-accent hover:text-houston-green underline">development sites</a>, distressed properties, estate sales, and problem properties. No property is too complicated for us.
                             </div>
                         </div>
 
@@ -1287,6 +1550,64 @@
                         </div>
                     </div>
                 </div>
+                
+                <!-- FAQ Schema Markup -->
+                <script type="application/ld+json">
+                {
+                    "@context": "https://schema.org",
+                    "@type": "FAQPage",
+                    "mainEntity": [
+                        {
+                            "@type": "Question",
+                            "name": "How quickly can you close?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "We can close in as little as 7 days, but we're happy to work with your timeline. Whether you need to close quickly or prefer to take more time, we'll accommodate your schedule."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "What types of properties do you buy?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "We buy all types of land and properties in the Houston area: vacant land, commercial properties, development sites, distressed properties, estate sales, and problem properties. No property is too complicated for us."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "Are there any fees or commissions?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "No! There are absolutely no fees, commissions, or closing costs when you sell to us. The price we offer is the exact amount you'll receive at closing. We even cover all closing costs."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "How do you determine your offer price?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "We use comprehensive market data, comparable sales, development potential, and property characteristics to determine a fair cash offer. Our valuations are transparent and based on real market conditions."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "What if my property has issues?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "We specialize in complicated situations. Title issues, liens, environmental problems, access issues, probate, multiple owners - we've seen it all and can handle it. These issues won't prevent us from buying your property."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "Is there any obligation if I get an offer?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "Absolutely not. Our offers are completely no-obligation. You can take time to think it over, compare with other options, or decline without any pressure. We want you to make the best decision for your situation."
+                            }
+                        }
+                    ]
+                }
+                </script>
             </section>
 
             <!-- Final CTA -->
@@ -1301,7 +1622,7 @@
                         <a href="#sellers" onclick="document.getElementById('property-valuation-form').scrollIntoView({behavior: 'smooth'}); return false;" class="bg-houston-accent hover:bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors inline-block">
                             Get My Free Cash Offer
                         </a>
-                        <a href="tel:713-828-3701" class="border-2 border-white text-white hover:bg-white hover:text-houston-green px-8 py-4 rounded-lg text-lg font-semibold transition-colors inline-block">
+                        <a href="tel:713-828-3701" onclick="trackPhoneClick('sellers_cta');" class="border-2 border-white text-white hover:bg-white hover:text-houston-green px-8 py-4 rounded-lg text-lg font-semibold transition-colors inline-block">
                             <i class="fas fa-phone mr-2"></i>Call (713) 828-3701
                         </a>
                     </div>
@@ -1354,12 +1675,12 @@
                         
                         <!-- CTAs -->
                         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                            <a href="#contact">
+                            <a href="#contact" onclick="trackPropertyInterest('off-market', 'view_opportunities');">
                                 <button class="bg-houston-accent hover:bg-green-500 text-white px-8 py-3 rounded-lg font-semibold transition-all transform hover:scale-105">
                                     View Off-Market Opportunities <i class="fas fa-arrow-right ml-2"></i>
                                 </button>
                             </a>
-                            <button onclick="openScheduleModal()" class="border-2 border-white text-white hover:bg-white hover:text-gray-900 px-8 py-3 rounded-lg font-semibold transition-all">
+                            <button onclick="openScheduleModal(); trackScheduleConsultation('sellers');" class="border-2 border-white text-white hover:bg-white hover:text-gray-900 px-8 py-3 rounded-lg font-semibold transition-all">
                                 Schedule Strategy Call
                             </button>
                         </div>
@@ -1772,6 +2093,76 @@
                     </div>
                 </div>
 
+                <!-- Review Schema for Testimonials -->
+                <script type="application/ld+json">
+                {
+                    "@context": "https://schema.org",
+                    "@type": "Product",
+                    "name": "Houston Land Guy Development Services",
+                    "aggregateRating": {
+                        "@type": "AggregateRating",
+                        "ratingValue": "5",
+                        "bestRating": "5",
+                        "worstRating": "1",
+                        "ratingCount": "500",
+                        "reviewCount": "3"
+                    },
+                    "review": [
+                        {
+                            "@type": "Review",
+                            "reviewRating": {
+                                "@type": "Rating",
+                                "ratingValue": "5",
+                                "bestRating": "5"
+                            },
+                            "author": {
+                                "@type": "Person",
+                                "name": "David Chen"
+                            },
+                            "reviewBody": "Houston Development Intelligence found us an off-market 45-acre site that perfectly fit our criteria. Their market knowledge saved us 6 months and $2M.",
+                            "publisher": {
+                                "@type": "Organization",
+                                "name": "Apex Development Group"
+                            }
+                        },
+                        {
+                            "@type": "Review",
+                            "reviewRating": {
+                                "@type": "Rating",
+                                "ratingValue": "5",
+                                "bestRating": "5"
+                            },
+                            "author": {
+                                "@type": "Person",
+                                "name": "Sarah Martinez"
+                            },
+                            "reviewBody": "The due diligence package was incredibly thorough. They identified deed restriction issues that would have killed our project. Expert knowledge and attention to detail.",
+                            "publisher": {
+                                "@type": "Organization",
+                                "name": "Urban Living Partners"
+                            }
+                        },
+                        {
+                            "@type": "Review",
+                            "reviewRating": {
+                                "@type": "Rating",
+                                "ratingValue": "5",
+                                "bestRating": "5"
+                            },
+                            "author": {
+                                "@type": "Person",
+                                "name": "Robert Thompson"
+                            },
+                            "reviewBody": "15 years of working together. They've sourced over $50M in development sites for us. No one knows Houston land better.",
+                            "publisher": {
+                                "@type": "Organization",
+                                "name": "Gulf Coast Commercial"
+                            }
+                        }
+                    ]
+                }
+                </script>
+
                 <!-- Development Timeline Tool CTA -->
                 <div class="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-12 mb-16 text-center shadow-lg border border-gray-700">
                     <i class="fas fa-project-diagram text-6xl text-houston-accent mb-6"></i>
@@ -1780,7 +2171,7 @@
                         Navigate Houston's unique development process with confidence. Our comprehensive timeline tool covers all 10 phases 
                         from site selection to project closeout, with Houston-specific insights on MUD/PUD formation, permitting, and more.
                     </p>
-                    <button onclick="showTab('tools'); openTool('development-timeline')" class="bg-houston-accent hover:bg-green-500 text-white px-8 py-3 rounded-lg font-semibold transition-all transform hover:scale-105">
+                    <button onclick="showTab('tools'); openTool('development-timeline'); trackToolUsage('development-timeline', 'timeline_section');" class="bg-houston-accent hover:bg-green-500 text-white px-8 py-3 rounded-lg font-semibold transition-all transform hover:scale-105">
                         Access Development Timeline Tool <i class="fas fa-arrow-right ml-2"></i>
                     </button>
                 </div>
@@ -1800,14 +2191,14 @@
                                     <i class="fas fa-phone text-xl mr-4"></i>
                                     <div>
                                         <div class="font-semibold">Direct Line</div>
-                                        <a href="tel:713-828-3701" class="text-green-100 hover:text-white">(713) 828-3701</a>
+                                        <a href="tel:713-828-3701" onclick="trackPhoneClick('developers_contact');" class="text-green-100 hover:text-white">(713) 828-3701</a>
                                     </div>
                                 </div>
                                 <div class="flex items-center">
                                     <i class="fas fa-envelope text-xl mr-4"></i>
                                     <div>
                                         <div class="font-semibold">Email</div>
-                                        <a href="mailto:developers@houstonlandguy.com" class="text-green-100 hover:text-white">developers@houstonlandguy.com</a>
+                                        <a href="mailto:developers@houstonlandguy.com" onclick="trackEmailClick('developers');" class="text-green-100 hover:text-white">developers@houstonlandguy.com</a>
                                     </div>
                                 </div>
                                 <div class="flex items-center">
@@ -2416,14 +2807,14 @@
                                     <i class="fas fa-phone text-xl mr-4"></i>
                                     <div>
                                         <div class="font-semibold">Investment Hotline</div>
-                                        <a href="tel:713-828-3701" class="text-green-100 hover:text-white">(713) 828-3701</a>
+                                        <a href="tel:713-828-3701" onclick="trackPhoneClick('developers_contact');" class="text-green-100 hover:text-white">(713) 828-3701</a>
                                     </div>
                                 </div>
                                 <div class="flex items-center">
                                     <i class="fas fa-envelope text-xl mr-4"></i>
                                     <div>
                                         <div class="font-semibold">Email</div>
-                                        <a href="mailto:contact@houstonlandguy.com" class="text-green-100 hover:text-white">contact@houstonlandguy.com</a>
+                                        <a href="mailto:contact@houstonlandguy.com" onclick="trackEmailClick('investment_options');" class="text-green-100 hover:text-white">contact@houstonlandguy.com</a>
                                     </div>
                                 </div>
                                 <div class="flex items-center">
@@ -2496,7 +2887,7 @@
                                         <li>• Phase I sold out in 18 months</li>
                                     </ul>
                                 </div>
-                                <button onclick="scrollToSection('contact')" class="bg-houston-green hover:bg-houston-primary text-white px-6 py-2 rounded-lg font-medium">
+                                <button onclick="scrollToSection('contact'); trackPropertyInterest('multi-family', 'learn_more');" class="bg-houston-green hover:bg-houston-primary text-white px-6 py-2 rounded-lg font-medium">
                                     Learn More
                                 </button>
                             </div>
@@ -2539,7 +2930,7 @@
                                         <li>• Rail-served site</li>
                                     </ul>
                                 </div>
-                                <button onclick="scrollToSection('contact')" class="bg-houston-green hover:bg-houston-primary text-white px-6 py-2 rounded-lg font-medium">
+                                <button onclick="scrollToSection('contact'); trackPropertyInterest('multi-family', 'learn_more');" class="bg-houston-green hover:bg-houston-primary text-white px-6 py-2 rounded-lg font-medium">
                                     Learn More
                                 </button>
                             </div>
@@ -2654,7 +3045,7 @@
                         </div>
                         <h3 class="text-xl font-bold text-houston-green mb-4">ROI Calculator</h3>
                         <p class="text-houston-gray mb-6">Calculate potential returns on Houston development projects with our advanced ROI calculator.</p>
-                        <button class="bg-houston-green hover:bg-houston-primary text-white px-6 py-3 rounded-lg font-medium w-full mb-4" onclick="openTool('roi-calculator')">
+                        <button class="bg-houston-green hover:bg-houston-primary text-white px-6 py-3 rounded-lg font-medium w-full mb-4" onclick="openTool('roi-calculator'); trackToolUsage('roi-calculator', 'tools_section');">
                             Launch Calculator
                         </button>
                         <div class="text-sm text-houston-gray">
@@ -2669,7 +3060,7 @@
                         </div>
                         <h3 class="text-xl font-bold text-houston-green mb-4">Houston Development Timeline</h3>
                         <p class="text-houston-gray mb-6">Navigate your development project from concept to completion with Houston-specific timelines and requirements.</p>
-                        <button class="bg-houston-green hover:bg-houston-primary text-white px-6 py-3 rounded-lg font-medium w-full mb-4" onclick="openTool('development-timeline')">
+                        <button class="bg-houston-green hover:bg-houston-primary text-white px-6 py-3 rounded-lg font-medium w-full mb-4" onclick="openTool('development-timeline'); trackToolUsage('development-timeline', 'tools_section');">
                             Launch Timeline Tool
                         </button>
                         <div class="text-sm text-houston-gray">
@@ -2684,7 +3075,7 @@
                         </div>
                         <h3 class="text-xl font-bold text-houston-green mb-4">Chapter 42 Planning Tool</h3>
                         <p class="text-houston-gray mb-6">Generate optimized site plans with automated density calculations for Houston developments.</p>
-                        <button class="bg-houston-green hover:bg-houston-primary text-white px-6 py-3 rounded-lg font-medium w-full mb-4" onclick="openTool('chapter42')">
+                        <button class="bg-houston-green hover:bg-houston-primary text-white px-6 py-3 rounded-lg font-medium w-full mb-4" onclick="openTool('chapter42'); trackToolUsage('chapter42', 'tools_section');">
                             Launch Planning Tool
                         </button>
                         <div class="text-sm text-houston-gray">
@@ -4141,7 +4532,7 @@
                                     </div>
                                     <div>
                                         <h4 class="font-semibold text-houston-primary">Phone</h4>
-                                        <a href="tel:713-828-3701" class="text-houston-gray hover:text-houston-green">(713) 828-3701</a>
+                                        <a href="tel:713-828-3701" onclick="trackPhoneClick('contact_info');" class="text-houston-gray hover:text-houston-green">(713) 828-3701</a>
                                     </div>
                                 </div>
                                 <div class="flex items-start">
@@ -4152,7 +4543,7 @@
                                     </div>
                                     <div>
                                         <h4 class="font-semibold text-houston-primary">Email</h4>
-                                        <a href="mailto:contact@houstonlandguy.com" class="text-houston-gray hover:text-houston-green">contact@houstonlandguy.com</a>
+                                        <a href="mailto:contact@houstonlandguy.com" onclick="trackEmailClick('contact_page');" class="text-houston-gray hover:text-houston-green">contact@houstonlandguy.com</a>
                                     </div>
                                 </div>
                                 <div class="flex items-start">
@@ -4283,6 +4674,9 @@
             const formData = new FormData(this);
             const data = Object.fromEntries(formData);
             
+            // Track form submission
+            trackFormSubmission('contact', 'contact_page');
+            
             // Here you would normally send the data to your server
             console.log('Form submitted:', data);
             
@@ -4328,10 +4722,10 @@
                 <div>
                     <h4 class="text-lg font-semibold mb-4">Resources</h4>
                     <ul class="space-y-2 text-gray-300">
-                        <li><a href="#" class="hover:text-white">Houston Development Guide</a></li>
-                        <li><a href="#" class="hover:text-white">Market Reports</a></li>
-                        <li><a href="#" class="hover:text-white">ROI Calculator</a></li>
-                        <li><a href="#" class="hover:text-white">Zoning Maps</a></li>
+                        <li><a href="#tools" onclick="showTab('tools'); openTool('development-timeline'); trackToolUsage('development-timeline', 'footer');" class="hover:text-white">Houston Development Guide</a></li>
+                        <li><a href="#investors" class="hover:text-white">Market Reports</a></li>
+                        <li><a href="#tools" onclick="showTab('tools'); openTool('roi-calculator'); trackToolUsage('roi-calculator', 'footer');" class="hover:text-white">ROI Calculator</a></li>
+                        <li><a href="https://www.houstontx.gov/planning/docs_pdfs/Zoning_maps.pdf" target="_blank" rel="noopener" class="hover:text-white">Zoning Maps</a></li>
                     </ul>
                 </div>
 
@@ -4342,13 +4736,13 @@
                         <div>
                             <i class="fas fa-phone mr-2"></i>
                             <span itemprop="telephone">
-                                <a href="tel:713-828-3701" class="hover:text-white">(713) 828-3701</a>
+                                <a href="tel:713-828-3701" onclick="trackPhoneClick('footer');" class="hover:text-white">(713) 828-3701</a>
                             </span>
                         </div>
                         <div>
                             <i class="fas fa-envelope mr-2"></i>
                             <span itemprop="email">
-                                <a href="mailto:contact@houstonlandguy.com" class="hover:text-white">contact@houstonlandguy.com</a>
+                                <a href="mailto:contact@houstonlandguy.com" onclick="trackEmailClick('footer');" class="hover:text-white">contact@houstonlandguy.com</a>
                             </span>
                         </div>
                         <div>
@@ -4370,7 +4764,7 @@
             </div>
 
             <div class="border-t border-houston-primary mt-8 pt-8 text-center text-gray-300">
-                <p>&copy; 2025 Houston Land Guy. All rights reserved. | <a href="#" class="hover:text-white">Privacy Policy</a> | <a href="#" class="hover:text-white">Terms of Service</a></p>
+                <p>&copy; 2025 Houston Land Guy. All rights reserved. | <a href="/privacy.html" class="hover:text-white">Privacy Policy</a> | <a href="/terms.html" class="hover:text-white">Terms of Service</a></p>
             </div>
         </div>
     </footer>
@@ -4423,7 +4817,7 @@
             <div class="text-center mt-6">
                 <p class="text-sm text-houston-gray">
                     Serving all of Harris County, Fort Bend County, Montgomery County, and surrounding areas. 
-                    <a href="tel:713-828-3701" class="text-houston-accent hover:text-houston-green font-medium">Call (713) 828-3701</a> to discuss your specific location.
+                    <a href="tel:713-828-3701" onclick="trackPhoneClick('service_area');" class="text-houston-accent hover:text-houston-green font-medium">Call (713) 828-3701</a> to discuss your specific location.
                 </p>
             </div>
         </div>
@@ -4906,6 +5300,10 @@
             const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
             const formattedDate = dateObj.toLocaleDateString('en-US', options);
             
+            // Track form submission
+            trackScheduleConsultation('modal_form');
+            trackFormSubmission('schedule_consultation', 'modal');
+            
             // Here you would normally send the data to your server
             console.log('Appointment scheduled:', data);
             
@@ -4921,6 +5319,107 @@
             if (e.target === this) {
                 closeScheduleModal();
             }
+        });
+
+        // Add event tracking to all forms
+        // Property valuation form
+        const propertyValuationForm = document.getElementById('property-valuation-form');
+        if (propertyValuationForm) {
+            propertyValuationForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                trackFormSubmission('property_valuation', 'sellers');
+                // Get form data
+                const formData = new FormData(this);
+                const data = Object.fromEntries(formData);
+                
+                // Here you would normally send the data to your server
+                console.log('Property valuation form submitted:', data);
+                
+                // Show success message
+                alert('Thank you! We will prepare your cash offer and contact you within 24 hours.');
+                
+                // Reset form
+                this.reset();
+            });
+        }
+
+        // Developer consultation form
+        const developerConsultationForm = document.getElementById('developer-consultation-form');
+        if (developerConsultationForm) {
+            developerConsultationForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                trackFormSubmission('developer_consultation', 'developers');
+                // Get form data
+                const formData = new FormData(this);
+                const data = Object.fromEntries(formData);
+                
+                // Here you would normally send the data to your server
+                console.log('Developer consultation form submitted:', data);
+                
+                // Show success message
+                alert('Thank you for your interest! Our development team will contact you within 24 hours.');
+                
+                // Reset form
+                this.reset();
+            });
+        }
+
+        // Investment interest form
+        const investmentInterestForm = document.getElementById('investment-interest-form');
+        if (investmentInterestForm) {
+            investmentInterestForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                trackFormSubmission('investment_interest', 'investors');
+                // Get form data
+                const formData = new FormData(this);
+                const data = Object.fromEntries(formData);
+                
+                // Here you would normally send the data to your server
+                console.log('Investment interest form submitted:', data);
+                
+                // Show success message
+                alert('Thank you for your interest! Our investment team will send you available opportunities within 24 hours.');
+                
+                // Reset form
+                this.reset();
+            });
+        }
+
+        // Chapter 42 form
+        const chapter42Form = document.getElementById('chapter42-form');
+        if (chapter42Form) {
+            chapter42Form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                trackFormSubmission('chapter42_analysis', 'tools');
+                trackToolUsage('chapter42', 'form_submit');
+                // Get form data
+                const formData = new FormData(this);
+                const data = Object.fromEntries(formData);
+                
+                // Here you would normally send the data to your server
+                console.log('Chapter 42 form submitted:', data);
+                
+                // Show success message
+                alert('Thank you! We will analyze your property for Chapter 42 benefits and contact you with the results.');
+                
+                // Reset form
+                this.reset();
+            });
+        }
+
+        // Track carousel interactions
+        function trackCarouselSwipe(carouselName, direction) {
+            trackEvent('carousel_interaction', {
+                'event_category': 'engagement',
+                'event_label': carouselName,
+                'direction': direction
+            });
+        }
+
+        // Add tracking to View Off-Market Opportunities button
+        const offMarketButtons = document.querySelectorAll('button[onclick*="viewOffMarketOpportunities"]');
+        offMarketButtons.forEach(button => {
+            button.setAttribute('onclick', button.getAttribute('onclick').replace('viewOffMarketOpportunities()', 'viewOffMarketOpportunities(); trackPropertyInterest("off-market", "view_opportunities");'));
         });
     </script>
 </body>
