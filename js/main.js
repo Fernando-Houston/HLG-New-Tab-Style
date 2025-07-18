@@ -921,10 +921,19 @@ window.openTool = function(toolName) {
     if (tool) {
         tool.classList.remove('hidden');
         tool.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        
+        // Re-initialize Chapter 42 tool if needed
+        if (toolName === 'chapter42' && typeof initChapter42Tool === 'function') {
+            setTimeout(() => {
+                if (!window.chapter42Initialized) {
+                    initChapter42Tool();
+                }
+            }, 200);
+        }
     }
 }
 
-function closeTool(toolName) {
+window.closeTool = function(toolName) {
     const tool = document.getElementById(toolName + '-tool');
     if (tool) {
         tool.classList.add('hidden');
