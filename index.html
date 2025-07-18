@@ -3628,7 +3628,7 @@
     </script>
     
     <!-- Performance optimized script loading -->
-    <script src="js/main.js?v=3"></script>
+    <script src="js/main.js?v=4"></script>
     <script src="js/chapter42.js"></script>
     
     <!-- Performance monitoring -->
@@ -3662,53 +3662,125 @@
         });
     </script>
 
+    <!-- Glassmorphism Modal Styles -->
+    <style>
+        /* Glassmorphism input styles */
+        #scheduleModal input::placeholder,
+        #scheduleModal textarea::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        #scheduleModal input:focus,
+        #scheduleModal textarea:focus {
+            outline: none;
+            background-color: rgba(255, 255, 255, 0.25);
+        }
+        
+        /* Calendar date button styles */
+        #scheduleModal .calendar-date {
+            backdrop-filter: blur(12px);
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        #scheduleModal .calendar-date:hover:not(:disabled) {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-1px);
+        }
+        
+        #scheduleModal .calendar-date.selected {
+            background-color: rgba(22, 163, 74, 0.8);
+            border-color: rgba(22, 163, 74, 1);
+        }
+        
+        #scheduleModal .calendar-date:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+        
+        /* Time slot styles */
+        #scheduleModal .time-slot {
+            backdrop-filter: blur(12px);
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        #scheduleModal .time-slot:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-1px);
+        }
+        
+        #scheduleModal .time-slot.selected {
+            background-color: rgba(22, 163, 74, 0.8);
+            border-color: rgba(22, 163, 74, 1);
+        }
+
+        /* Scrollbar styling for glassmorphism */
+        #scheduleModal ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        #scheduleModal ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        #scheduleModal ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+        }
+        
+        #scheduleModal ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+    </style>
+
     <!-- Schedule Strategy Call Modal -->
     <div id="scheduleModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-            <!-- Modal Header with Image -->
-            <div class="relative">
-                <!-- Header Image -->
-                <div class="h-32 overflow-hidden rounded-t-2xl">
-                    <img src="images/modern_office_building.jpg" alt="Houston Land Guy Office" 
-                        class="w-full h-full object-cover opacity-90">
-                    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black/50 rounded-t-2xl"></div>
-                </div>
-                
-                <!-- Header Content -->
-                <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
-                    <div class="flex justify-between items-end">
-                        <div>
-                            <h2 class="text-2xl font-bold">Schedule Your Strategy Call</h2>
-                            <p class="text-sm opacity-90 mt-1">Discover the value of your Houston property</p>
-                        </div>
-                        <button onclick="closeScheduleModal()" class="text-white/80 hover:text-white transition-colors bg-black/20 rounded-lg p-2">
+        <div class="relative max-w-2xl w-full max-h-[90vh] rounded-2xl overflow-hidden">
+            <!-- Background Image -->
+            <div class="absolute inset-0">
+                <img src="images/modern_office_building.jpg" alt="Houston Land Guy Office" 
+                    class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-black/50"></div>
+            </div>
+            
+            <!-- Glassmorphism Container -->
+            <div class="relative h-full max-h-[90vh] overflow-y-auto">
+                <div class="backdrop-blur-xl bg-white/10 min-h-full">
+                    <!-- Header -->
+                    <div class="relative p-8 pb-6 border-b border-white/20">
+                        <button onclick="closeScheduleModal()" class="absolute top-6 right-6 text-white/80 hover:text-white transition-colors bg-white/10 backdrop-blur-md rounded-lg p-2">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                             </svg>
                         </button>
+                        <h2 class="text-3xl font-bold text-white mb-2">Schedule Your Strategy Call</h2>
+                        <p class="text-white/90">Discover the value of your Houston property</p>
                     </div>
-                </div>
-            </div>
 
-            <!-- Modal Body -->
-            <div class="p-6">
-                <p class="text-houston-gray mb-6">
+                    <!-- Modal Body with Glassmorphism -->
+                    <div class="p-8">
+                <p class="text-white/80 mb-6">
                     Select a date and time that works best for you. Our strategy calls typically last 30-45 minutes.
                 </p>
 
                 <form id="scheduleForm" class="space-y-6">
                     <!-- Calendar Section -->
                     <div>
-                        <label class="block text-sm font-semibold text-houston-primary mb-3">Select Date</label>
+                        <label class="block text-sm font-semibold text-white mb-3">Select Date</label>
                         <div class="grid grid-cols-7 gap-1 mb-4">
                             <!-- Day headers -->
-                            <div class="text-center text-xs font-medium text-gray-500 py-2">Sun</div>
-                            <div class="text-center text-xs font-medium text-gray-500 py-2">Mon</div>
-                            <div class="text-center text-xs font-medium text-gray-500 py-2">Tue</div>
-                            <div class="text-center text-xs font-medium text-gray-500 py-2">Wed</div>
-                            <div class="text-center text-xs font-medium text-gray-500 py-2">Thu</div>
-                            <div class="text-center text-xs font-medium text-gray-500 py-2">Fri</div>
-                            <div class="text-center text-xs font-medium text-gray-500 py-2">Sat</div>
+                            <div class="text-center text-xs font-medium text-white/60 py-2">Sun</div>
+                            <div class="text-center text-xs font-medium text-white/60 py-2">Mon</div>
+                            <div class="text-center text-xs font-medium text-white/60 py-2">Tue</div>
+                            <div class="text-center text-xs font-medium text-white/60 py-2">Wed</div>
+                            <div class="text-center text-xs font-medium text-white/60 py-2">Thu</div>
+                            <div class="text-center text-xs font-medium text-white/60 py-2">Fri</div>
+                            <div class="text-center text-xs font-medium text-white/60 py-2">Sat</div>
                         </div>
                         <div id="calendarDates" class="grid grid-cols-7 gap-1">
                             <!-- Calendar dates will be generated by JavaScript -->
@@ -3718,7 +3790,7 @@
 
                     <!-- Time Slots -->
                     <div>
-                        <label class="block text-sm font-semibold text-houston-primary mb-3">Select Time (CST)</label>
+                        <label class="block text-sm font-semibold text-white mb-3">Select Time (CST)</label>
                         <div id="timeSlots" class="grid grid-cols-3 sm:grid-cols-4 gap-2">
                             <!-- Time slots will be generated by JavaScript -->
                         </div>
@@ -3726,43 +3798,45 @@
                     </div>
 
                     <!-- Contact Information -->
-                    <div class="border-t pt-6">
-                        <h3 class="text-lg font-semibold text-houston-primary mb-4">Your Information</h3>
+                    <div class="border-t border-white/20 pt-6">
+                        <h3 class="text-lg font-semibold text-white mb-4">Your Information</h3>
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
-                                <label for="scheduleName" class="block text-sm font-medium text-houston-gray mb-1">Name *</label>
+                                <label for="scheduleName" class="block text-sm font-medium text-white/80 mb-1">Name *</label>
                                 <input type="text" id="scheduleName" name="name" required 
-                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-houston-green focus:border-houston-green">
+                                    class="w-full px-4 py-2 backdrop-blur-md bg-white/20 border border-white/30 text-white placeholder-white/50 rounded-lg focus:ring-2 focus:ring-white/50 focus:border-white/50">
                             </div>
                             <div>
-                                <label for="schedulePhone" class="block text-sm font-medium text-houston-gray mb-1">Phone *</label>
+                                <label for="schedulePhone" class="block text-sm font-medium text-white/80 mb-1">Phone *</label>
                                 <input type="tel" id="schedulePhone" name="phone" required 
-                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-houston-green focus:border-houston-green">
+                                    class="w-full px-4 py-2 backdrop-blur-md bg-white/20 border border-white/30 text-white placeholder-white/50 rounded-lg focus:ring-2 focus:ring-white/50 focus:border-white/50">
                             </div>
                         </div>
                         <div class="mt-4">
-                            <label for="scheduleEmail" class="block text-sm font-medium text-houston-gray mb-1">Email *</label>
+                            <label for="scheduleEmail" class="block text-sm font-medium text-white/80 mb-1">Email *</label>
                             <input type="email" id="scheduleEmail" name="email" required 
-                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-houston-green focus:border-houston-green">
+                                class="w-full px-4 py-2 backdrop-blur-md bg-white/20 border border-white/30 text-white placeholder-white/50 rounded-lg focus:ring-2 focus:ring-white/50 focus:border-white/50">
                         </div>
                         <div class="mt-4">
-                            <label for="scheduleNotes" class="block text-sm font-medium text-houston-gray mb-1">What would you like to discuss?</label>
+                            <label for="scheduleNotes" class="block text-sm font-medium text-white/80 mb-1">What would you like to discuss?</label>
                             <textarea id="scheduleNotes" name="notes" rows="3" 
                                 placeholder="Brief description of your property or investment goals..."
-                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-houston-green focus:border-houston-green"></textarea>
+                                class="w-full px-4 py-2 backdrop-blur-md bg-white/20 border border-white/30 text-white placeholder-white/50 rounded-lg focus:ring-2 focus:ring-white/50 focus:border-white/50"></textarea>
                         </div>
                     </div>
 
                     <!-- Submit Button -->
                     <div class="flex gap-3">
-                        <button type="submit" class="flex-1 bg-houston-green hover:bg-houston-primary text-white font-semibold py-3 px-6 rounded-lg transition-colors">
+                        <button type="submit" class="flex-1 backdrop-blur-md bg-houston-green/80 hover:bg-houston-green text-white font-semibold py-3 px-6 rounded-lg transition-all">
                             Confirm Appointment
                         </button>
-                        <button type="button" onclick="closeScheduleModal()" class="px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors">
+                        <button type="button" onclick="closeScheduleModal()" class="px-6 py-3 backdrop-blur-md bg-white/10 border border-white/30 text-white rounded-lg hover:bg-white/20 transition-all">
                             Cancel
                         </button>
                     </div>
                 </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
