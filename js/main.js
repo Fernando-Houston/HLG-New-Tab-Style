@@ -1013,21 +1013,1089 @@ function downloadTimelinePDF() {
 }
 
 function downloadTimelineChecklist() {
-    // Generate a simple checklist text file
-    let checklist = "Houston Land Development Timeline Checklist\n";
-    checklist += "==========================================\n\n";
+    // Create comprehensive HTML timeline checklist
+    const htmlContent = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Houston Land Development Timeline Checklist - PDF</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.5;
+            color: #333;
+            background: white;
+            font-size: 11pt;
+        }
+        
+        .page {
+            width: 8.5in;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            gap: 20px;
+        }
+        
+        .main-logo {
+            height: 60px;
+            width: auto;
+            background: white;
+            padding: 10px;
+            border-radius: 8px;
+        }
+        
+        .texas-icon {
+            width: 50px;
+            height: 45px;
+            position: relative;
+        }
+        
+        .texas-shape {
+            width: 100%;
+            height: 100%;
+            background: #ffc107;
+            clip-path: polygon(
+                20% 10%, 80% 10%, 100% 25%, 95% 40%, 100% 55%, 
+                90% 75%, 75% 90%, 65% 100%, 35% 100%, 25% 90%, 
+                10% 75%, 0% 55%, 5% 40%, 0% 25%
+            );
+            position: relative;
+        }
+        
+        .location-pin {
+            position: absolute;
+            top: 35%;
+            left: 45%;
+            transform: translate(-50%, -50%);
+            width: 15px;
+            height: 20px;
+            background: #28a745;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+        }
+        
+        .location-pin::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 6px;
+            height: 6px;
+            background: white;
+            border-radius: 50%;
+        }
+        
+        .header h1 {
+            font-size: 28pt;
+            font-weight: 800;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            letter-spacing: -0.5px;
+        }
+        
+        .header .subtitle {
+            font-size: 14pt;
+            opacity: 0.95;
+            font-weight: 400;
+            margin-bottom: 15px;
+        }
+        
+        .header .tagline {
+            font-size: 11pt;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+        
+        .value-section {
+            background: #fff8e1;
+            border-left: 6px solid #ffc107;
+            padding: 25px;
+            margin: 0;
+        }
+        
+        .value-section h2 {
+            color: #f57c00;
+            font-size: 16pt;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        
+        .value-section p {
+            color: #e65100;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            text-align: center;
+            margin-top: 15px;
+        }
+        
+        .stat-item {
+            background: rgba(255,255,255,0.8);
+            padding: 12px;
+            border-radius: 8px;
+        }
+        
+        .stat-number {
+            font-size: 18pt;
+            font-weight: 800;
+            color: #28a745;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 9pt;
+            color: #666;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .content {
+            padding: 25px;
+        }
+        
+        .houston-advantages {
+            background: #e8f5e8;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-left: 6px solid #28a745;
+            page-break-inside: avoid;
+        }
+        
+        .houston-advantages h3 {
+            color: #28a745;
+            font-size: 14pt;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .houston-advantages h3::before {
+            content: "⭐";
+            margin-right: 8px;
+            font-size: 16pt;
+        }
+        
+        .phase {
+            margin-bottom: 25px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            overflow: hidden;
+            page-break-inside: avoid;
+        }
+        
+        .phase-header {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            padding: 15px 20px;
+        }
+        
+        .phase-title {
+            font-size: 13pt;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        
+        .phase-meta {
+            display: flex;
+            gap: 15px;
+            font-size: 9pt;
+            opacity: 0.95;
+            flex-wrap: wrap;
+        }
+        
+        .phase-meta span {
+            background: rgba(255,255,255,0.2);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        
+        .phase-content {
+            padding: 20px;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            padding: 6px 0;
+        }
+        
+        .checkbox {
+            width: 16px;
+            height: 16px;
+            border: 2px solid #28a745;
+            border-radius: 3px;
+            margin-right: 10px;
+            margin-top: 2px;
+            flex-shrink: 0;
+            background: white;
+        }
+        
+        .item-content {
+            flex: 1;
+        }
+        
+        .item-text {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 3px;
+        }
+        
+        .item-details {
+            font-size: 9pt;
+            color: #666;
+            font-style: italic;
+            margin-left: 0;
+        }
+        
+        .pro-tip {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 12px;
+            margin: 12px 0;
+            border-radius: 0 6px 6px 0;
+            font-size: 10pt;
+        }
+        
+        .pro-tip::before {
+            content: "💡 Pro Tip: ";
+            font-weight: 700;
+            color: #1976d2;
+        }
+        
+        .warning {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 12px;
+            margin: 12px 0;
+            border-radius: 0 6px 6px 0;
+            font-size: 10pt;
+        }
+        
+        .warning::before {
+            content: "⚠️ Important: ";
+            font-weight: 700;
+            color: #f57c00;
+        }
+        
+        .footer {
+            background: #28a745;
+            color: white;
+            padding: 25px;
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .footer h3 {
+            font-size: 16pt;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        
+        .footer p {
+            margin-bottom: 15px;
+            font-size: 11pt;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .contact-item {
+            background: rgba(255,255,255,0.1);
+            padding: 12px;
+            border-radius: 6px;
+        }
+        
+        .contact-label {
+            font-size: 9pt;
+            opacity: 0.9;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .contact-value {
+            font-size: 11pt;
+            font-weight: 700;
+        }
+        
+        .watermark {
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            opacity: 0.1;
+            font-size: 8pt;
+            color: #28a745;
+            transform: rotate(-45deg);
+            pointer-events: none;
+        }
+        
+        /* Print-specific styles */
+        @media print {
+            body {
+                font-size: 10pt;
+                line-height: 1.4;
+            }
+            
+            .page {
+                box-shadow: none;
+                margin: 0;
+                width: 100%;
+            }
+            
+            .header {
+                background: #28a745 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            
+            .phase {
+                page-break-inside: avoid;
+                margin-bottom: 20px;
+            }
+            
+            .phase-header {
+                background: #28a745 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            
+            .watermark {
+                display: none;
+            }
+        }
+        
+        @page {
+            margin: 0.5in;
+            size: letter;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="header">
+            <div class="logo-container">
+                <!-- Houston Land Guy Logo Placeholder -->
+                <div style="background: white; padding: 8px 15px; border-radius: 6px; font-weight: 800; color: #333; font-size: 14pt;">
+                    📍 HOUSTON LANDGUY
+                </div>
+                
+                <!-- Texas with Location Pin -->
+                <div class="texas-icon">
+                    <div class="texas-shape">
+                        <div class="location-pin"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <h1>Houston Land Development<br>Timeline Checklist</h1>
+            <p class="subtitle">Navigate Houston's No-Zoning Advantage for Faster Development</p>
+            <p class="tagline">The Complete 47-Point System Used by Successful Houston Developers</p>
+        </div>
+        
+        <div class="value-section">
+            <h2>Your Complete Houston Development Roadmap</h2>
+            <p>This comprehensive checklist has guided over $50M in Houston developments. Use the same proven system that successful developers rely on to navigate Houston's unique regulatory environment and capitalize on the city's growth.</p>
+            
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">47</span>
+                    <span class="stat-label">Critical Tasks</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">10</span>
+                    <span class="stat-label">Development Phases</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">$50M+</span>
+                    <span class="stat-label">Projects Guided</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="houston-advantages">
+                <h3>Houston Development Advantages & Key Considerations</h3>
+                <div class="checkbox-item">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-text">Leverage no-zoning regulations for flexible development opportunities</div>
+                        <div class="item-details">Houston's unique lack of zoning allows for more creative and responsive development</div>
+                    </div>
+                </div>
+                <div class="checkbox-item">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-text">Understand deed restrictions and HOA requirements in target areas</div>
+                        <div class="item-details">Private deed restrictions often provide the regulatory framework</div>
+                    </div>
+                </div>
+                <div class="checkbox-item">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-text">Plan for hurricane season construction delays (June-November)</div>
+                        <div class="item-details">Weather delays are common and should be built into project timelines</div>
+                    </div>
+                </div>
+                <div class="checkbox-item">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-text">Navigate Harris County vs. City of Houston jurisdictional differences</div>
+                        <div class="item-details">Requirements vary significantly between city and county jurisdictions</div>
+                    </div>
+                </div>
+                <div class="checkbox-item">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-text">Consider post-Harvey flooding impact zones and new regulations</div>
+                        <div class="item-details">Enhanced drainage requirements and flood zone considerations</div>
+                    </div>
+                </div>
+                <div class="checkbox-item">
+                    <div class="checkbox"></div>
+                    <div class="item-content">
+                        <div class="item-text">Understand Texas MUD financing benefits and formation process</div>
+                        <div class="item-details">Municipal Utility Districts can significantly reduce upfront infrastructure costs</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="phase">
+                <div class="phase-header">
+                    <div class="phase-title">Phase 1: Pre-Development (2-4 months)</div>
+                    <div class="phase-meta">
+                        <span>💰 Est. Cost: $25,000-$50,000</span>
+                        <span>⏰ Duration: 2-4 months</span>
+                        <span>🎯 Critical: Site Selection</span>
+                    </div>
+                </div>
+                <div class="phase-content">
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-text">Initial site assessment and drive-by evaluation</div>
+                            <div class="item-details">Look for utilities, access, drainage patterns, neighborhood quality</div>
+                        </div>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-text">Preliminary feasibility study</div>
+                            <div class="item-details">Market comps, density analysis, basic financial projections</div>
+                        </div>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-text">Letter of intent negotiation</div>
+                            <div class="item-details">Include contingencies for due diligence findings</div>
+                        </div>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-text">Due diligence period initiation</div>
+                            <div class="item-details">Typical 30-60 days for thorough investigation</div>
+                        </div>
+                    </div>
+                    
+                    <div class="pro-tip">Houston's lack of zoning means fewer regulatory hurdles, but deed restrictions can be just as limiting. Always review the deed restrictions early in your evaluation.</div>
+                </div>
+            </div>
+
+            <div class="phase">
+                <div class="phase-header">
+                    <div class="phase-title">Phase 2: Land Acquisition (1-3 months)</div>
+                    <div class="phase-meta">
+                        <span>💰 Est. Cost: Land Price + 3-5%</span>
+                        <span>⏰ Duration: 1-3 months</span>
+                        <span>🎯 Critical: Clean Title</span>
+                    </div>
+                </div>
+                <div class="phase-content">
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-text">Purchase agreement finalization</div>
+                            <div class="item-details">Include development contingencies and timeline extensions</div>
+                        </div>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-text">Title examination and insurance</div>
+                            <div class="item-details">Check for liens, easements, deed restrictions</div>
+                        </div>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-text">Environmental Phase I assessment</div>
+                            <div class="item-details">Required by most lenders, critical for liability protection</div>
+                        </div>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-text">Survey and boundary verification</div>
+                            <div class="item-details">ALTA survey recommended for development projects</div>
+                        </div>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-text">Closing coordination</div>
+                            <div class="item-details">Coordinate with lender, title company, and legal counsel</div>
+                        </div>
+                    </div>
+                    
+                    <div class="warning">Houston's rapid growth means property values change quickly. Lock in pricing early and have backup sites identified.</div>
+                </div>
+            </div>
+
+            <div class="phase">
+                <div class="phase-header">
+                    <div class="phase-title">Phase 3: Feasibility & Planning (3-6 months)</div>
+                    <div class="phase-meta">
+                        <span>💰 Est. Cost: $75,000-$150,000</span>
+                        <span>⏰ Duration: 3-6 months</span>
+                        <span>🎯 Critical: Market Validation</span>
+                    </div>
+                </div>
+                <div class="phase-content">
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-text">Market analysis and absorption study</div>
+                            <div class="item-details">Analyze competing developments, pricing trends, buyer profiles</div>
+                        </div>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-text">Preliminary site plan development</div>
+                            <div class="item-details">Optimize lot count, street layout, amenity placement</div>
+                        </div>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-text">Utility availability assessment</div>
+                            <div class="item-details">Water, sewer, gas, electric capacity and connection costs</div>
+                        </div>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-text">Traffic impact study</div>
+                            <div class="item-details">Required for developments generating 1,000+ daily trips</div>
+                        </div>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-text">Environmental assessments</div>
+                            <div class="item-details">Wetlands, endangered species, archaeological surveys</div>
+                        </div>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-text">Preliminary cost estimates</div>
+                            <div class="item-details">Infrastructure, soft costs, contingencies</div>
+                        </div>
+                    </div>
+                    
+                    <div class="pro-tip">Houston's flat terrain is great for development, but pay special attention to drainage. The city requires detailed drainage studies for most new developments.</div>
+                </div>
+            </div>
+
+            <div class="phase">
+                <div class="phase-header">
+                    <div class="phase-title">Phase 4: Entitlements & Approvals (6-12 months)</div>
+                    <div class="phase-meta">
+                        <span>💰 Est. Cost: $100,000-$300,000</span>
+                        <span>⏰ Duration: 6-12 months</span>
+                        <span>🎯 Critical: Permit Approval</span>
+                    </div>
+                </div>
+                <div class="phase-content">
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-text">Rezoning applications (if required)</div>
+                            <div class="item-details">Less common in Houston due to no zoning, but may be needed for specific uses</div>
+                        </div>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-text">Variance requests</div>
+                            <div class="item-details">Setbacks, height restrictions, parking requirements</div>
+                        </div>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-text">Plat approval process</div>
+                            <div class="item-details">Preliminary plat, then final plat after infrastructure</div>
+                        </div>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-text">Utility district creation/annexation</div>
+                            <div class="item-details">MUD formation can take 6-9 months but provides financing</div>
+                        </div>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-text">MUD/PUD formation</div>
+                            <div class="item-details">Municipal Utility District for infrastructure financing</div>
+                        </div>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-text">Development agreement negotiation</div>
+                            <div class="item-details">Define responsibilities, timelines, and standards</div>
+                        </div>
+                    </div>
+                    
+                    <div class="pro-tip">Houston's MUD system is a huge advantage - you can finance infrastructure through bonds rather than upfront cash. Start this process early as it takes time but saves money.</div>
+                </div>
+            </div>
+
+            <div class="phase">
+                <div class="phase-header">
+                    <div class="phase-title">Phase 5: Design & Engineering (4-6 months)</div>
+                    <div class="phase-meta">
+                        <span>💰 Est. Cost: $150,000-$400,000</span>
+                        <span>⏰ Duration: 4-6 months</span>
+                        <span>🎯 Critical: Drainage Design</span>
+                    </div>
+                </div>
+                <div class="phase-content">
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-text">Civil engineering plans</div>
+                            <div class="item-details">Grading, utilities, streets, drainage - must meet Harris County standards</div>
+                        </div>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-text">Drainage and detention design</div>
+                            <div class="item-details">Critical in Houston - must meet Harris County Flood Control requirements</div>
+                        </div>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-text">Street and utility design</div>
+                            <div class="item-details">Coordinate with utility providers for service extensions</div>
+                        </div>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-text">Landscape architecture</div>
+                            <div class="item-details">Entry features, amenities, common areas</div>
+                        </div>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-text">Lighting design</div>
+                            <div class="item-details">Street lighting, security lighting, decorative lighting</div>
+                        </div>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-text">Construction documentation</div>
+                            <div class="item-details">Detailed plans and specifications for bidding</div>
+                        </div>
+                    </div>
+                    
+                    <div class="warning">Post-Harvey, drainage requirements are stricter. Budget extra time and money for detention ponds and improved drainage systems.</div>
+                </div>
+            </div>
+
+            <div class="phase">
+                <div class="phase-header">
+                    <div class="phase-title">Phase 6: Financing & Investment (2-4 months)</div>
+                    <div class="phase-meta">
+                        <span>💰 Est. Cost: 2-4% of loan amount</span>
+                        <span>⏰ Duration: 2-4 months</span>
+                        <span>🎯 Critical: Capital Structure</span>
+                    </div>
+                </div>
+                <div class="phase-content">
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-text">Construction loan application</div>
+                            <div class="item-details">Shop multiple lenders, compare terms and requirements</div>
+                        </div>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-text">Equity partner negotiations</div>
+                            <div class="item-details">Define ownership structure, profit splits, decision rights</div>
+                        </div>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-text">Financial projections update</div>
+                            <div class="item-details">Refine based on final engineering and market conditions</div>
+                        </div>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-text">Insurance and bonding</div>
+                            <div class="item-details">General liability, builder's risk, performance bonds</div>
+                        </div>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-text">Legal entity formation</div>
+                            <div class="item-details">LLC or corporation for liability protection and tax efficiency</div>
+                        </div>
+                    </div>
+                    
+                    <div class="pro-tip">Texas has favorable lending markets for development. Consider both traditional banks and specialty development lenders for competitive terms.</div>
+                </div>
+            </div>
+
+            <div class="phase">
+                <div class="phase-header">
+                    <div class="phase-title">Phase 7: Construction (12-18 months)</div>
+                    <div class="phase-meta">
+                        <span>💰 Est. Cost: $15,000-$25,000 per lot</span>
+                        <span>⏰ Duration: 12-18 months</span>
+                        <span>🎯 Critical: Quality Control</span>
+                    </div>
+                </div>
+                <div class="phase-content">
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-text">Site clearing and grading</div>
+                            <div class="item-details">Mass grading, erosion control, tree preservation</div>
+                        </div>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-text">Utility installation</div>
+                            <div class="item-details">Water, sewer, gas, electric, telecommunications</div>
+                        </div>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-text">Street construction</div>
+                            <div class="item-details">Base, paving, curbs, sidewalks</div>
+                        </div>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-text">Drainage system installation</div>
+                            <div class="item-details">Storm sewers, detention ponds, channel improvements</div>
+                        </div>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-text">Lot preparation</div>
+                            <div class="item-details">Final grading, utility connections to lot lines</div>
+                        </div>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-text">Quality control inspections</div>
+                            <div class="item-details">Regular inspections to ensure compliance with plans</div>
+                        </div>
+                    </div>
+                    
+                    <div class="warning">Houston's hurricane season (June-November) can delay construction. Build weather delays into your timeline and consider seasonal construction scheduling.</div>
+                </div>
+            </div>
+
+            <div class="phase">
+                <div class="phase-header">
+                    <div class="phase-title">Phase 8: Marketing & Pre-Sales (Ongoing)</div>
+                    <div class="phase-meta">
+                        <span>💰 Est. Cost: 3-5% of revenue</span>
+                        <span>⏰ Duration: Ongoing</span>
+                        <span>🎯 Critical: Builder Relationships</span>
+                    </div>
+                </div>
+                <div class="phase-content">
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-text">Marketing plan development</div>
+                            <div class="item-details">Target builder profiles, pricing strategy, sales timeline</div>
+                        </div>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-text">Builder negotiations</div>
+                            <div class="item-details">Volume discounts, delivery schedules, design standards</div>
+                        </div>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-text">Model home coordination</div>
+                            <div class="item-details">Location selection, design guidelines, marketing coordination</div>
+                        </div>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-text">Sales center setup</div>
+                            <div class="item-details">Temporary or permanent facility for lot sales</div>
+                        </div>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-text">Digital marketing campaign</div>
+                            <div class="item-details">Website, social media, online advertising</div>
+                        </div>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-text">Broker relationships</div>
+                            <div class="item-details">Commercial brokers specializing in lot sales</div>
+                        </div>
+                    </div>
+                    
+                    <div class="pro-tip">Houston's strong builder market means you can often pre-sell lots before completion. Start marketing to builders early in the construction phase.</div>
+                </div>
+            </div>
+
+            <div class="phase">
+                <div class="phase-header">
+                    <div class="phase-title">Phase 9: Final Approvals (2-3 months)</div>
+                    <div class="phase-meta">
+                        <span>💰 Est. Cost: $25,000-$50,000</span>
+                        <span>⏰ Duration: 2-3 months</span>
+                        <span>🎯 Critical: Infrastructure Acceptance</span>
+                    </div>
+                </div>
+                <div class="phase-content">
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-text">Final plat approval</div>
+                            <div class="item-details">Submit after infrastructure completion and inspection</div>
+                        </div>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-text">Infrastructure inspections</div>
+                            <div class="item-details">City/county acceptance of streets, utilities, drainage</div>
+                        </div>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-text">Utility acceptances</div>
+                            <div class="item-details">Transfer of utility systems to service providers</div>
+                        </div>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-text">Street dedication</div>
+                            <div class="item-details">Transfer streets to city/county for maintenance</div>
+                        </div>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-text">HOA formation</div>
+                            <div class="item-details">Legal documents, management structure, initial funding</div>
+                        </div>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-text">CC&R recording</div>
+                            <div class="item-details">Covenants, Conditions & Restrictions filing</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="phase">
+                <div class="phase-header">
+                    <div class="phase-title">Phase 10: Project Closeout (3-6 months)</div>
+                    <div class="phase-meta">
+                        <span>💰 Est. Cost: Variable</span>
+                        <span>⏰ Duration: 3-6 months</span>
+                        <span>🎯 Critical: Final Sales</span>
+                    </div>
+                </div>
+                <div class="phase-content">
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-text">Lot sales to builders</div>
+                            <div class="item-details">Final closings, deed transfers, payment collection</div>
+                        </div>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-text">Infrastructure warranty period</div>
+                            <div class="item-details">Typically 1-2 years for streets, utilities, drainage</div>
+                        </div>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-text">HOA transition</div>
+                            <div class="item-details">Transfer control from developer to homeowners</div>
+                        </div>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-text">Final accounting</div>
+                            <div class="item-details">Project cost reconciliation, profit calculation</div>
+                        </div>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-text">Investor distributions</div>
+                            <div class="item-details">Final profit distributions per partnership agreement</div>
+                        </div>
+                    </div>
+                    <div class="checkbox-item">
+                        <div class="checkbox"></div>
+                        <div class="item-content">
+                            <div class="item-text">Project documentation</div>
+                            <div class="item-details">Archive all records for future reference and tax purposes</div>
+                        </div>
+                    </div>
+                    
+                    <div class="pro-tip">Keep detailed records throughout the project. Good documentation helps with warranty issues, future projects, and tax planning.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <h3>Ready to Start Your Houston Development Project?</h3>
+            <p>Houston Land Guy has successfully guided over $50M in Houston developments.<br>Let our expertise help you navigate the complexities and maximize your success.</p>
+            
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <div class="contact-label">📞 Call Today</div>
+                    <div class="contact-value">(713) 828-3701</div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-label">📧 Get In Touch</div>
+                    <div class="contact-value">contact@houstonlandguy.com</div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-label">🌐 Learn More</div>
+                    <div class="contact-value">www.houstonlandguy.com</div>
+                </div>
+            </div>
+            
+            <p style="margin-top: 25px; font-size: 10pt; opacity: 0.9;">
+                © 2024 Houston Land Guy - Your Trusted Houston Development Partner<br>
+                Helping developers succeed in America's 4th largest city
+            </p>
+        </div>
+    </div>
+
+    <div class="watermark">Houston Land Guy - Development Excellence</div>
+
+    <script>
+        // Add print button functionality
+        function printPDF() {
+            window.print();
+        }
+        
+        // Auto-print when user requests
+        document.addEventListener('keydown', function(e) {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'p') {
+                e.preventDefault();
+                printPDF();
+            }
+        });
+    </script>
+</body>
+</html>`;
+
+    // Create and download the HTML file
+    const blob = new Blob([htmlContent], { type: 'text/html' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'Houston_Development_Timeline_Checklist.html';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    window.URL.revokeObjectURL(url);
     
-    const phases = [
-        { name: "Pre-Development Phase", duration: "2-4 months", tasks: ["Initial site assessment", "Preliminary feasibility study", "Letter of intent negotiation", "Due diligence period"] },
-        { name: "Land Acquisition", duration: "1-3 months", tasks: ["Purchase agreement finalization", "Title examination and insurance", "Environmental Phase I assessment", "Survey and boundary verification", "Closing coordination"] },
-        { name: "Feasibility & Planning", duration: "3-6 months", tasks: ["Market analysis and absorption study", "Preliminary site plan development", "Utility availability assessment", "Traffic impact study", "Environmental assessments", "Preliminary cost estimates"] },
-        { name: "Entitlements & Approvals", duration: "6-12 months", tasks: ["Rezoning applications", "Variance requests", "Plat approval process", "Utility district creation/annexation", "MUD/PUD formation", "Development agreement negotiation"] },
-        { name: "Design & Engineering", duration: "4-6 months", tasks: ["Civil engineering plans", "Drainage and detention design", "Street and utility design", "Landscape architecture", "Lighting design", "Construction documentation"] },
-        { name: "Financing & Investment", duration: "2-4 months", tasks: ["Construction loan application", "Equity partner negotiations", "Financial projections update", "Insurance and bonding", "Legal entity formation"] },
-        { name: "Construction Phase", duration: "12-18 months", tasks: ["Site clearing and grading", "Utility installation", "Street construction", "Drainage system installation", "Lot preparation", "Quality control inspections"] },
-        { name: "Marketing & Pre-Sales", duration: "Ongoing", tasks: ["Marketing plan development", "Builder negotiations", "Model home coordination", "Sales center setup", "Digital marketing campaign", "Broker relationships"] },
-        { name: "Final Approvals", duration: "2-3 months", tasks: ["Final plat approval", "Infrastructure inspections", "Utility acceptances", "Street dedication", "HOA formation", "CC&R recording"] },
-        { name: "Project Closeout", duration: "3-6 months", tasks: ["Lot sales to builders", "Infrastructure warranty period", "HOA transition", "Final accounting", "Investor distributions", "Project documentation"] }
+    showNotification('Timeline checklist downloaded successfully!', 'success');
     ];
     
     phases.forEach((phase, index) => {
