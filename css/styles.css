@@ -703,7 +703,9 @@ textarea:focus-visible {
 .process-carousel,
 .invest-benefits-carousel,
 .invest-process-carousel,
-.invest-options-carousel {
+.invest-options-carousel,
+.developer-testimonials-carousel,
+.success-stories-carousel {
     position: relative;
     overflow: hidden;
 }
@@ -713,7 +715,9 @@ textarea:focus-visible {
 .process-carousel-dot,
 .invest-benefits-dot,
 .invest-process-dot,
-.invest-options-dot {
+.invest-options-dot,
+.developer-testimonials-dot,
+.success-stories-dot {
     transition: all 0.15s ease;
     cursor: pointer;
 }
@@ -723,7 +727,9 @@ textarea:focus-visible {
 .process-carousel-dot.active,
 .invest-benefits-dot.active,
 .invest-process-dot.active,
-.invest-options-dot.active {
+.invest-options-dot.active,
+.developer-testimonials-dot.active,
+.success-stories-dot.active {
     background-color: #16a34a;
     width: 24px;
 }

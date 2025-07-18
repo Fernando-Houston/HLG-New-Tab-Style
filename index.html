@@ -1078,7 +1078,8 @@
                         <p class="text-xl text-houston-gray">Real sellers, real results</p>
                     </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Desktop Grid (hidden on mobile) -->
+                    <div class="hidden md:grid md:grid-cols-3 gap-8">
                         <div class="bg-houston-light rounded-xl p-8">
                             <div class="flex items-center mb-4">
                                 <div class="flex text-houston-accent">
@@ -1134,6 +1135,83 @@
                                 <div class="font-semibold text-houston-green">Maria & Jose T.</div>
                                 <div class="text-sm text-houston-gray">Distressed Sale - Fort Bend County</div>
                             </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Mobile Carousel (shown only on mobile) -->
+                    <div class="md:hidden relative">
+                        <div class="success-stories-carousel relative overflow-hidden">
+                            <div class="flex transition-transform duration-150" id="successStoriesCarousel">
+                                <!-- Success Story 1 -->
+                                <div class="w-full flex-shrink-0 px-2">
+                                    <div class="bg-gray-900 rounded-xl p-8 h-full border border-gray-700">
+                                        <div class="flex items-center mb-4">
+                                            <div class="flex text-yellow-400">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                        </div>
+                                        <p class="text-gray-300 mb-6 italic">
+                                            "Inherited 40 acres from my uncle. Houston Land Guy made the process so easy during a difficult time. Closed in 10 days, no hassles."
+                                        </p>
+                                        <div>
+                                            <div class="font-semibold text-white">Sarah M.</div>
+                                            <div class="text-sm text-gray-400">Estate Sale - Waller County</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Success Story 2 -->
+                                <div class="w-full flex-shrink-0 px-2">
+                                    <div class="bg-gray-900 rounded-xl p-8 h-full border border-gray-700">
+                                        <div class="flex items-center mb-4">
+                                            <div class="flex text-yellow-400">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                        </div>
+                                        <p class="text-gray-300 mb-6 italic">
+                                            "Had a commercial property with tenant issues. They bought it as-is, handled everything. Got more than other cash buyers offered."
+                                        </p>
+                                        <div>
+                                            <div class="font-semibold text-white">Robert K.</div>
+                                            <div class="text-sm text-gray-400">Commercial Property - Harris County</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Success Story 3 -->
+                                <div class="w-full flex-shrink-0 px-2">
+                                    <div class="bg-gray-900 rounded-xl p-8 h-full border border-gray-700">
+                                        <div class="flex items-center mb-4">
+                                            <div class="flex text-yellow-400">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                        </div>
+                                        <p class="text-gray-300 mb-6 italic">
+                                            "Facing foreclosure on our land. Houston Land Guy saved us with a quick cash sale. Caring, transparent, and truly helpful."
+                                        </p>
+                                        <div>
+                                            <div class="font-semibold text-white">Maria & Jose T.</div>
+                                            <div class="text-sm text-gray-400">Distressed Sale - Fort Bend County</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Navigation Dots -->
+                        <div class="flex justify-center gap-2 mt-6">
+                            <button class="success-stories-dot w-2 h-2 bg-gray-300 rounded-full active" data-slide="0"></button>
+                            <button class="success-stories-dot w-2 h-2 bg-gray-300 rounded-full" data-slide="1"></button>
+                            <button class="success-stories-dot w-2 h-2 bg-gray-300 rounded-full" data-slide="2"></button>
                         </div>
                     </div>
                 </div>
@@ -1706,7 +1784,8 @@
                     <h2 class="text-3xl font-bold text-center text-houston-green mb-4">Trusted by Houston's Top Developers</h2>
                     <p class="text-center text-houston-gray mb-12">See why 500+ developers choose us for their Houston land acquisition needs</p>
                     
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Desktop Grid (hidden on mobile) -->
+                    <div class="hidden md:grid md:grid-cols-3 gap-8">
                         <!-- Testimonial 1 -->
                         <div class="bg-white rounded-xl p-8 shadow-lg">
                             <div class="flex mb-4">
@@ -1762,6 +1841,80 @@
                                 <div class="text-sm text-houston-gray">Gulf Coast Commercial</div>
                                 <div class="text-xs text-houston-accent mt-1">Woodlands Medical Plaza</div>
                             </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Mobile Carousel (shown only on mobile) -->
+                    <div class="md:hidden relative">
+                        <div class="developer-testimonials-carousel relative overflow-hidden">
+                            <div class="flex transition-transform duration-150" id="developerTestimonialsCarousel">
+                                <!-- Testimonial 1 -->
+                                <div class="w-full flex-shrink-0 px-2">
+                                    <div class="bg-gray-900 rounded-xl p-8 shadow-lg h-full border border-gray-700">
+                                        <div class="flex mb-4">
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                        </div>
+                                        <p class="text-gray-300 mb-6 italic">
+                                            "Houston Development Intelligence found us an off-market 45-acre site that perfectly fit our criteria. Their market knowledge saved us 6 months and $2M."
+                                        </p>
+                                        <div class="border-t border-gray-700 pt-4">
+                                            <div class="font-semibold text-white">David Chen</div>
+                                            <div class="text-sm text-gray-400">Apex Development Group</div>
+                                            <div class="text-xs text-green-400 mt-1">Katy Master-Planned Community</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Testimonial 2 -->
+                                <div class="w-full flex-shrink-0 px-2">
+                                    <div class="bg-gray-900 rounded-xl p-8 shadow-lg h-full border border-gray-700">
+                                        <div class="flex mb-4">
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                        </div>
+                                        <p class="text-gray-300 mb-6 italic">
+                                            "The due diligence package was incredibly thorough. They identified deed restriction issues that would have killed our project. Expert knowledge and attention to detail."
+                                        </p>
+                                        <div class="border-t border-gray-700 pt-4">
+                                            <div class="font-semibold text-white">Sarah Martinez</div>
+                                            <div class="text-sm text-gray-400">Urban Living Partners</div>
+                                            <div class="text-xs text-green-400 mt-1">Montrose Townhome Development</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Testimonial 3 -->
+                                <div class="w-full flex-shrink-0 px-2">
+                                    <div class="bg-gray-900 rounded-xl p-8 shadow-lg h-full border border-gray-700">
+                                        <div class="flex mb-4">
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                            <i class="fas fa-star text-yellow-400"></i>
+                                        </div>
+                                        <p class="text-gray-300 mb-6 italic">
+                                            "15 years of working together. They've sourced over $50M in development sites for us. No one knows Houston land better."
+                                        </p>
+                                        <div class="border-t border-gray-700 pt-4">
+                                            <div class="font-semibold text-white">Robert Thompson</div>
+                                            <div class="text-sm text-gray-400">Gulf Coast Commercial</div>
+                                            <div class="text-xs text-green-400 mt-1">Woodlands Medical Plaza</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Navigation Dots -->
+                        <div class="flex justify-center gap-2 mt-6">
+                            <button class="developer-testimonials-dot w-2 h-2 bg-gray-300 rounded-full active" data-slide="0"></button>
+                            <button class="developer-testimonials-dot w-2 h-2 bg-gray-300 rounded-full" data-slide="1"></button>
+                            <button class="developer-testimonials-dot w-2 h-2 bg-gray-300 rounded-full" data-slide="2"></button>
                         </div>
                     </div>
                 </div>
@@ -2007,40 +2160,6 @@
                     </div>
                 </div>
 
-                <!-- Track Record Section -->
-                <div class="mb-16">
-                    <h2 class="text-3xl font-bold text-houston-green mb-4">Proven Track Record</h2>
-                    <p class="text-lg text-houston-gray mb-12 max-w-3xl">
-                        With over 15 years of experience and $483M+ in completed transactions, we've built a reputation for identifying and executing profitable development opportunities.
-                    </p>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <div class="flex items-start">
-                            <i class="fas fa-check-circle text-3xl text-houston-accent mr-4 mt-1"></i>
-                            <div>
-                                <h3 class="text-2xl font-bold text-houston-green mb-2">1,200+ Projects Analyzed</h3>
-                                <p class="text-houston-gray">Rigorous screening ensures only the best opportunities</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <i class="fas fa-check-circle text-3xl text-houston-accent mr-4 mt-1"></i>
-                            <div>
-                                <h3 class="text-2xl font-bold text-houston-green mb-2">Active Investor Network</h3>
-                                <p class="text-houston-gray">Join a network of sophisticated real estate investors</p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start">
-                            <i class="fas fa-check-circle text-3xl text-houston-accent mr-4 mt-1"></i>
-                            <div>
-                                <h3 class="text-2xl font-bold text-houston-green mb-2">12 Active Projects</h3>
-                                <p class="text-houston-gray">Current portfolio across Houston's growth corridors</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Investment Options Section -->
                 <div class="mb-16">
                     <div class="text-center mb-12">
@@ -2201,6 +2320,82 @@
                             <button class="invest-options-dot w-2 h-2 bg-gray-300 rounded-full" data-slide="1"></button>
                             <button class="invest-options-dot w-2 h-2 bg-gray-300 rounded-full" data-slide="2"></button>
                             <button class="invest-options-dot w-2 h-2 bg-gray-300 rounded-full" data-slide="3"></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Track Record Section -->
+                <div class="mb-16">
+                    <h2 class="text-3xl font-bold text-houston-green mb-4">Proven Track Record</h2>
+                    <p class="text-lg text-houston-gray mb-12 max-w-3xl">
+                        With over 15 years of experience and $483M+ in completed transactions, we've built a reputation for identifying and executing profitable development opportunities.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle text-3xl text-houston-accent mr-4 mt-1"></i>
+                            <div>
+                                <h3 class="text-2xl font-bold text-houston-green mb-2">1,200+ Projects Analyzed</h3>
+                                <p class="text-houston-gray">Rigorous screening ensures only the best opportunities</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle text-3xl text-houston-accent mr-4 mt-1"></i>
+                            <div>
+                                <h3 class="text-2xl font-bold text-houston-green mb-2">Active Investor Network</h3>
+                                <p class="text-houston-gray">Join a network of sophisticated real estate investors</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle text-3xl text-houston-accent mr-4 mt-1"></i>
+                            <div>
+                                <h3 class="text-2xl font-bold text-houston-green mb-2">12 Active Projects</h3>
+                                <p class="text-houston-gray">Current portfolio across Houston's growth corridors</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Successful Exits -->
+                <div class="mb-16">
+                    <h3 class="text-2xl font-bold text-houston-green mb-6 text-center">Recent Successful Exits</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="bg-white rounded-lg p-6 border border-gray-200 hover:shadow-lg transition-shadow">
+                            <div class="flex justify-between items-center mb-4">
+                                <h4 class="font-semibold text-houston-green">Cypress Creek Business Park</h4>
+                                <span class="text-2xl font-bold text-green-600">26.4% IRR</span>
+                            </div>
+                            <div class="text-houston-gray text-sm space-y-1">
+                                <div><strong>Type:</strong> Industrial Development</div>
+                                <div><strong>Exit Year:</strong> 2023</div>
+                                <div><strong>Multiple:</strong> 2.2x</div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-lg p-6 border border-gray-200 hover:shadow-lg transition-shadow">
+                            <div class="flex justify-between items-center mb-4">
+                                <h4 class="font-semibold text-houston-green">Katy Commons Retail Center</h4>
+                                <span class="text-2xl font-bold text-green-600">19.8% IRR</span>
+                            </div>
+                            <div class="text-houston-gray text-sm space-y-1">
+                                <div><strong>Type:</strong> Retail Development</div>
+                                <div><strong>Exit Year:</strong> 2023</div>
+                                <div><strong>Multiple:</strong> 1.8x</div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-lg p-6 border border-gray-200 hover:shadow-lg transition-shadow">
+                            <div class="flex justify-between items-center mb-4">
+                                <h4 class="font-semibold text-houston-green">Woodlands Medical Pavilion</h4>
+                                <span class="text-2xl font-bold text-green-600">22.1% IRR</span>
+                            </div>
+                            <div class="text-houston-gray text-sm space-y-1">
+                                <div><strong>Type:</strong> Medical Office</div>
+                                <div><strong>Exit Year:</strong> 2022</div>
+                                <div><strong>Multiple:</strong> 2.0x</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -2438,47 +2633,6 @@
                 </div>
 
 
-                <!-- Recent Successful Exits -->
-                <div class="mb-16">
-                    <h3 class="text-2xl font-bold text-houston-green mb-6 text-center">Recent Successful Exits</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div class="bg-white rounded-lg p-6 border border-gray-200 hover:shadow-lg transition-shadow">
-                            <div class="flex justify-between items-center mb-4">
-                                <h4 class="font-semibold text-houston-green">Cypress Creek Business Park</h4>
-                                <span class="text-2xl font-bold text-green-600">26.4% IRR</span>
-                            </div>
-                            <div class="text-houston-gray text-sm space-y-1">
-                                <div><strong>Type:</strong> Industrial Development</div>
-                                <div><strong>Exit Year:</strong> 2023</div>
-                                <div><strong>Multiple:</strong> 2.2x</div>
-                            </div>
-                        </div>
-
-                        <div class="bg-white rounded-lg p-6 border border-gray-200 hover:shadow-lg transition-shadow">
-                            <div class="flex justify-between items-center mb-4">
-                                <h4 class="font-semibold text-houston-green">Katy Commons Retail Center</h4>
-                                <span class="text-2xl font-bold text-green-600">19.8% IRR</span>
-                            </div>
-                            <div class="text-houston-gray text-sm space-y-1">
-                                <div><strong>Type:</strong> Retail Development</div>
-                                <div><strong>Exit Year:</strong> 2023</div>
-                                <div><strong>Multiple:</strong> 1.8x</div>
-                            </div>
-                        </div>
-
-                        <div class="bg-white rounded-lg p-6 border border-gray-200 hover:shadow-lg transition-shadow">
-                            <div class="flex justify-between items-center mb-4">
-                                <h4 class="font-semibold text-houston-green">Woodlands Medical Pavilion</h4>
-                                <span class="text-2xl font-bold text-green-600">22.1% IRR</span>
-                            </div>
-                            <div class="text-houston-gray text-sm space-y-1">
-                                <div><strong>Type:</strong> Medical Office</div>
-                                <div><strong>Exit Year:</strong> 2022</div>
-                                <div><strong>Multiple:</strong> 2.0x</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
             </div>
         </section>

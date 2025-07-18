@@ -3240,4 +3240,8 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeCarousel('investBenefitsCarousel', 'invest-benefits-dot');
     initializeCarousel('investProcessCarousel', 'invest-process-dot');
     initializeCarousel('investOptionsCarousel', 'invest-options-dot');
+    
+    // Testimonial carousels
+    initializeCarousel('developerTestimonialsCarousel', 'developer-testimonials-dot');
+    initializeCarousel('successStoriesCarousel', 'success-stories-dot');
 });
