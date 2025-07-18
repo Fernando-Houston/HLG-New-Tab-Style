@@ -49,15 +49,7 @@ window.initChapter42Tool = function() {
     const targetLotSize = document.getElementById('chapter42-target-lot-size');
     const lotSizeValue = document.getElementById('chapter42-lot-size-value');
     
-    // Debug logging
-    console.log('Chapter 42 initialization:', {
-        generateBtn: !!generateBtn,
-        optimizeBtn: !!optimizeBtn,
-        resetBtn: !!resetBtn,
-        exportBtn: !!exportBtn,
-        targetLotSize: !!targetLotSize,
-        lotSizeValue: !!lotSizeValue
-    });
+    // Initialize elements
     
     if (generateBtn) {
         generateBtn.addEventListener('click', generateChapter42Plan);
@@ -107,7 +99,6 @@ window.initChapter42Tool = function() {
     
     // Mark as initialized
     window.chapter42Initialized = true;
-    console.log('Chapter 42 tool initialized successfully');
 }
 
 function generateChapter42Plan() {
@@ -740,10 +731,9 @@ function generateChapter42HTMLReport() {
     `;
 }
 
-// Initialize Chapter 42 tool when DOM is ready
+// Initialize Chapter 42 tool when DOM is ready - immediate for performance
 document.addEventListener('DOMContentLoaded', function() {
-    // Wait for other scripts to load
-    setTimeout(initChapter42Tool, 100);
+    initChapter42Tool();
 });
 
 // Also try to initialize when the tool is opened
