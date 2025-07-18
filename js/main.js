@@ -974,11 +974,19 @@ window.openTool = function(toolName) {
         // Show immediately
         tool.classList.remove('hidden');
         
-        // Focus on the tool section immediately
-        const toolsSection = document.getElementById('tools');
-        if (toolsSection) {
-            toolsSection.scrollIntoView({ behavior: 'instant', block: 'start' });
-        }
+        // Scroll directly to the tool itself, not just the tools section
+        // Use a small timeout to ensure the tool is visible before scrolling
+        setTimeout(() => {
+            // Get the tool's position
+            const toolRect = tool.getBoundingClientRect();
+            const absoluteTop = window.pageYOffset + toolRect.top;
+            
+            // Scroll to tool position minus navbar height (80px)
+            window.scrollTo({
+                top: absoluteTop - 80,
+                behavior: 'smooth'
+            });
+        }, 50);
         
         // Initialize Chapter 42 if needed (no delays)
         if (toolName === 'chapter42' && typeof initChapter42Tool === 'function' && !window.chapter42Initialized) {
