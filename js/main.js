@@ -2096,7 +2096,7 @@ function downloadTimelineChecklist() {
     window.URL.revokeObjectURL(url);
     
     showNotification('Timeline checklist downloaded successfully!', 'success');
-    ];
+}
     
     phases.forEach((phase, index) => {
         checklist += `${index + 1}. ${phase.name} (${phase.duration})\n`;

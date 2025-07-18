@@ -3428,18 +3428,12 @@
                 ]
             });
             
-            // Add custom marker with fav.18 icon
+            // Add marker (using default red pin)
             const marker = new google.maps.Marker({
                 position: officeLocation,
                 map: map,
                 title: "Houston Land Guy Office",
-                animation: google.maps.Animation.DROP,
-                icon: {
-                    url: 'images/fav.18.svg',
-                    scaledSize: new google.maps.Size(40, 40),
-                    origin: new google.maps.Point(0, 0),
-                    anchor: new google.maps.Point(20, 40)
-                }
+                animation: google.maps.Animation.DROP
             });
             
             // Info window
