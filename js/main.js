@@ -189,6 +189,16 @@ function initTabNavigation() {
                 targetContent.classList.add('active');
                 targetContent.classList.remove('hidden');
                 
+                // Scroll to the top of the section
+                const headerOffset = 80;
+                const elementPosition = targetContent.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+                
                 // Trigger scroll animations for newly visible content
                 triggerScrollAnimations(targetContent);
             }
