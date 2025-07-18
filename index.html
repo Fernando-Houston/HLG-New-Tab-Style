@@ -326,8 +326,8 @@
                             style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%; border-radius: 12px;"
                             allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
                             allowfullscreen="true"
-                            onload="handleVideoLoad()"
-                            onerror="handleVideoError()"
+                            onload="if(window.handleVideoLoad) handleVideoLoad()"
+                            onerror="if(window.handleVideoError) handleVideoError()"
                         ></iframe>
                         <!-- Video Fallback -->
                         <div id="video-fallback" class="hidden absolute inset-0 flex items-center justify-center bg-gradient-to-br from-houston-green to-houston-primary rounded-xl">

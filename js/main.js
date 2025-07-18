@@ -2097,32 +2097,6 @@ function downloadTimelineChecklist() {
     
     showNotification('Timeline checklist downloaded successfully!', 'success');
 }
-    
-    phases.forEach((phase, index) => {
-        checklist += `${index + 1}. ${phase.name} (${phase.duration})\n`;
-        phase.tasks.forEach(task => {
-            checklist += `   [ ] ${task}\n`;
-        });
-        checklist += "\n";
-    });
-    
-    checklist += "\nNotes:\n";
-    checklist += "- Timeline can vary based on location and project complexity\n";
-    checklist += "- Houston's lack of zoning may expedite some phases\n";
-    checklist += "- MUD/PUD formation is critical for infrastructure financing\n";
-    checklist += "- Consider seasonal factors (hurricane season, drainage)\n";
-    
-    // Create download link
-    const blob = new Blob([checklist], { type: 'text/plain' });
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'houston-development-timeline-checklist.txt';
-    a.click();
-    window.URL.revokeObjectURL(url);
-    
-    showNotification('Checklist downloaded successfully!', 'success');
-}
 
 function calculateProjectCosts() {
     // Switch to ROI calculator
