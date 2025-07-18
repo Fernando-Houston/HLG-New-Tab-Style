@@ -1853,7 +1853,7 @@
                         </div>
                         <h3 class="text-xl font-bold text-houston-green mb-4">ROI Calculator</h3>
                         <p class="text-houston-gray mb-6">Calculate potential returns on Houston development projects with our advanced ROI calculator.</p>
-                        <button class="bg-houston-green hover:bg-houston-primary text-white px-6 py-3 rounded-lg font-medium w-full mb-4" onclick="openTool('roi-calculator')">
+                        <button class="bg-houston-green hover:bg-houston-primary text-white px-6 py-3 rounded-lg font-medium w-full mb-4" onclick="this.disabled=true; this.innerHTML='<span class=\'animate-spin inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full mr-2\'></span>Loading...'; openTool('roi-calculator'); setTimeout(() => { this.disabled=false; this.innerHTML='Launch Calculator' }, 500)">
                             Launch Calculator
                         </button>
                         <div class="text-sm text-houston-gray">
@@ -1868,7 +1868,7 @@
                         </div>
                         <h3 class="text-xl font-bold text-houston-green mb-4">Houston Development Timeline</h3>
                         <p class="text-houston-gray mb-6">Navigate your development project from concept to completion with Houston-specific timelines and requirements.</p>
-                        <button class="bg-houston-green hover:bg-houston-primary text-white px-6 py-3 rounded-lg font-medium w-full mb-4" onclick="openTool('development-timeline')">
+                        <button class="bg-houston-green hover:bg-houston-primary text-white px-6 py-3 rounded-lg font-medium w-full mb-4" onclick="this.disabled=true; this.innerHTML='<span class=\'animate-spin inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full mr-2\'></span>Loading...'; openTool('development-timeline'); setTimeout(() => { this.disabled=false; this.innerHTML='Launch Timeline Tool' }, 500)">
                             Launch Timeline Tool
                         </button>
                         <div class="text-sm text-houston-gray">
@@ -1883,7 +1883,7 @@
                         </div>
                         <h3 class="text-xl font-bold text-houston-green mb-4">Chapter 42 Planning Tool</h3>
                         <p class="text-houston-gray mb-6">Generate optimized site plans with automated density calculations for Houston developments.</p>
-                        <button class="bg-houston-green hover:bg-houston-primary text-white px-6 py-3 rounded-lg font-medium w-full mb-4" onclick="openTool('chapter42')">
+                        <button class="bg-houston-green hover:bg-houston-primary text-white px-6 py-3 rounded-lg font-medium w-full mb-4" onclick="this.disabled=true; this.innerHTML='<span class=\'animate-spin inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full mr-2\'></span>Loading...'; openTool('chapter42'); setTimeout(() => { this.disabled=false; this.innerHTML='Launch Planning Tool' }, 500)">
                             Launch Planning Tool
                         </button>
                         <div class="text-sm text-houston-gray">

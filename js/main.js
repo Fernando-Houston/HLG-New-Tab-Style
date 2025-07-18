@@ -965,29 +965,55 @@ window.showTab = function(tabName) {
     }
 };
 
-// Tool management - make globally accessible
+// Tool management - make globally accessible with performance optimizations
 window.openTool = function(toolName) {
-    // Hide all tools first
-    const allTools = document.querySelectorAll('[id$="-tool"]');
-    allTools.forEach(tool => {
-        tool.classList.add('hidden');
-    });
-    
-    // Show selected tool
-    const toolId = toolName + '-tool';
-    const tool = document.getElementById(toolId);
-    
-    if (tool) {
-        tool.classList.remove('hidden');
-        tool.scrollIntoView({ behavior: 'auto', block: 'center' });
+    // Use requestAnimationFrame for smoother performance
+    requestAnimationFrame(() => {
+        // Only hide visible tools (more efficient)
+        const visibleTools = document.querySelectorAll('[id$="-tool"]:not(.hidden)');
+        visibleTools.forEach(tool => {
+            tool.classList.add('hidden');
+        });
         
-        // Re-initialize Chapter 42 tool if needed (no delay for speed)
-        if ((toolName === 'chapter42' || toolName === 'chapter42-tool') && typeof initChapter42Tool === 'function') {
-            if (!window.chapter42Initialized) {
-                initChapter42Tool();
+        // Show selected tool with minimal delay
+        const toolId = toolName + '-tool';
+        const tool = document.getElementById(toolId);
+        
+        if (tool) {
+            // Force browser to acknowledge the hide before showing
+            tool.offsetHeight; // Trigger reflow
+            
+            // Remove hidden class
+            tool.classList.remove('hidden');
+            
+            // Smooth scroll with reduced motion check
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            tool.scrollIntoView({ 
+                behavior: prefersReducedMotion ? 'auto' : 'smooth', 
+                block: 'start',
+                inline: 'nearest'
+            });
+            
+            // Initialize tools only if needed
+            switch(toolName) {
+                case 'chapter42':
+                case 'chapter42-tool':
+                    if (typeof initChapter42Tool === 'function' && !window.chapter42Initialized) {
+                        // Defer initialization to next frame for better perceived performance
+                        requestAnimationFrame(() => {
+                            initChapter42Tool();
+                        });
+                    }
+                    break;
+                case 'roi-calculator':
+                    // ROI calculator doesn't need re-initialization
+                    break;
+                case 'development-timeline':
+                    // Timeline doesn't need re-initialization
+                    break;
             }
         }
-    }
+    });
 }
 
 window.closeTool = function(toolName) {
