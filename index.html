@@ -243,6 +243,29 @@
             visibility: visible !important;
             opacity: 1 !important;
         }
+        
+        /* Property Types Carousel Styles */
+        .property-types-carousel {
+            touch-action: pan-y;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .carousel-dot {
+            cursor: pointer;
+        }
+        
+        .carousel-dot.active {
+            background-color: #014a48;
+            width: 24px;
+        }
+        
+        /* Prevent text selection on swipe */
+        .property-types-carousel * {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
     </style>
     
     <!-- Fonts - direct load to avoid preload warning -->
@@ -620,7 +643,7 @@
             </div>
 
             <!-- Property Types We Buy -->
-            <section class="py-20 bg-white">
+            <section class="py-20 bg-white" id="property-types">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="text-center mb-16">
                         <h2 class="text-4xl font-bold text-houston-green mb-4">Property Types We Buy</h2>
@@ -629,7 +652,122 @@
                         </p>
                     </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Mobile Carousel (visible on mobile only) -->
+                    <div class="md:hidden relative">
+                        <div class="property-types-carousel relative overflow-hidden">
+                            <div class="flex transition-transform duration-300 ease-out" id="propertyCarousel">
+                                <!-- Card 1: Vacant Land -->
+                                <div class="w-full flex-shrink-0 px-4">
+                                    <div class="bg-white border-2 border-gray-200 rounded-xl p-8">
+                                        <div class="w-16 h-16 bg-houston-light rounded-full flex items-center justify-center mb-6">
+                                            <i class="fas fa-tree text-houston-green text-2xl"></i>
+                                        </div>
+                                        <h3 class="text-xl font-bold text-houston-green mb-4">Vacant Land</h3>
+                                        <p class="text-houston-gray mb-4">Raw land, undeveloped parcels, agricultural property, rural acreage</p>
+                                        <ul class="text-sm text-houston-gray space-y-2">
+                                            <li>• Any size or location</li>
+                                            <li>• With or without utilities</li>
+                                            <li>• Clear or wooded</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <!-- Card 2: Development Sites -->
+                                <div class="w-full flex-shrink-0 px-4">
+                                    <div class="bg-white border-2 border-gray-200 rounded-xl p-8">
+                                        <div class="w-16 h-16 bg-houston-light rounded-full flex items-center justify-center mb-6">
+                                            <i class="fas fa-city text-houston-green text-2xl"></i>
+                                        </div>
+                                        <h3 class="text-xl font-bold text-houston-green mb-4">Development Sites</h3>
+                                        <p class="text-houston-gray mb-4">Entitled land, platted lots, subdivision tracts, infill lots</p>
+                                        <ul class="text-sm text-houston-gray space-y-2">
+                                            <li>• Pre-development parcels</li>
+                                            <li>• Partially developed</li>
+                                            <li>• Failed projects</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <!-- Card 3: Commercial Property -->
+                                <div class="w-full flex-shrink-0 px-4">
+                                    <div class="bg-white border-2 border-gray-200 rounded-xl p-8">
+                                        <div class="w-16 h-16 bg-houston-light rounded-full flex items-center justify-center mb-6">
+                                            <i class="fas fa-building text-houston-green text-2xl"></i>
+                                        </div>
+                                        <h3 class="text-xl font-bold text-houston-green mb-4">Commercial Property</h3>
+                                        <p class="text-houston-gray mb-4">Retail, office, industrial, warehouses, mixed-use properties</p>
+                                        <ul class="text-sm text-houston-gray space-y-2">
+                                            <li>• Occupied or vacant</li>
+                                            <li>• Any condition</li>
+                                            <li>• Lease complications OK</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <!-- Card 4: Distressed Properties -->
+                                <div class="w-full flex-shrink-0 px-4">
+                                    <div class="bg-white border-2 border-gray-200 rounded-xl p-8">
+                                        <div class="w-16 h-16 bg-houston-light rounded-full flex items-center justify-center mb-6">
+                                            <i class="fas fa-exclamation-triangle text-houston-green text-2xl"></i>
+                                        </div>
+                                        <h3 class="text-xl font-bold text-houston-green mb-4">Distressed Properties</h3>
+                                        <p class="text-houston-gray mb-4">Foreclosures, tax liens, probate, bankruptcy, divorce situations</p>
+                                        <ul class="text-sm text-houston-gray space-y-2">
+                                            <li>• Behind on payments</li>
+                                            <li>• Tax delinquencies</li>
+                                            <li>• Legal complications</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <!-- Card 5: Estate Sales -->
+                                <div class="w-full flex-shrink-0 px-4">
+                                    <div class="bg-white border-2 border-gray-200 rounded-xl p-8">
+                                        <div class="w-16 h-16 bg-houston-light rounded-full flex items-center justify-center mb-6">
+                                            <i class="fas fa-home text-houston-green text-2xl"></i>
+                                        </div>
+                                        <h3 class="text-xl font-bold text-houston-green mb-4">Estate Sales</h3>
+                                        <p class="text-houston-gray mb-4">Inherited property, family estates, partnership buyouts</p>
+                                        <ul class="text-sm text-houston-gray space-y-2">
+                                            <li>• Multiple heirs OK</li>
+                                            <li>• Probate properties</li>
+                                            <li>• Trust properties</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <!-- Card 6: Problem Properties -->
+                                <div class="w-full flex-shrink-0 px-4">
+                                    <div class="bg-white border-2 border-gray-200 rounded-xl p-8">
+                                        <div class="w-16 h-16 bg-houston-light rounded-full flex items-center justify-center mb-6">
+                                            <i class="fas fa-tools text-houston-green text-2xl"></i>
+                                        </div>
+                                        <h3 class="text-xl font-bold text-houston-green mb-4">Problem Properties</h3>
+                                        <p class="text-houston-gray mb-4">Environmental issues, access problems, deed restrictions</p>
+                                        <ul class="text-sm text-houston-gray space-y-2">
+                                            <li>• Title issues</li>
+                                            <li>• Landlocked parcels</li>
+                                            <li>• Contamination issues</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Navigation Dots -->
+                        <div class="flex justify-center mt-6 space-x-2">
+                            <button class="carousel-dot w-2 h-2 rounded-full bg-houston-green transition-all duration-300" data-slide="0"></button>
+                            <button class="carousel-dot w-2 h-2 rounded-full bg-gray-300 transition-all duration-300" data-slide="1"></button>
+                            <button class="carousel-dot w-2 h-2 rounded-full bg-gray-300 transition-all duration-300" data-slide="2"></button>
+                            <button class="carousel-dot w-2 h-2 rounded-full bg-gray-300 transition-all duration-300" data-slide="3"></button>
+                            <button class="carousel-dot w-2 h-2 rounded-full bg-gray-300 transition-all duration-300" data-slide="4"></button>
+                            <button class="carousel-dot w-2 h-2 rounded-full bg-gray-300 transition-all duration-300" data-slide="5"></button>
+                        </div>
+                    </div>
+
+                    <!-- Desktop Grid (hidden on mobile) -->
+                    <div class="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Card 1: Vacant Land -->
                         <div class="bg-white border-2 border-gray-200 rounded-xl p-8 hover:border-houston-accent hover:shadow-xl transition-all">
                             <div class="w-16 h-16 bg-houston-light rounded-full flex items-center justify-center mb-6">
                                 <i class="fas fa-tree text-houston-green text-2xl"></i>
@@ -643,6 +781,7 @@
                             </ul>
                         </div>
 
+                        <!-- Card 2: Development Sites -->
                         <div class="bg-white border-2 border-gray-200 rounded-xl p-8 hover:border-houston-accent hover:shadow-xl transition-all">
                             <div class="w-16 h-16 bg-houston-light rounded-full flex items-center justify-center mb-6">
                                 <i class="fas fa-city text-houston-green text-2xl"></i>
@@ -656,6 +795,7 @@
                             </ul>
                         </div>
 
+                        <!-- Card 3: Commercial Property -->
                         <div class="bg-white border-2 border-gray-200 rounded-xl p-8 hover:border-houston-accent hover:shadow-xl transition-all">
                             <div class="w-16 h-16 bg-houston-light rounded-full flex items-center justify-center mb-6">
                                 <i class="fas fa-building text-houston-green text-2xl"></i>
@@ -669,6 +809,7 @@
                             </ul>
                         </div>
 
+                        <!-- Card 4: Distressed Properties -->
                         <div class="bg-white border-2 border-gray-200 rounded-xl p-8 hover:border-houston-accent hover:shadow-xl transition-all">
                             <div class="w-16 h-16 bg-houston-light rounded-full flex items-center justify-center mb-6">
                                 <i class="fas fa-exclamation-triangle text-houston-green text-2xl"></i>
@@ -682,6 +823,7 @@
                             </ul>
                         </div>
 
+                        <!-- Card 5: Estate Sales -->
                         <div class="bg-white border-2 border-gray-200 rounded-xl p-8 hover:border-houston-accent hover:shadow-xl transition-all">
                             <div class="w-16 h-16 bg-houston-light rounded-full flex items-center justify-center mb-6">
                                 <i class="fas fa-home text-houston-green text-2xl"></i>
@@ -695,6 +837,7 @@
                             </ul>
                         </div>
 
+                        <!-- Card 6: Problem Properties -->
                         <div class="bg-white border-2 border-gray-200 rounded-xl p-8 hover:border-houston-accent hover:shadow-xl transition-all">
                             <div class="w-16 h-16 bg-houston-light rounded-full flex items-center justify-center mb-6">
                                 <i class="fas fa-tools text-houston-green text-2xl"></i>
@@ -3943,6 +4086,170 @@
             cursor: not-allowed;
         }
     </style>
+
+    <!-- Property Types Carousel JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const carousel = document.getElementById('propertyCarousel');
+            const dots = document.querySelectorAll('.carousel-dot');
+            let currentSlide = 0;
+            let startX = null;
+            let scrollStart = null;
+            let isScrolling = false;
+            
+            if (!carousel || dots.length === 0) return;
+            
+            const totalSlides = carousel.children.length;
+            const slideWidth = carousel.children[0].offsetWidth;
+            
+            // Update carousel position
+            function updateCarousel(index, animate = true) {
+                if (index < 0) index = 0;
+                if (index >= totalSlides) index = totalSlides - 1;
+                
+                currentSlide = index;
+                const offset = -index * 100;
+                
+                if (animate) {
+                    carousel.style.transition = 'transform 0.3s ease-out';
+                } else {
+                    carousel.style.transition = 'none';
+                }
+                
+                carousel.style.transform = `translateX(${offset}%)`;
+                
+                // Update dots
+                dots.forEach((dot, i) => {
+                    if (i === index) {
+                        dot.classList.add('active');
+                        dot.classList.remove('bg-gray-300');
+                        dot.classList.add('bg-houston-green');
+                    } else {
+                        dot.classList.remove('active');
+                        dot.classList.add('bg-gray-300');
+                        dot.classList.remove('bg-houston-green');
+                    }
+                });
+            }
+            
+            // Touch events
+            carousel.addEventListener('touchstart', function(e) {
+                startX = e.touches[0].clientX;
+                scrollStart = currentSlide;
+                isScrolling = true;
+                carousel.style.transition = 'none';
+            }, { passive: true });
+            
+            carousel.addEventListener('touchmove', function(e) {
+                if (!isScrolling) return;
+                
+                const currentX = e.touches[0].clientX;
+                const diff = startX - currentX;
+                const slidePercent = (diff / slideWidth) * 100;
+                const offset = -(scrollStart * 100 + slidePercent);
+                
+                carousel.style.transform = `translateX(${offset}%)`;
+            }, { passive: true });
+            
+            carousel.addEventListener('touchend', function(e) {
+                if (!isScrolling) return;
+                
+                const endX = e.changedTouches[0].clientX;
+                const diff = startX - endX;
+                const threshold = slideWidth * 0.2; // 20% of slide width
+                
+                if (Math.abs(diff) > threshold) {
+                    if (diff > 0 && currentSlide < totalSlides - 1) {
+                        // Swipe left - next slide
+                        updateCarousel(currentSlide + 1);
+                    } else if (diff < 0 && currentSlide > 0) {
+                        // Swipe right - previous slide
+                        updateCarousel(currentSlide - 1);
+                    } else {
+                        // Snap back to current slide
+                        updateCarousel(currentSlide);
+                    }
+                } else {
+                    // Snap back to current slide
+                    updateCarousel(currentSlide);
+                }
+                
+                isScrolling = false;
+            });
+            
+            // Mouse events for desktop testing
+            let mouseDown = false;
+            let mouseStartX = null;
+            
+            carousel.addEventListener('mousedown', function(e) {
+                mouseDown = true;
+                mouseStartX = e.clientX;
+                scrollStart = currentSlide;
+                carousel.style.transition = 'none';
+                carousel.style.cursor = 'grabbing';
+                e.preventDefault();
+            });
+            
+            carousel.addEventListener('mousemove', function(e) {
+                if (!mouseDown) return;
+                
+                const diff = mouseStartX - e.clientX;
+                const slidePercent = (diff / slideWidth) * 100;
+                const offset = -(scrollStart * 100 + slidePercent);
+                
+                carousel.style.transform = `translateX(${offset}%)`;
+            });
+            
+            carousel.addEventListener('mouseup', function(e) {
+                if (!mouseDown) return;
+                
+                const diff = mouseStartX - e.clientX;
+                const threshold = slideWidth * 0.2;
+                
+                if (Math.abs(diff) > threshold) {
+                    if (diff > 0 && currentSlide < totalSlides - 1) {
+                        updateCarousel(currentSlide + 1);
+                    } else if (diff < 0 && currentSlide > 0) {
+                        updateCarousel(currentSlide - 1);
+                    } else {
+                        updateCarousel(currentSlide);
+                    }
+                } else {
+                    updateCarousel(currentSlide);
+                }
+                
+                mouseDown = false;
+                carousel.style.cursor = 'grab';
+            });
+            
+            carousel.addEventListener('mouseleave', function() {
+                if (mouseDown) {
+                    updateCarousel(currentSlide);
+                    mouseDown = false;
+                    carousel.style.cursor = 'grab';
+                }
+            });
+            
+            // Dot navigation
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', function() {
+                    updateCarousel(index);
+                });
+            });
+            
+            // Initialize
+            updateCarousel(0, false);
+            
+            // Handle window resize
+            let resizeTimeout;
+            window.addEventListener('resize', function() {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(function() {
+                    updateCarousel(currentSlide, false);
+                }, 250);
+            });
+        });
+    </script>
 
     <!-- Calendar JavaScript -->
     <script>
