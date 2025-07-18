@@ -629,14 +629,8 @@ function calculateAdvancedROI() {
         return;
     }
     
-    // Show loading
-    document.getElementById('loadingOverlay').classList.remove('hidden');
-    
-    // Simulate calculation time for UX
-    setTimeout(() => {
-        performAdvancedCalculation();
-        document.getElementById('loadingOverlay').classList.add('hidden');
-    }, 300);
+    // Perform calculation immediately - no artificial delays
+    performAdvancedCalculation();
 }
 
 function validateROIInputs() {
@@ -965,55 +959,32 @@ window.showTab = function(tabName) {
     }
 };
 
-// Tool management - make globally accessible with performance optimizations
+// Tool management - make globally accessible with aggressive performance optimizations
 window.openTool = function(toolName) {
-    // Use requestAnimationFrame for smoother performance
-    requestAnimationFrame(() => {
-        // Only hide visible tools (more efficient)
-        const visibleTools = document.querySelectorAll('[id$="-tool"]:not(.hidden)');
-        visibleTools.forEach(tool => {
-            tool.classList.add('hidden');
-        });
-        
-        // Show selected tool with minimal delay
-        const toolId = toolName + '-tool';
-        const tool = document.getElementById(toolId);
-        
-        if (tool) {
-            // Force browser to acknowledge the hide before showing
-            tool.offsetHeight; // Trigger reflow
-            
-            // Remove hidden class
-            tool.classList.remove('hidden');
-            
-            // Smooth scroll with reduced motion check
-            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-            tool.scrollIntoView({ 
-                behavior: prefersReducedMotion ? 'auto' : 'smooth', 
-                block: 'start',
-                inline: 'nearest'
-            });
-            
-            // Initialize tools only if needed
-            switch(toolName) {
-                case 'chapter42':
-                case 'chapter42-tool':
-                    if (typeof initChapter42Tool === 'function' && !window.chapter42Initialized) {
-                        // Defer initialization to next frame for better perceived performance
-                        requestAnimationFrame(() => {
-                            initChapter42Tool();
-                        });
-                    }
-                    break;
-                case 'roi-calculator':
-                    // ROI calculator doesn't need re-initialization
-                    break;
-                case 'development-timeline':
-                    // Timeline doesn't need re-initialization
-                    break;
-            }
-        }
+    // Immediate action - no delays
+    const visibleTools = document.querySelectorAll('[id$="-tool"]:not(.hidden)');
+    visibleTools.forEach(tool => {
+        tool.classList.add('hidden');
     });
+    
+    const toolId = toolName + '-tool';
+    const tool = document.getElementById(toolId);
+    
+    if (tool) {
+        // Show immediately
+        tool.classList.remove('hidden');
+        
+        // Focus on the tool section immediately
+        const toolsSection = document.getElementById('tools');
+        if (toolsSection) {
+            toolsSection.scrollIntoView({ behavior: 'instant', block: 'start' });
+        }
+        
+        // Initialize Chapter 42 if needed (no delays)
+        if (toolName === 'chapter42' && typeof initChapter42Tool === 'function' && !window.chapter42Initialized) {
+            initChapter42Tool();
+        }
+    }
 }
 
 window.closeTool = function(toolName) {

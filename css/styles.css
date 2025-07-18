@@ -861,23 +861,18 @@ html {
     scroll-padding-top: 80px; /* Navbar height + some padding */
 }
 
-/* Tool transitions for smoother loading */
+/* Tool visibility - instant show/hide */
 [id$="-tool"] {
-    opacity: 1;
-    transform: translateY(0);
-    transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+    display: block !important;
 }
 
 [id$="-tool"].hidden {
-    opacity: 0;
-    transform: translateY(10px);
-    transition: none;
+    display: none !important;
 }
 
 /* Optimize tool container rendering */
 #roi-calculator-tool,
 #development-timeline-tool,
 #chapter42-tool {
-    will-change: opacity, transform;
-    contain: layout style;
+    contain: layout style paint;
 }
