@@ -910,31 +910,43 @@ function resetROICalculator() {
 
 // Tool management - make globally accessible
 window.openTool = function(toolName) {
+    console.log('Opening tool:', toolName);
+    
     // Hide all tools first
     const allTools = document.querySelectorAll('[id$="-tool"]');
+    console.log('Found tools:', Array.from(allTools).map(t => t.id));
     allTools.forEach(tool => {
         tool.classList.add('hidden');
     });
     
     // Show selected tool
-    const tool = document.getElementById(toolName + '-tool');
+    const toolId = toolName + '-tool';
+    const tool = document.getElementById(toolId);
+    console.log('Looking for tool with ID:', toolId, 'Found:', !!tool);
+    
     if (tool) {
         tool.classList.remove('hidden');
         tool.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        console.log('Tool opened successfully');
         
         // Re-initialize Chapter 42 tool if needed
-        if (toolName === 'chapter42' && typeof initChapter42Tool === 'function') {
+        if ((toolName === 'chapter42' || toolName === 'chapter42-tool') && typeof initChapter42Tool === 'function') {
+            console.log('Re-initializing Chapter 42 tool');
             setTimeout(() => {
                 if (!window.chapter42Initialized) {
                     initChapter42Tool();
                 }
             }, 200);
         }
+    } else {
+        console.error('Tool not found:', toolId);
     }
 }
 
 window.closeTool = function(toolName) {
-    const tool = document.getElementById(toolName + '-tool');
+    // Handle both full IDs and partial names
+    const toolId = toolName.endsWith('-tool') ? toolName : toolName + '-tool';
+    const tool = document.getElementById(toolId);
     if (tool) {
         tool.classList.add('hidden');
     }
