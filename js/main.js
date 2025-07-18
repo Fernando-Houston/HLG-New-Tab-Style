@@ -75,6 +75,39 @@ function initNavigation() {
             const targetElement = document.querySelector(targetId);
             
             if (targetElement) {
+                // Check if the target is a tab section
+                const tabSections = ['#sellers', '#developers', '#investors'];
+                if (tabSections.includes(targetId)) {
+                    // Activate the corresponding tab
+                    const tabName = targetId.substring(1); // Remove the #
+                    const tabButton = document.querySelector(`[data-tab="${tabName}"]`);
+                    const tabContents = document.querySelectorAll('.tab-content');
+                    const tabButtons = document.querySelectorAll('.tab-button');
+                    
+                    // Remove active class from all tabs
+                    tabButtons.forEach(btn => {
+                        btn.classList.remove('active', 'border-green-600', 'text-green-600');
+                        btn.classList.add('border-transparent', 'text-gray-500');
+                    });
+                    
+                    // Hide all tab contents
+                    tabContents.forEach(content => {
+                        content.classList.remove('active');
+                        content.classList.add('hidden');
+                    });
+                    
+                    // Activate the target tab
+                    if (tabButton) {
+                        tabButton.classList.add('active', 'border-green-600', 'text-green-600');
+                        tabButton.classList.remove('border-transparent', 'text-gray-500');
+                    }
+                    
+                    // Show target content
+                    targetElement.classList.remove('hidden');
+                    targetElement.classList.add('active');
+                }
+                
+                // Scroll to the element
                 const headerOffset = 80;
                 const elementPosition = targetElement.getBoundingClientRect().top;
                 const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
