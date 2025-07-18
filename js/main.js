@@ -14,7 +14,7 @@ window.handleVideoLoad = function() {
     }
 };
 
-function handleVideoError() {
+window.handleVideoError = function() {
     console.log('Video failed to load, showing fallback');
     const fallback = document.getElementById('video-fallback');
     const iframe = document.getElementById('video-player');
@@ -22,7 +22,7 @@ function handleVideoError() {
         fallback.classList.remove('hidden');
         iframe.style.display = 'none';
     }
-}
+};
 
 window.playVideoFallback = function() {
     const iframe = document.getElementById('video-player');
@@ -950,6 +950,20 @@ function resetROICalculator() {
         summaryChart = null;
     }
 }
+
+// Show tab function - make globally accessible
+window.showTab = function(tabName) {
+    const tabButton = document.querySelector(`[data-tab="${tabName}"]`);
+    if (tabButton) {
+        tabButton.click();
+    } else {
+        // If no tab button found, try to scroll to the section
+        const section = document.getElementById(tabName);
+        if (section) {
+            section.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+};
 
 // Tool management - make globally accessible
 window.openTool = function(toolName) {
