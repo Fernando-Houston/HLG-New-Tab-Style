@@ -1,69 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <!-- Main pages -->
     <url>
         <loc>https://houstonlandguy.com/</loc>
         <lastmod>2025-01-18</lastmod>
-        <changefreq>weekly</changefreq>
+        <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
+    
+    <!-- Legal pages -->
     <url>
-        <loc>https://houstonlandguy.com/developers</loc>
+        <loc>https://houstonlandguy.com/privacy.html</loc>
         <lastmod>2025-01-18</lastmod>
         <changefreq>monthly</changefreq>
+        <priority>0.3</priority>
+    </url>
+    
+    <url>
+        <loc>https://houstonlandguy.com/terms.html</loc>
+        <lastmod>2025-01-18</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.3</priority>
+    </url>
+    
+    <!-- Tab sections (virtual pages) -->
+    <url>
+        <loc>https://houstonlandguy.com/#sellers</loc>
+        <lastmod>2025-01-18</lastmod>
+        <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
+    
     <url>
-        <loc>https://houstonlandguy.com/investors</loc>
+        <loc>https://houstonlandguy.com/#developers</loc>
         <lastmod>2025-01-18</lastmod>
-        <changefreq>monthly</changefreq>
+        <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
+    
     <url>
-        <loc>https://houstonlandguy.com/sellers</loc>
+        <loc>https://houstonlandguy.com/#investors</loc>
         <lastmod>2025-01-18</lastmod>
-        <changefreq>monthly</changefreq>
+        <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
+    
     <url>
-        <loc>https://houstonlandguy.com/locations/houston</loc>
+        <loc>https://houstonlandguy.com/#tools</loc>
         <lastmod>2025-01-18</lastmod>
-        <changefreq>monthly</changefreq>
+        <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
+    
     <url>
-        <loc>https://houstonlandguy.com/locations/katy</loc>
+        <loc>https://houstonlandguy.com/#contact</loc>
         <lastmod>2025-01-18</lastmod>
-        <changefreq>monthly</changefreq>
+        <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
+    
+    <!-- Blog (to be created) -->
     <url>
-        <loc>https://houstonlandguy.com/locations/sugar-land</loc>
+        <loc>https://houstonlandguy.com/blog/</loc>
         <lastmod>2025-01-18</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://houstonlandguy.com/locations/the-woodlands</loc>
-        <lastmod>2025-01-18</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://houstonlandguy.com/services/roi-calculator</loc>
-        <lastmod>2025-01-18</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://houstonlandguy.com/services/development-timeline</loc>
-        <lastmod>2025-01-18</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://houstonlandguy.com/services/chapter-42-planning</loc>
-        <lastmod>2025-01-18</lastmod>
-        <changefreq>monthly</changefreq>
+        <changefreq>daily</changefreq>
         <priority>0.7</priority>
     </url>
 </urlset>
