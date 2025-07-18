@@ -2081,7 +2081,7 @@ function downloadTimelineChecklist() {
 
     <div class="watermark">Houston Land Guy - Development Excellence</div>
 
-    <script>
+    <sc` + `ript>
         // Add print button functionality
         function printPDF() {
             window.print();
@@ -2094,9 +2094,9 @@ function downloadTimelineChecklist() {
                 printPDF();
             }
         });
-    </script>
-</body>
-</html>`;
+    </sc` + `ript>
+<\/body>
+<\/html>`;
 
     // Create and download the HTML file
     const blob = new Blob([htmlContent], { type: 'text/html' });
