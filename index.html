@@ -1224,21 +1224,29 @@
                     box-shadow: 0 4px 8px rgba(0,0,0,0.4), 0 0 20px rgba(34, 197, 94, 0.7);
                 }
                 
-                /* Better select and input styling for dark backgrounds */
-                .bg-gradient-to-br select,
-                .bg-gradient-to-br input[type="number"],
-                .bg-gradient-to-br input[type="text"],
-                .bg-gradient-to-br input[type="email"] {
+                /* Better select and input styling for dark glassmorphism backgrounds only */
+                .bg-gradient-to-br.from-gray-800\/40 select,
+                .bg-gradient-to-br.from-gray-800\/40 input[type="number"],
+                .bg-gradient-to-br.from-gray-800\/40 input[type="text"],
+                .bg-gradient-to-br.from-gray-800\/40 input[type="email"],
+                .bg-gradient-to-br.from-gray-800\/30 select,
+                .bg-gradient-to-br.from-gray-800\/30 input[type="number"],
+                .bg-gradient-to-br.from-gray-800\/30 input[type="text"],
+                .bg-gradient-to-br.from-gray-800\/30 input[type="email"] {
                     background-color: rgba(31, 41, 55, 0.8);
                     border-color: rgba(75, 85, 99, 0.8);
                     color: white;
                     font-weight: 500;
                 }
                 
-                .bg-gradient-to-br select:focus,
-                .bg-gradient-to-br input[type="number"]:focus,
-                .bg-gradient-to-br input[type="text"]:focus,
-                .bg-gradient-to-br input[type="email"]:focus {
+                .bg-gradient-to-br.from-gray-800\/40 select:focus,
+                .bg-gradient-to-br.from-gray-800\/40 input[type="number"]:focus,
+                .bg-gradient-to-br.from-gray-800\/40 input[type="text"]:focus,
+                .bg-gradient-to-br.from-gray-800\/40 input[type="email"]:focus,
+                .bg-gradient-to-br.from-gray-800\/30 select:focus,
+                .bg-gradient-to-br.from-gray-800\/30 input[type="number"]:focus,
+                .bg-gradient-to-br.from-gray-800\/30 input[type="text"]:focus,
+                .bg-gradient-to-br.from-gray-800\/30 input[type="email"]:focus {
                     border-color: #22c55e;
                     box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
                 }
