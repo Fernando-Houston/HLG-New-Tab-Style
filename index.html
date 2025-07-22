@@ -1121,7 +1121,7 @@
                 /* Glassmorphism Backgrounds */
                 .bg-gradient-to-br.from-gray-800\/40,
                 .bg-gradient-to-br.from-gray-800\/30 {
-                    background: linear-gradient(135deg, rgba(55, 65, 81, 0.4) 0%, rgba(55, 65, 81, 0.3) 100%);
+                    background: linear-gradient(135deg, rgba(31, 41, 55, 0.85) 0%, rgba(55, 65, 81, 0.85) 100%);
                     position: relative;
                 }
                 
@@ -1140,8 +1140,8 @@
                 /* Enhanced backdrop blur support */
                 @supports (backdrop-filter: blur(12px)) {
                     .backdrop-blur-lg {
-                        backdrop-filter: blur(12px);
-                        -webkit-backdrop-filter: blur(12px);
+                        backdrop-filter: blur(12px) saturate(150%);
+                        -webkit-backdrop-filter: blur(12px) saturate(150%);
                     }
                 }
                 
@@ -1160,7 +1160,87 @@
                 .bg-gradient-to-br.from-gray-800\/30 h1,
                 .bg-gradient-to-br.from-gray-800\/30 h2,
                 .bg-gradient-to-br.from-gray-800\/30 h3 {
-                    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+                    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8), 0 1px 3px rgba(0, 0, 0, 0.9);
+                    letter-spacing: 0.02em;
+                }
+                
+                /* Enhanced text contrast for paragraphs and labels */
+                .bg-gradient-to-br.from-gray-800\/40 p,
+                .bg-gradient-to-br.from-gray-800\/40 label,
+                .bg-gradient-to-br.from-gray-800\/30 p,
+                .bg-gradient-to-br.from-gray-800\/30 label,
+                .bg-gradient-to-br.from-gray-800\/40 .text-gray-300,
+                .bg-gradient-to-br.from-gray-800\/30 .text-gray-300 {
+                    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+                    font-weight: 500;
+                }
+                
+                /* Make white text more prominent */
+                .bg-gradient-to-br.from-gray-800\/40 .text-white,
+                .bg-gradient-to-br.from-gray-800\/30 .text-white {
+                    font-weight: 600;
+                    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+                }
+                
+                /* Enhance green accent text visibility */
+                .bg-gradient-to-br.from-gray-800\/40 .text-houston-accent,
+                .bg-gradient-to-br.from-gray-800\/30 .text-houston-accent,
+                .bg-gradient-to-br.from-gray-800\/40 .text-green-400,
+                .bg-gradient-to-br.from-gray-800\/30 .text-green-400 {
+                    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8), 0 0 20px rgba(34, 197, 94, 0.3);
+                    font-weight: 600;
+                }
+                
+                /* Custom slider styling for glassmorphism sections */
+                .land-slider::-webkit-slider-thumb {
+                    appearance: none;
+                    width: 24px;
+                    height: 24px;
+                    background: #22c55e;
+                    border-radius: 50%;
+                    cursor: pointer;
+                    box-shadow: 0 2px 6px rgba(0,0,0,0.3), 0 0 10px rgba(34, 197, 94, 0.5);
+                    transition: all 0.2s;
+                }
+                
+                .land-slider::-webkit-slider-thumb:hover {
+                    transform: scale(1.2);
+                    box-shadow: 0 4px 8px rgba(0,0,0,0.4), 0 0 20px rgba(34, 197, 94, 0.7);
+                }
+                
+                .land-slider::-moz-range-thumb {
+                    width: 24px;
+                    height: 24px;
+                    background: #22c55e;
+                    border-radius: 50%;
+                    cursor: pointer;
+                    box-shadow: 0 2px 6px rgba(0,0,0,0.3), 0 0 10px rgba(34, 197, 94, 0.5);
+                    transition: all 0.2s;
+                    border: none;
+                }
+                
+                .land-slider::-moz-range-thumb:hover {
+                    transform: scale(1.2);
+                    box-shadow: 0 4px 8px rgba(0,0,0,0.4), 0 0 20px rgba(34, 197, 94, 0.7);
+                }
+                
+                /* Better select and input styling for dark backgrounds */
+                .bg-gradient-to-br select,
+                .bg-gradient-to-br input[type="number"],
+                .bg-gradient-to-br input[type="text"],
+                .bg-gradient-to-br input[type="email"] {
+                    background-color: rgba(31, 41, 55, 0.8);
+                    border-color: rgba(75, 85, 99, 0.8);
+                    color: white;
+                    font-weight: 500;
+                }
+                
+                .bg-gradient-to-br select:focus,
+                .bg-gradient-to-br input[type="number"]:focus,
+                .bg-gradient-to-br input[type="text"]:focus,
+                .bg-gradient-to-br input[type="email"]:focus {
+                    border-color: #22c55e;
+                    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
                 }
             </style>
             
@@ -1937,25 +2017,25 @@
                     <div class="max-w-4xl mx-auto">
                         <div class="space-y-6">
                             <div>
-                                <label class="block text-sm font-medium text-gray-300 mb-3">Project Size (acres)</label>
+                                <label class="block text-sm font-bold text-white mb-3">Project Size (acres)</label>
                                 <input
                                     type="range"
                                     id="landSize"
                                     min="1"
                                     max="200"
                                     value="29"
-                                    class="w-full h-3 bg-gray-700 rounded-lg appearance-none cursor-pointer"
+                                    class="w-full h-3 bg-gray-600 rounded-lg appearance-none cursor-pointer land-slider"
                                     oninput="updateLandFinder()"
                                 />
-                                <div class="flex justify-between text-sm mt-2 text-gray-400">
-                                    <span>1 acre</span>
-                                    <span id="landSizeValue" class="text-green-400 font-bold">29 acres</span>
-                                    <span>200+ acres</span>
+                                <div class="flex justify-between text-sm mt-2">
+                                    <span class="text-white font-medium">1 acre</span>
+                                    <span id="landSizeValue" class="text-green-400 font-bold text-lg">29 acres</span>
+                                    <span class="text-white font-medium">200+ acres</span>
                                 </div>
                             </div>
 
                             <div>
-                                <label class="block text-sm font-medium text-gray-300 mb-3">Budget Range</label>
+                                <label class="block text-sm font-bold text-white mb-3">Budget Range</label>
                                 <input
                                     type="range"
                                     id="landBudget"
@@ -1966,14 +2046,14 @@
                                     class="w-full h-3 bg-gray-700 rounded-lg appearance-none cursor-pointer"
                                     oninput="updateLandFinder()"
                                 />
-                                <div id="landBudgetValue" class="text-center text-2xl font-bold text-green-400 mt-2">
+                                <div id="landBudgetValue" class="text-center text-3xl font-bold text-green-400 mt-2">
                                     $1.0M
                                 </div>
                             </div>
 
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-300 mb-2">Development Type</label>
+                                    <label class="block text-sm font-bold text-white mb-2">Development Type</label>
                                     <select id="developmentType" class="w-full bg-gray-700 border border-gray-600 rounded-lg px-3 py-3 text-white">
                                         <option value="residential">Residential</option>
                                         <option value="commercial">Commercial</option>
@@ -1983,7 +2063,7 @@
                                 </div>
                                 
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-300 mb-2">Timeline (months)</label>
+                                    <label class="block text-sm font-bold text-white mb-2">Timeline (months)</label>
                                     <input
                                         type="number"
                                         id="developmentTimeline"
@@ -1996,23 +2076,23 @@
                             </div>
 
                             <!-- AI Market Analysis -->
-                            <div class="bg-gray-800 rounded-xl p-4">
-                                <h4 class="font-semibold text-green-400 mb-3 flex items-center gap-2">
-                                    <i class="fas fa-microchip"></i>
+                            <div class="bg-gray-900/80 rounded-xl p-5 border border-gray-700">
+                                <h4 class="font-bold text-green-400 text-lg mb-4 flex items-center gap-2">
+                                    <i class="fas fa-microchip text-xl"></i>
                                     AI Market Analysis
                                 </h4>
                                 <div class="grid grid-cols-3 gap-4 text-sm">
                                     <div class="text-center">
-                                        <div class="text-gray-400">Projected ROI:</div>
-                                        <div id="projectedROI" class="text-2xl font-bold text-green-400">23.0%</div>
+                                        <div class="text-white font-semibold mb-1">Projected ROI:</div>
+                                        <div id="projectedROI" class="text-3xl font-bold text-green-400">23.0%</div>
                                     </div>
                                     <div class="text-center">
-                                        <div class="text-gray-400">Market Demand:</div>
-                                        <div class="text-2xl font-bold text-blue-400">High</div>
+                                        <div class="text-white font-semibold mb-1">Market Demand:</div>
+                                        <div class="text-3xl font-bold text-blue-400">High</div>
                                     </div>
                                     <div class="text-center">
-                                        <div class="text-gray-400">Competition Level:</div>
-                                        <div class="text-2xl font-bold text-yellow-400">Moderate</div>
+                                        <div class="text-white font-semibold mb-1">Competition Level:</div>
+                                        <div class="text-3xl font-bold text-yellow-400">Moderate</div>
                                     </div>
                                 </div>
                             </div>
@@ -2343,43 +2423,43 @@
                     <div class="max-w-4xl mx-auto">
                         <div class="space-y-4">
                             <!-- Phase 1: Site Selection -->
-                            <div class="p-4 rounded-lg border-2 bg-green-500 bg-opacity-20 border-green-400 transition-all">
+                            <div class="p-5 rounded-lg border-2 bg-green-500/30 border-green-400 transition-all">
                                 <div class="flex items-center justify-between mb-2">
-                                    <h4 class="font-semibold text-white flex items-center gap-2">
-                                        <i class="fas fa-check-circle text-green-400"></i>
+                                    <h4 class="font-bold text-white text-lg flex items-center gap-2">
+                                        <i class="fas fa-check-circle text-green-400 text-xl"></i>
                                         Site Selection
                                     </h4>
-                                    <span class="text-sm text-gray-300">2-4 weeks</span>
+                                    <span class="text-sm text-white font-bold bg-black/40 px-3 py-1 rounded-full">2-4 weeks</span>
                                 </div>
-                                <p class="text-sm text-green-400 italic">
+                                <p class="text-sm text-green-300 font-semibold italic">
                                     Houston Insight: Harris County zoning pre-checks save 30% time
                                 </p>
                             </div>
 
                             <!-- Phase 2: Due Diligence -->
-                            <div class="p-4 rounded-lg border-2 bg-green-500 bg-opacity-20 border-green-400 transition-all">
+                            <div class="p-5 rounded-lg border-2 bg-green-500/30 border-green-400 transition-all">
                                 <div class="flex items-center justify-between mb-2">
-                                    <h4 class="font-semibold text-white flex items-center gap-2">
-                                        <i class="fas fa-check-circle text-green-400"></i>
+                                    <h4 class="font-bold text-white text-lg flex items-center gap-2">
+                                        <i class="fas fa-check-circle text-green-400 text-xl"></i>
                                         Due Diligence
                                     </h4>
-                                    <span class="text-sm text-gray-300">4-6 weeks</span>
+                                    <span class="text-sm text-white font-bold bg-black/40 px-3 py-1 rounded-full">4-6 weeks</span>
                                 </div>
-                                <p class="text-sm text-green-400 italic">
+                                <p class="text-sm text-green-300 font-semibold italic">
                                     Houston Insight: HCFCD flood plain analysis required
                                 </p>
                             </div>
 
                             <!-- Phase 3: Permitting -->
-                            <div class="p-4 rounded-lg border-2 bg-slate-800 border-slate-700 transition-all">
+                            <div class="p-5 rounded-lg border-2 bg-slate-900/60 border-slate-600 transition-all">
                                 <div class="flex items-center justify-between mb-2">
-                                    <h4 class="font-semibold text-white flex items-center gap-2">
-                                        <i class="fas fa-check-circle text-green-400"></i>
+                                    <h4 class="font-bold text-white text-lg flex items-center gap-2">
+                                        <i class="fas fa-check-circle text-green-400 text-xl"></i>
                                         Permitting
                                     </h4>
-                                    <span class="text-sm text-gray-300">8-12 weeks</span>
+                                    <span class="text-sm text-white font-bold bg-black/40 px-3 py-1 rounded-full">8-12 weeks</span>
                                 </div>
-                                <p class="text-sm text-green-400 italic">
+                                <p class="text-sm text-green-300 font-semibold italic">
                                     Houston Insight: Fast-track available for qualified projects
                                 </p>
                             </div>
