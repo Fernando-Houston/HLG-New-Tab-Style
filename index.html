@@ -1687,25 +1687,181 @@
                     </div>
                 </div>
 
-                <!-- Stats Bar -->
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
-                    <div class="text-center">
-                        <div class="text-4xl font-bold text-houston-green mb-2">15+</div>
-                        <div class="text-houston-gray">Years Houston Experience</div>
+                <!-- Smart Land Finder -->
+                <div class="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-8 mb-16">
+                    <div class="flex items-center gap-3 mb-6 justify-center">
+                        <i class="fas fa-search text-3xl text-houston-accent"></i>
+                        <h2 class="text-3xl font-bold text-white">Smart Land Finder</h2>
+                        <div class="ml-3 bg-green-500/20 px-3 py-1 rounded-full text-green-400 text-sm">
+                            AI-Powered
+                        </div>
                     </div>
-                    <div class="text-center">
-                        <div class="text-4xl font-bold text-houston-green mb-2">$483M+</div>
-                        <div class="text-houston-gray">Total Transactions</div>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-4xl font-bold text-houston-green mb-2">1200+</div>
-                        <div class="text-houston-gray">Sites Analyzed</div>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-4xl font-bold text-houston-green mb-2">95%</div>
-                        <div class="text-houston-gray">Deal Success Rate</div>
+                    
+                    <div class="max-w-4xl mx-auto">
+                        <div class="space-y-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300 mb-3">Project Size (acres)</label>
+                                <input
+                                    type="range"
+                                    id="landSize"
+                                    min="1"
+                                    max="200"
+                                    value="29"
+                                    class="w-full h-3 bg-gray-700 rounded-lg appearance-none cursor-pointer"
+                                    oninput="updateLandFinder()"
+                                />
+                                <div class="flex justify-between text-sm mt-2 text-gray-400">
+                                    <span>1 acre</span>
+                                    <span id="landSizeValue" class="text-green-400 font-bold">29 acres</span>
+                                    <span>200+ acres</span>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300 mb-3">Budget Range</label>
+                                <input
+                                    type="range"
+                                    id="landBudget"
+                                    min="100000"
+                                    max="10000000"
+                                    step="100000"
+                                    value="1000000"
+                                    class="w-full h-3 bg-gray-700 rounded-lg appearance-none cursor-pointer"
+                                    oninput="updateLandFinder()"
+                                />
+                                <div id="landBudgetValue" class="text-center text-2xl font-bold text-green-400 mt-2">
+                                    $1.0M
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-300 mb-2">Development Type</label>
+                                    <select id="developmentType" class="w-full bg-gray-700 border border-gray-600 rounded-lg px-3 py-3 text-white">
+                                        <option value="residential">Residential</option>
+                                        <option value="commercial">Commercial</option>
+                                        <option value="mixed">Mixed-Use</option>
+                                        <option value="industrial">Industrial</option>
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-300 mb-2">Timeline (months)</label>
+                                    <input
+                                        type="number"
+                                        id="developmentTimeline"
+                                        value="18"
+                                        min="6"
+                                        max="60"
+                                        class="w-full bg-gray-700 border border-gray-600 rounded-lg px-3 py-3 text-white"
+                                    />
+                                </div>
+                            </div>
+
+                            <!-- AI Market Analysis -->
+                            <div class="bg-gray-800 rounded-xl p-4">
+                                <h4 class="font-semibold text-green-400 mb-3 flex items-center gap-2">
+                                    <i class="fas fa-microchip"></i>
+                                    AI Market Analysis
+                                </h4>
+                                <div class="grid grid-cols-3 gap-4 text-sm">
+                                    <div class="text-center">
+                                        <div class="text-gray-400">Projected ROI:</div>
+                                        <div id="projectedROI" class="text-2xl font-bold text-green-400">23.0%</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-gray-400">Market Demand:</div>
+                                        <div class="text-2xl font-bold text-blue-400">High</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-gray-400">Competition Level:</div>
+                                        <div class="text-2xl font-bold text-yellow-400">Moderate</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button onclick="showLandFinderResults()" class="w-full bg-houston-accent hover:bg-green-500 px-6 py-4 rounded-xl font-semibold text-white text-lg transition-all transform hover:scale-105">
+                                Find Perfect Sites
+                            </button>
+
+                            <!-- Results Section (Hidden by default) -->
+                            <div id="landFinderResults" class="hidden space-y-4 mt-6">
+                                <div class="bg-black/30 rounded-lg p-4 text-center">
+                                    <div class="text-2xl font-bold text-green-400 mb-2">3 sites found</div>
+                                </div>
+                                
+                                <!-- Sample Result -->
+                                <div class="bg-gray-800 rounded-xl p-6 border-2 border-green-400">
+                                    <div class="flex justify-between items-start mb-4">
+                                        <div>
+                                            <h3 class="text-xl font-bold text-white">Westside Development Tract</h3>
+                                            <p class="text-gray-400">Size: 45 acres • Price: $8.2M</p>
+                                        </div>
+                                        <div class="text-right">
+                                            <div class="text-2xl font-bold text-green-400">94% Match</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="grid grid-cols-2 gap-4 mb-4 text-sm">
+                                        <div>
+                                            <span class="text-gray-400">Zoning:</span>
+                                            <span class="ml-2 text-white">Planned Development</span>
+                                        </div>
+                                        <div>
+                                            <span class="text-gray-400">Timeline:</span>
+                                            <span class="ml-2 text-white">Ready now</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex flex-wrap gap-2 mb-4">
+                                        <span class="bg-green-500/20 text-green-400 px-3 py-1 rounded-full text-sm">Highway access</span>
+                                        <span class="bg-green-500/20 text-green-400 px-3 py-1 rounded-full text-sm">Utilities ready</span>
+                                        <span class="bg-green-500/20 text-green-400 px-3 py-1 rounded-full text-sm">Clear title</span>
+                                    </div>
+                                    
+                                    <!-- Email Capture for Site Package -->
+                                    <div class="bg-gray-700 rounded-lg p-4">
+                                        <h4 class="font-semibold text-white mb-3">Request Site Package</h4>
+                                        <form onsubmit="event.preventDefault(); alert('Site package request submitted!');">
+                                            <input
+                                                type="email"
+                                                placeholder="Enter your email for full site details"
+                                                required
+                                                class="w-full bg-gray-800 border border-gray-600 rounded-lg px-4 py-3 text-white mb-3"
+                                            />
+                                            <button type="submit" class="w-full bg-green-500 hover:bg-green-600 py-3 rounded-lg text-white font-semibold transition-colors">
+                                                Get Site Information
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
+                <script>
+                function updateLandFinder() {
+                    const size = document.getElementById('landSize').value;
+                    const budget = document.getElementById('landBudget').value;
+                    
+                    document.getElementById('landSizeValue').textContent = size + ' acres';
+                    document.getElementById('landBudgetValue').textContent = '$' + (budget / 1000000).toFixed(1) + 'M';
+                    
+                    // Update ROI based on inputs
+                    const type = document.getElementById('developmentType').value;
+                    const baseROI = type === 'residential' ? 22 : type === 'commercial' ? 18 : 25;
+                    const sizeBonus = size > 50 ? 3 : size > 20 ? 1 : 0;
+                    const roi = baseROI + sizeBonus;
+                    document.getElementById('projectedROI').textContent = roi.toFixed(1) + '%';
+                }
+
+                function showLandFinderResults() {
+                    const results = document.getElementById('landFinderResults');
+                    results.classList.remove('hidden');
+                    results.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }
+                </script>
 
                 <!-- Services Section -->
                 <div class="mb-16">
@@ -1953,227 +2109,93 @@
                     </div>
                 </div>
 
-                <!-- Testimonials Section -->
-                <div class="mb-16">
-                    <h2 class="text-3xl font-bold text-center text-houston-green mb-4">Trusted by Houston's Top Developers</h2>
-                    <p class="text-center text-houston-gray mb-12">See why 500+ developers choose us for their Houston land acquisition needs</p>
-                    
-                    <!-- Desktop Grid (hidden on mobile) -->
-                    <div class="hidden md:grid md:grid-cols-3 gap-8">
-                        <!-- Testimonial 1 -->
-                        <div class="bg-gray-900 rounded-xl p-8 shadow-lg border border-gray-700">
-                            <div class="flex mb-4">
-                                <i class="fas fa-star text-yellow-400"></i>
-                                <i class="fas fa-star text-yellow-400"></i>
-                                <i class="fas fa-star text-yellow-400"></i>
-                                <i class="fas fa-star text-yellow-400"></i>
-                                <i class="fas fa-star text-yellow-400"></i>
-                            </div>
-                            <p class="text-gray-300 mb-6 italic">
-                                "Houston Development Intelligence found us an off-market 45-acre site that perfectly fit our criteria. Their market knowledge saved us 6 months and $2M."
-                            </p>
-                            <div class="border-t border-gray-700 pt-4">
-                                <div class="font-semibold text-white">David Chen</div>
-                                <div class="text-sm text-gray-400">Apex Development Group</div>
-                                <div class="text-xs text-green-400 mt-1">Katy Master-Planned Community</div>
-                            </div>
-                        </div>
 
-                        <!-- Testimonial 2 -->
-                        <div class="bg-gray-900 rounded-xl p-8 shadow-lg border border-gray-700">
-                            <div class="flex mb-4">
-                                <i class="fas fa-star text-yellow-400"></i>
-                                <i class="fas fa-star text-yellow-400"></i>
-                                <i class="fas fa-star text-yellow-400"></i>
-                                <i class="fas fa-star text-yellow-400"></i>
-                                <i class="fas fa-star text-yellow-400"></i>
-                            </div>
-                            <p class="text-gray-300 mb-6 italic">
-                                "The due diligence package was incredibly thorough. They identified deed restriction issues that would have killed our project. Expert knowledge and attention to detail."
-                            </p>
-                            <div class="border-t border-gray-700 pt-4">
-                                <div class="font-semibold text-white">Sarah Martinez</div>
-                                <div class="text-sm text-gray-400">Urban Living Partners</div>
-                                <div class="text-xs text-green-400 mt-1">Montrose Townhome Development</div>
-                            </div>
-                        </div>
-
-                        <!-- Testimonial 3 -->
-                        <div class="bg-gray-900 rounded-xl p-8 shadow-lg border border-gray-700">
-                            <div class="flex mb-4">
-                                <i class="fas fa-star text-yellow-400"></i>
-                                <i class="fas fa-star text-yellow-400"></i>
-                                <i class="fas fa-star text-yellow-400"></i>
-                                <i class="fas fa-star text-yellow-400"></i>
-                                <i class="fas fa-star text-yellow-400"></i>
-                            </div>
-                            <p class="text-gray-300 mb-6 italic">
-                                "15 years of working together. They've sourced over $50M in development sites for us. No one knows Houston land better."
-                            </p>
-                            <div class="border-t border-gray-700 pt-4">
-                                <div class="font-semibold text-white">Robert Thompson</div>
-                                <div class="text-sm text-gray-400">Gulf Coast Commercial</div>
-                                <div class="text-xs text-green-400 mt-1">Woodlands Medical Plaza</div>
-                            </div>
-                        </div>
+                <!-- Houston Development Timeline -->
+                <div class="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-8 mb-16">
+                    <div class="flex items-center gap-3 mb-6 justify-center">
+                        <i class="fas fa-clock text-3xl text-houston-accent"></i>
+                        <h2 class="text-3xl font-bold text-white">Houston Development Timeline</h2>
                     </div>
                     
-                    <!-- Mobile Carousel (shown only on mobile) -->
-                    <div class="md:hidden relative">
-                        <div class="developer-testimonials-carousel relative overflow-hidden">
-                            <div class="flex transition-transform duration-150" id="developerTestimonialsCarousel">
-                                <!-- Testimonial 1 -->
-                                <div class="w-full flex-shrink-0 px-2">
-                                    <div class="bg-gray-900 rounded-xl p-8 shadow-lg h-full border border-gray-700">
-                                        <div class="flex mb-4">
-                                            <i class="fas fa-star text-yellow-400"></i>
-                                            <i class="fas fa-star text-yellow-400"></i>
-                                            <i class="fas fa-star text-yellow-400"></i>
-                                            <i class="fas fa-star text-yellow-400"></i>
-                                            <i class="fas fa-star text-yellow-400"></i>
-                                        </div>
-                                        <p class="text-gray-300 mb-6 italic">
-                                            "Houston Development Intelligence found us an off-market 45-acre site that perfectly fit our criteria. Their market knowledge saved us 6 months and $2M."
-                                        </p>
-                                        <div class="border-t border-gray-700 pt-4">
-                                            <div class="font-semibold text-white">David Chen</div>
-                                            <div class="text-sm text-gray-400">Apex Development Group</div>
-                                            <div class="text-xs text-green-400 mt-1">Katy Master-Planned Community</div>
-                                        </div>
-                                    </div>
+                    <div class="max-w-4xl mx-auto">
+                        <div class="space-y-4">
+                            <!-- Phase 1: Site Selection -->
+                            <div class="p-4 rounded-lg border-2 bg-green-500 bg-opacity-20 border-green-400 transition-all">
+                                <div class="flex items-center justify-between mb-2">
+                                    <h4 class="font-semibold text-white flex items-center gap-2">
+                                        <i class="fas fa-check-circle text-green-400"></i>
+                                        Site Selection
+                                    </h4>
+                                    <span class="text-sm text-gray-300">2-4 weeks</span>
                                 </div>
-                                <!-- Testimonial 2 -->
-                                <div class="w-full flex-shrink-0 px-2">
-                                    <div class="bg-gray-900 rounded-xl p-8 shadow-lg h-full border border-gray-700">
-                                        <div class="flex mb-4">
-                                            <i class="fas fa-star text-yellow-400"></i>
-                                            <i class="fas fa-star text-yellow-400"></i>
-                                            <i class="fas fa-star text-yellow-400"></i>
-                                            <i class="fas fa-star text-yellow-400"></i>
-                                            <i class="fas fa-star text-yellow-400"></i>
-                                        </div>
-                                        <p class="text-gray-300 mb-6 italic">
-                                            "The due diligence package was incredibly thorough. They identified deed restriction issues that would have killed our project. Expert knowledge and attention to detail."
-                                        </p>
-                                        <div class="border-t border-gray-700 pt-4">
-                                            <div class="font-semibold text-white">Sarah Martinez</div>
-                                            <div class="text-sm text-gray-400">Urban Living Partners</div>
-                                            <div class="text-xs text-green-400 mt-1">Montrose Townhome Development</div>
-                                        </div>
-                                    </div>
+                                <p class="text-sm text-green-400 italic">
+                                    Houston Insight: Harris County zoning pre-checks save 30% time
+                                </p>
+                            </div>
+
+                            <!-- Phase 2: Due Diligence -->
+                            <div class="p-4 rounded-lg border-2 bg-green-500 bg-opacity-20 border-green-400 transition-all">
+                                <div class="flex items-center justify-between mb-2">
+                                    <h4 class="font-semibold text-white flex items-center gap-2">
+                                        <i class="fas fa-check-circle text-green-400"></i>
+                                        Due Diligence
+                                    </h4>
+                                    <span class="text-sm text-gray-300">4-6 weeks</span>
                                 </div>
-                                <!-- Testimonial 3 -->
-                                <div class="w-full flex-shrink-0 px-2">
-                                    <div class="bg-gray-900 rounded-xl p-8 shadow-lg h-full border border-gray-700">
-                                        <div class="flex mb-4">
-                                            <i class="fas fa-star text-yellow-400"></i>
-                                            <i class="fas fa-star text-yellow-400"></i>
-                                            <i class="fas fa-star text-yellow-400"></i>
-                                            <i class="fas fa-star text-yellow-400"></i>
-                                            <i class="fas fa-star text-yellow-400"></i>
-                                        </div>
-                                        <p class="text-gray-300 mb-6 italic">
-                                            "15 years of working together. They've sourced over $50M in development sites for us. No one knows Houston land better."
-                                        </p>
-                                        <div class="border-t border-gray-700 pt-4">
-                                            <div class="font-semibold text-white">Robert Thompson</div>
-                                            <div class="text-sm text-gray-400">Gulf Coast Commercial</div>
-                                            <div class="text-xs text-green-400 mt-1">Woodlands Medical Plaza</div>
-                                        </div>
-                                    </div>
+                                <p class="text-sm text-green-400 italic">
+                                    Houston Insight: HCFCD flood plain analysis required
+                                </p>
+                            </div>
+
+                            <!-- Phase 3: Permitting -->
+                            <div class="p-4 rounded-lg border-2 bg-slate-800 border-slate-700 transition-all">
+                                <div class="flex items-center justify-between mb-2">
+                                    <h4 class="font-semibold text-white flex items-center gap-2">
+                                        <i class="fas fa-check-circle text-green-400"></i>
+                                        Permitting
+                                    </h4>
+                                    <span class="text-sm text-gray-300">8-12 weeks</span>
                                 </div>
+                                <p class="text-sm text-green-400 italic">
+                                    Houston Insight: Fast-track available for qualified projects
+                                </p>
+                            </div>
+
+                            <!-- Phase 4: Construction (Current) -->
+                            <div class="p-4 rounded-lg border-2 bg-green-500 bg-opacity-20 border-green-400 scale-105 shadow-lg">
+                                <div class="flex items-center justify-between mb-2">
+                                    <h4 class="font-semibold text-white flex items-center gap-2">
+                                        <i class="fas fa-bolt text-yellow-400 animate-pulse"></i>
+                                        Construction
+                                    </h4>
+                                    <span class="text-sm text-gray-300">12-18 months</span>
+                                </div>
+                                <p class="text-sm text-green-400 italic">
+                                    Houston Insight: Hurricane season planning adds 2-3 weeks
+                                </p>
+                            </div>
+
+                            <!-- Phase 5: Marketing & Sales -->
+                            <div class="p-4 rounded-lg border-2 bg-slate-800 border-slate-700 transition-all">
+                                <div class="flex items-center justify-between mb-2">
+                                    <h4 class="font-semibold text-white flex items-center gap-2">
+                                        <i class="fas fa-exclamation-triangle text-gray-400"></i>
+                                        Marketing & Sales
+                                    </h4>
+                                    <span class="text-sm text-gray-300">6-12 months</span>
+                                </div>
+                                <p class="text-sm text-gray-400 italic">
+                                    Houston Insight: Q1 launch captures oil sector bonuses
+                                </p>
                             </div>
                         </div>
-                        <!-- Navigation Dots -->
-                        <div class="flex justify-center gap-2 mt-6">
-                            <button class="developer-testimonials-dot w-2 h-2 bg-gray-300 rounded-full active" data-slide="0"></button>
-                            <button class="developer-testimonials-dot w-2 h-2 bg-gray-300 rounded-full" data-slide="1"></button>
-                            <button class="developer-testimonials-dot w-2 h-2 bg-gray-300 rounded-full" data-slide="2"></button>
+                        
+                        <div class="mt-8 text-center">
+                            <button onclick="showTab('tools'); openTool('development-timeline'); trackToolUsage('development-timeline', 'timeline_section');" class="bg-houston-accent hover:bg-green-500 px-8 py-3 rounded-lg font-semibold text-white transition-all transform hover:scale-105">
+                                Access Full Timeline Tool <i class="fas fa-arrow-right ml-2"></i>
+                            </button>
                         </div>
                     </div>
-                </div>
-
-                <!-- Review Schema for Testimonials -->
-                <script type="application/ld+json">
-                {
-                    "@context": "https://schema.org",
-                    "@type": "Product",
-                    "name": "Houston Land Guy Development Services",
-                    "aggregateRating": {
-                        "@type": "AggregateRating",
-                        "ratingValue": "5",
-                        "bestRating": "5",
-                        "worstRating": "1",
-                        "ratingCount": "500",
-                        "reviewCount": "3"
-                    },
-                    "review": [
-                        {
-                            "@type": "Review",
-                            "reviewRating": {
-                                "@type": "Rating",
-                                "ratingValue": "5",
-                                "bestRating": "5"
-                            },
-                            "author": {
-                                "@type": "Person",
-                                "name": "David Chen"
-                            },
-                            "reviewBody": "Houston Development Intelligence found us an off-market 45-acre site that perfectly fit our criteria. Their market knowledge saved us 6 months and $2M.",
-                            "publisher": {
-                                "@type": "Organization",
-                                "name": "Apex Development Group"
-                            }
-                        },
-                        {
-                            "@type": "Review",
-                            "reviewRating": {
-                                "@type": "Rating",
-                                "ratingValue": "5",
-                                "bestRating": "5"
-                            },
-                            "author": {
-                                "@type": "Person",
-                                "name": "Sarah Martinez"
-                            },
-                            "reviewBody": "The due diligence package was incredibly thorough. They identified deed restriction issues that would have killed our project. Expert knowledge and attention to detail.",
-                            "publisher": {
-                                "@type": "Organization",
-                                "name": "Urban Living Partners"
-                            }
-                        },
-                        {
-                            "@type": "Review",
-                            "reviewRating": {
-                                "@type": "Rating",
-                                "ratingValue": "5",
-                                "bestRating": "5"
-                            },
-                            "author": {
-                                "@type": "Person",
-                                "name": "Robert Thompson"
-                            },
-                            "reviewBody": "15 years of working together. They've sourced over $50M in development sites for us. No one knows Houston land better.",
-                            "publisher": {
-                                "@type": "Organization",
-                                "name": "Gulf Coast Commercial"
-                            }
-                        }
-                    ]
-                }
-                </script>
-
-                <!-- Development Timeline Tool CTA -->
-                <div class="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-12 mb-16 text-center shadow-lg border border-gray-700">
-                    <i class="fas fa-project-diagram text-6xl text-houston-accent mb-6"></i>
-                    <h2 class="text-3xl font-bold text-white mb-4">Master Your Houston Development Timeline</h2>
-                    <p class="text-lg text-gray-300 mb-8 max-w-3xl mx-auto">
-                        Navigate Houston's unique development process with confidence. Our comprehensive timeline tool covers all 10 phases 
-                        from site selection to project closeout, with Houston-specific insights on MUD/PUD formation, permitting, and more.
-                    </p>
-                    <button onclick="showTab('tools'); openTool('development-timeline'); trackToolUsage('development-timeline', 'timeline_section');" class="bg-houston-accent hover:bg-green-500 text-white px-8 py-3 rounded-lg font-semibold transition-all transform hover:scale-105">
-                        Access Development Timeline Tool <i class="fas fa-arrow-right ml-2"></i>
-                    </button>
                 </div>
 
                 <!-- Contact Section with Form -->
@@ -2261,6 +2283,67 @@
                                     Send Developer Inquiry
                                 </button>
                             </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trusted by Houston's Leading Developers -->
+                <div class="mb-16">
+                    <h2 class="text-3xl font-bold text-center text-houston-green mb-12">Trusted by Houston's Leading Developers</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                        <!-- Testimonial 1 -->
+                        <div class="bg-gray-50 rounded-xl p-8 shadow-lg">
+                            <div class="flex mb-4">
+                                <i class="fas fa-star text-houston-accent"></i>
+                                <i class="fas fa-star text-houston-accent"></i>
+                                <i class="fas fa-star text-houston-accent"></i>
+                                <i class="fas fa-star text-houston-accent"></i>
+                                <i class="fas fa-star text-houston-accent"></i>
+                            </div>
+                            <p class="text-houston-gray mb-6 italic">
+                                "Houston Development Intelligence found us an off-market 45-acre site that perfectly fit our criteria. Their market knowledge saved us 6 months and $2M."
+                            </p>
+                            <div class="border-t pt-4">
+                                <div class="font-semibold text-houston-green">David Chen</div>
+                                <div class="text-sm text-gray-600">Apex Development Group</div>
+                                <div class="text-xs text-houston-accent mt-1">Katy Master-Planned Community</div>
+                            </div>
+                        </div>
+                        <!-- Testimonial 2 -->
+                        <div class="bg-gray-50 rounded-xl p-8 shadow-lg">
+                            <div class="flex mb-4">
+                                <i class="fas fa-star text-houston-accent"></i>
+                                <i class="fas fa-star text-houston-accent"></i>
+                                <i class="fas fa-star text-houston-accent"></i>
+                                <i class="fas fa-star text-houston-accent"></i>
+                                <i class="fas fa-star text-houston-accent"></i>
+                            </div>
+                            <p class="text-houston-gray mb-6 italic">
+                                "The due diligence package was incredibly thorough. They identified deed restriction issues that would have killed our project. True professionals."
+                            </p>
+                            <div class="border-t pt-4">
+                                <div class="font-semibold text-houston-green">Sarah Martinez</div>
+                                <div class="text-sm text-gray-600">Urban Living Partners</div>
+                                <div class="text-xs text-houston-accent mt-1">Montrose Townhome Development</div>
+                            </div>
+                        </div>
+                        <!-- Testimonial 3 -->
+                        <div class="bg-gray-50 rounded-xl p-8 shadow-lg">
+                            <div class="flex mb-4">
+                                <i class="fas fa-star text-houston-accent"></i>
+                                <i class="fas fa-star text-houston-accent"></i>
+                                <i class="fas fa-star text-houston-accent"></i>
+                                <i class="fas fa-star text-houston-accent"></i>
+                                <i class="fas fa-star text-houston-accent"></i>
+                            </div>
+                            <p class="text-houston-gray mb-6 italic">
+                                "15 years of working together. They've sourced over $50M in development sites for us. No one knows Houston land better."
+                            </p>
+                            <div class="border-t pt-4">
+                                <div class="font-semibold text-houston-green">Robert Thompson</div>
+                                <div class="text-sm text-gray-600">Gulf Coast Commercial</div>
+                                <div class="text-xs text-houston-accent mt-1">Woodlands Medical Plaza</div>
+                            </div>
                         </div>
                     </div>
                 </div>
