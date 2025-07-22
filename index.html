@@ -982,6 +982,161 @@
                 </div>
             </div>
 
+            <!-- Cash Sale vs Traditional Sale Comparison -->
+            <section class="py-20 bg-gray-50">
+                <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="bg-[#1e293b] rounded-2xl p-8 text-white">
+                        <div class="flex items-center gap-3 mb-6">
+                            <svg class="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                            </svg>
+                            <h3 class="text-2xl font-bold">Cash Sale vs Traditional Sale</h3>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label class="block text-sm font-medium mb-2">Estimated Property Value</label>
+                            <input type="range" id="propertyValueSlider" min="100000" max="1000000" step="25000" value="300000" 
+                                   class="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer">
+                            <div class="text-xl font-bold text-green-400 mt-2" id="propertyValueDisplay">$300,000</div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <!-- Traditional Sale -->
+                            <div class="bg-red-500 bg-opacity-10 border border-red-400 rounded-lg p-6">
+                                <h4 class="text-lg font-bold mb-4 text-red-400">Traditional Sale</h4>
+                                <div class="space-y-3 text-sm">
+                                    <div class="flex justify-between">
+                                        <span>Sale Price:</span>
+                                        <span id="traditionalSalePrice">$300,000</span>
+                                    </div>
+                                    <div class="flex justify-between text-red-300">
+                                        <span>Realtor Fees (6%):</span>
+                                        <span id="realtorFees">-$18,000</span>
+                                    </div>
+                                    <div class="flex justify-between text-red-300">
+                                        <span>Closing Costs:</span>
+                                        <span id="closingCosts">-$6,000</span>
+                                    </div>
+                                    <div class="flex justify-between text-red-300">
+                                        <span>Repairs/Staging:</span>
+                                        <span>-$15,000</span>
+                                    </div>
+                                    <div class="flex justify-between text-red-300">
+                                        <span>Carrying Costs:</span>
+                                        <span>-$2,400</span>
+                                    </div>
+                                    <div class="border-t border-red-400 pt-2 flex justify-between font-bold">
+                                        <span>Net Profit:</span>
+                                        <span id="traditionalNetProfit">$258,600</span>
+                                    </div>
+                                    <div class="text-red-400 text-center mt-2">
+                                        <svg class="w-4 h-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
+                                        6 months
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Cash Sale -->
+                            <div class="bg-green-500 bg-opacity-10 border border-green-400 rounded-lg p-6">
+                                <h4 class="text-lg font-bold mb-4 text-green-400">Cash Sale with Us</h4>
+                                <div class="space-y-3 text-sm">
+                                    <div class="flex justify-between">
+                                        <span>Cash Offer:</span>
+                                        <span id="cashOffer">$255,000</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span>Realtor Fees:</span>
+                                        <span>$0</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span>Closing Costs:</span>
+                                        <span>$0</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span>Repairs:</span>
+                                        <span>$0</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span>Carrying Costs:</span>
+                                        <span>$0</span>
+                                    </div>
+                                    <div class="border-t border-green-400 pt-2 flex justify-between font-bold">
+                                        <span>Net Profit:</span>
+                                        <span id="cashNetProfit">$255,000</span>
+                                    </div>
+                                    <div class="text-green-400 text-center mt-2">
+                                        <svg class="w-4 h-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                        </svg>
+                                        7-14 days
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 bg-slate-800 rounded-lg p-4">
+                            <div class="text-center">
+                                <div class="text-lg font-semibold mb-2">
+                                    Difference: <span id="profitDifference">$3,600</span>
+                                </div>
+                                <p class="text-sm text-slate-300">
+                                    You'll save time and hassle with guaranteed closing
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <script>
+                // Cash Sale vs Traditional Sale Calculator
+                const slider = document.getElementById('propertyValueSlider');
+                const valueDisplay = document.getElementById('propertyValueDisplay');
+                const traditionalSalePrice = document.getElementById('traditionalSalePrice');
+                const realtorFees = document.getElementById('realtorFees');
+                const closingCosts = document.getElementById('closingCosts');
+                const traditionalNetProfit = document.getElementById('traditionalNetProfit');
+                const cashOffer = document.getElementById('cashOffer');
+                const cashNetProfit = document.getElementById('cashNetProfit');
+                const profitDifference = document.getElementById('profitDifference');
+
+                function updateCalculations() {
+                    const propertyValue = parseInt(slider.value);
+                    
+                    // Update display
+                    valueDisplay.textContent = '$' + propertyValue.toLocaleString();
+                    
+                    // Traditional sale calculations
+                    const realtorFeesAmount = propertyValue * 0.06;
+                    const closingCostsAmount = propertyValue * 0.02;
+                    const repairsAmount = 15000;
+                    const carryingCostsAmount = 2400;
+                    const traditionalNet = propertyValue - realtorFeesAmount - closingCostsAmount - repairsAmount - carryingCostsAmount;
+                    
+                    // Cash sale calculations
+                    const cashOfferAmount = propertyValue * 0.85;
+                    
+                    // Update traditional sale
+                    traditionalSalePrice.textContent = '$' + propertyValue.toLocaleString();
+                    realtorFees.textContent = '-$' + realtorFeesAmount.toLocaleString();
+                    closingCosts.textContent = '-$' + closingCostsAmount.toLocaleString();
+                    traditionalNetProfit.textContent = '$' + traditionalNet.toLocaleString();
+                    
+                    // Update cash sale
+                    cashOffer.textContent = '$' + cashOfferAmount.toLocaleString();
+                    cashNetProfit.textContent = '$' + cashOfferAmount.toLocaleString();
+                    
+                    // Update difference
+                    const difference = Math.abs(traditionalNet - cashOfferAmount);
+                    profitDifference.textContent = '$' + difference.toLocaleString();
+                }
+
+                slider.addEventListener('input', updateCalculations);
+                updateCalculations(); // Initial calculation
+            </script>
+
             <!-- Property Types We Buy -->
             <section class="py-20 bg-white" id="property-types">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
