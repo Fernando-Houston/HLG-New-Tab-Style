@@ -1787,52 +1787,37 @@
                             <!-- Results Section (Hidden by default) -->
                             <div id="landFinderResults" class="hidden space-y-4 mt-6">
                                 <div class="bg-black/30 rounded-lg p-4 text-center">
-                                    <div class="text-2xl font-bold text-green-400 mb-2">3 sites found</div>
+                                    <div class="text-2xl font-bold text-green-400 mb-2">Perfect Match Found!</div>
+                                    <p class="text-gray-300">We've identified ideal sites based on your criteria</p>
                                 </div>
                                 
-                                <!-- Sample Result -->
-                                <div class="bg-gray-800 rounded-xl p-6 border-2 border-green-400">
-                                    <div class="flex justify-between items-start mb-4">
-                                        <div>
-                                            <h3 class="text-xl font-bold text-white">Westside Development Tract</h3>
-                                            <p class="text-gray-400">Size: 45 acres • Price: $8.2M</p>
-                                        </div>
-                                        <div class="text-right">
-                                            <div class="text-2xl font-bold text-green-400">94% Match</div>
-                                        </div>
+                                <!-- Email Capture Only -->
+                                <div class="bg-gray-800 rounded-xl p-8 border-2 border-green-400">
+                                    <div class="text-center mb-6">
+                                        <i class="fas fa-lock text-4xl text-green-400 mb-4"></i>
+                                        <h3 class="text-2xl font-bold text-white mb-2">Unlock Your Matched Properties</h3>
+                                        <p class="text-gray-400">Get instant access to detailed site packages for properties matching your exact criteria</p>
                                     </div>
                                     
-                                    <div class="grid grid-cols-2 gap-4 mb-4 text-sm">
-                                        <div>
-                                            <span class="text-gray-400">Zoning:</span>
-                                            <span class="ml-2 text-white">Planned Development</span>
-                                        </div>
-                                        <div>
-                                            <span class="text-gray-400">Timeline:</span>
-                                            <span class="ml-2 text-white">Ready now</span>
-                                        </div>
-                                    </div>
+                                    <!-- Email Capture Form -->
+                                    <form onsubmit="event.preventDefault(); alert('Thank you! Check your email for your personalized property matches.');" class="max-w-md mx-auto">
+                                        <label class="block text-sm font-medium text-gray-300 mb-2">Email Address</label>
+                                        <input
+                                            type="email"
+                                            placeholder="Enter your email address"
+                                            required
+                                            class="w-full bg-gray-900 border border-gray-600 rounded-lg px-4 py-3 text-white mb-4 focus:border-green-400 focus:outline-none"
+                                        />
+                                        <button type="submit" class="w-full bg-green-500 hover:bg-green-600 py-4 rounded-lg text-white font-bold text-lg transition-all transform hover:scale-105">
+                                            Get My Property Matches
+                                        </button>
+                                    </form>
                                     
-                                    <div class="flex flex-wrap gap-2 mb-4">
-                                        <span class="bg-green-500/20 text-green-400 px-3 py-1 rounded-full text-sm">Highway access</span>
-                                        <span class="bg-green-500/20 text-green-400 px-3 py-1 rounded-full text-sm">Utilities ready</span>
-                                        <span class="bg-green-500/20 text-green-400 px-3 py-1 rounded-full text-sm">Clear title</span>
-                                    </div>
-                                    
-                                    <!-- Email Capture for Site Package -->
-                                    <div class="bg-gray-700 rounded-lg p-4">
-                                        <h4 class="font-semibold text-white mb-3">Request Site Package</h4>
-                                        <form onsubmit="event.preventDefault(); alert('Site package request submitted!');">
-                                            <input
-                                                type="email"
-                                                placeholder="Enter your email for full site details"
-                                                required
-                                                class="w-full bg-gray-800 border border-gray-600 rounded-lg px-4 py-3 text-white mb-3"
-                                            />
-                                            <button type="submit" class="w-full bg-green-500 hover:bg-green-600 py-3 rounded-lg text-white font-semibold transition-colors">
-                                                Get Site Information
-                                            </button>
-                                        </form>
+                                    <div class="mt-6 text-center">
+                                        <p class="text-xs text-gray-500">
+                                            <i class="fas fa-shield-alt mr-1"></i>
+                                            Your information is secure and will never be shared
+                                        </p>
                                     </div>
                                 </div>
                             </div>
